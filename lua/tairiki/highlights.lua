@@ -166,7 +166,7 @@ hl.treesitter = {
 	["@label"] = colors.Blue,
 	["@method"] = {fg = c.blue, fmt = cfg.code_style.functions},
 	["@namespace"] = colors.Fg,
-	["@none"] = colors.Fg,
+	["@none"] = {},
 	["@number"] = colors.LightOrange,
 	["@operator"] = colors.LightGrey,
 	["@parameter"] = colors.Fg,
@@ -187,8 +187,8 @@ hl.treesitter = {
 	["@tag.attribute"] = colors.Orange,
 	["@tag.delimiter"] = colors.MidGrey,
 	["@text"] = colors.Fg,
-	["@text.strong"] = {fg = c.fg, fmt = 'bold'},
-	["@text.emphasis"] = {fg = c.fg, fmt = 'italic'},
+	["@text.strong"] = {fg = c.orange, fmt = 'bold'},
+	["@text.emphasis"] = {fg = c.orange, fmt = 'italic'},
 	["@text.underline"] = {fg = c.fg, fmt = 'underline'},
 	["@text.strike"] = {fg = c.fg, fmt = 'strikethrough'},
 	["@text.title"] = {fg = c.red, fmt = 'bold'},
@@ -207,7 +207,7 @@ hl.treesitter = {
 	["@text.literal"] = colors.Green,
 	["@text.uri"] = {fg = c.cyan, fmt = 'underline'},
 	["@text.todo"] = {fg = c.yellow, fmt = cfg.code_style.comments},
-	["@text.math"] = colors.Fg,
+	["@text.math"] = colors.Orange,
 	["@text.reference"] = colors.Green,
 	["@text.environment"] = colors.Fg,
 	["@text.environment.name"] = colors.Fg,
@@ -225,8 +225,22 @@ hl.treesitter = {
 
 	-- language specific
 
+	-- html
+	["@text.title.html"] = {fg = c.comment, fmt = 'bold'},
+
+	-- latex
+	["@function.latex"] = colors.Blue,
+
 	-- lua
 	["@constructor.lua"] = colors.MidGrey,
+
+	-- markdown
+	["@label.markdown"] = colors.Red,
+	["@punctuation.delimiter.markdown_inline"] = colors.MidGrey,
+	["@text.reference.markdown_inline"] = colors.Green,
+
+	-- vim
+	["@namespace.vim"] = colors.Orange,
 }
 hl.lsp = {
 	["@lsp.type.comment"] = hl.treesitter[ "@comment"],
