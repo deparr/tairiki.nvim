@@ -7,11 +7,18 @@ local hl = {langs = {}, plugins = {}}
 
 local function vim_highlights(highlights)
     for group_name, group_settings in pairs(highlights) do
-        vim.api.nvim_command(string.format("highlight %s guifg=%s guibg=%s guisp=%s gui=%s", group_name,
-            group_settings.fg or "none",
-            group_settings.bg or "none",
-            group_settings.sp or "none",
-            group_settings.fmt or "none"))
+		local settings = {
+			fg = group_settings.fg or "none",
+			bg = group_settings.bg or "none",
+			sp = group_settings.sp or "none",
+			link = group_settings.link or nil,
+		}
+		if group_settings.fmt and group_settings.fmt ~= "none" then
+			for _, fmtopt in pairs(vim.split(group_settings.fmt, ',')) do
+				settings[fmtopt] = 1
+			end
+		end
+		vim.api.nvim_set_hl(0, group_name, settings)
     end
 end
 
@@ -805,11 +812,17 @@ function M.setup()
 	end
 
 	for group_name, group_settings in pairs(vim.g.tairiki_config.highlights) do
-		vim.api.nvim_command(string.format("highlight %s %s %s %s %s", group_name,
-			replace_color("guifg", group_settings.fg),
-			replace_color("guibg", group_settings.bg),
-			replace_color("guisp", group_settings.sp),
-			replace_color("gui", group_settings.fmt)))
+		if group_settings.link then
+			vim.api.nvim_command(
+				string.format("highlight! link %s %s", group_name, group_settings.link)
+			)
+		else
+			vim.api.nvim_command(string.format("highlight %s %s %s %s %s", group_name,
+				replace_color("guifg", group_settings.fg),
+				replace_color("guibg", group_settings.bg),
+				replace_color("guisp", group_settings.sp),
+				replace_color("gui", group_settings.fmt)))
+		end
 	end
 end
 
