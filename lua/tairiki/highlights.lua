@@ -735,8 +735,17 @@ hl.langs.vim = {
 	vimNotation = colors.Red,
 	vimMapLhs = colors.Fg,
 	vimMapRhs = colors.Blue,
-	vimVar = {fg = c.fg, fmt = cfg.code_style.variables},
 	vimCommentTitle = {fg = c.light_grey, fmt = cfg.code_style.comments},
+	vimFuncKey = colors.Purple,
+	vimFuncVar = colors.Red,
+	vimOper = colors.MidGrey,
+	vimOperParen = { link = "vimOper" },
+	vimFunction = colors.Blue,
+	vimCommand = colors.Purple,
+	vimIsCommand = colors.Orange,
+	vimLet = colors.Red,
+	vimSubst = colors.Yellow,
+	vimVar = { fg = c.fg, fmt = cfg.code_style.variables },
 }
 
 -- unchanged
