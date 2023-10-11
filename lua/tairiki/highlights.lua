@@ -478,6 +478,12 @@ hl.plugins.neotest = {
 	NeotestUnknown = colors.MidGrey,
 }
 
+hl.plugins.netrw = {
+	netrwExe = colors.Green,
+	netreDirectory = colors.Blue,
+	netrwSymLink = colors.Cyan,
+}
+
 -- unchanged
 hl.plugins.nvim_tree = {
 	NvimTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg_d },
