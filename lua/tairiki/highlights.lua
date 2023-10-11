@@ -428,6 +428,25 @@ hl.plugins.diffview = {
 	DiffviewStatusBroken = colors.Red
 }
 
+-- tpope/vim-fugitive
+hl.plugins.fugitive = {
+	fugitiveHeader = colors.MidGrey,
+	fugitiveSection = colors.LightGrey,
+	fugitiveUntrackedSection = { link = "fugitiveSection" },
+	fugitiveUnstagedSection = { link = "fugitiveSection" },
+	fugitiveStagedSection = { link = "fugitiveSection" },
+	fugitiveHeading = colors.Purple,
+	fugitiveUnstagedHeading = { link = "fugitiveHeading" },
+	fugitiveUntrackedHeading = { link = "fugitiveHeading" },
+	fugitiveStagedHeading = { link = "fugitiveHeading" },
+	fugitiveUntrackedModifier = colors.Red,
+	fugitiveUnstagedModifier = colors.Orange,
+	fugitiveStagedModifier = colors.Orange,
+	fugitiveSymbolicRef = { fg = c.green },
+	fugitiveHash = { fg = util.darken(util.blend(c.yellow, c.bg0, 0.9), 0.9) },
+	fugitiveHelpTag = colors.Blue,
+}
+
 hl.plugins.gitsigns = {
 	GitSignsAdd = colors.Green,
 	GitSignsAddLn = colors.Green,
