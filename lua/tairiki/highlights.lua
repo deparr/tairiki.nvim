@@ -133,7 +133,7 @@ hl.syntax = {
 	Statement = colors.Green,
 	Macro = colors.Orange,
 	Error = colors.Red,
-	Label = colors.Blue,
+	Label = colors.Green,
 	Special = colors.Red,
 	SpecialChar = colors.Red,
 	Function = {fg = c.blue, fmt = cfg.code_style.functions},
@@ -145,11 +145,10 @@ hl.syntax = {
 	SpecialComment = {fg = c.comment, fmt = cfg.code_style.comments},
 	Todo = {fg = c.Yellow, fmt = cfg.code_style.comments}
 }
-
+print(util.darken(c.cyan, 0.9, c.bg0))
 hl.treesitter = {
 	["@annotation"] = colors.Fg,
-	["@attribute"] = colors.Cyan, -- maybe
-	["@attribute.typescript"] = colors.Blue, -- maybe
+	["@attribute"] = colors.Cyan,
 	["@boolean"] = colors.LightOrange,
 	["@character"] = colors.Green,
 	["@comment"] = {fg = c.comment, fmt = cfg.code_style.comments},
@@ -157,10 +156,10 @@ hl.treesitter = {
 	["@constant"] = {fg = c.orange, fmt = cfg.code_style.constants},
 	["@constant.builtin"] = {fg = c.orange, fmt = cfg.code_style.constants},
 	["@constant.macro"] = {fg = c.orange, fmt = cfg.code_style.constants},
-	["@constructor"] = {fg = c.yellow}, -- maybe, lua is fine not sure about other langs
+	["@constructor"] = {fg = c.yellow},
 	["@error"] = colors.Fg,
 	["@exception"] = colors.Purple, -- maybe
-	["@field"] = colors.Cyan, -- is light_grey in orig, maybe make specific color for this
+	["@field"] = colors.Cyan,
 	["@float"] = colors.LightOrange,
 	["@function"] = {fg = c.blue, fmt = cfg.code_style.functions},
 	["@function.builtin"] = {fg = c.red, fmt = cfg.code_style.functions},
@@ -168,7 +167,7 @@ hl.treesitter = {
 	["@include"] = colors.Purple,
 	["@keyword"] = {fg = c.purple, fmt = cfg.code_style.keywords},
 	["@keyword.function"] = {fg = c.light_purple, fmt = cfg.code_style.functions},
-	["@keyword.operator"] =  {fg = c.orange, fmt = cfg.code_style.keywords},
+	["@keyword.operator"] =  {fg = c.light_purple, fmt = cfg.code_style.keywords},
 	["@keyword.coroutine"] =  {fg = c.light_purple, fmt = cfg.code_style.keywords},
 	["@keyword.return"] =  {fg = c.purple, fmt = cfg.code_style.keywords},
 	["@label"] = colors.Blue,
@@ -180,7 +179,7 @@ hl.treesitter = {
 	["@parameter"] = colors.Fg,
 	["@parameter.reference"] = colors.Fg,
 	["@preproc"] = colors.Purple,
-	["@property"] = colors.Cyan, -- maybe is light_grey in orig, do specific color? linked to field
+	["@property"] = { link = "@field" },
 	["@property.class"] = colors.Yellow, -- maybe is light_grey in orig, do specific color? linked to field
 	["@property.id"] = colors.Red, -- maybe is light_grey in orig, do specific color? linked to field
 	["@punctuation.delimiter"] = colors.Grey,
@@ -239,9 +238,6 @@ hl.treesitter = {
 	-- latex
 	["@function.latex"] = colors.Blue,
 
-	-- lua
-	["@constructor.lua"] = colors.MidGrey,
-
 	-- markdown
 	["@label.markdown"] = colors.Red,
 	["@punctuation.delimiter.markdown_inline"] = colors.MidGrey,
@@ -249,6 +245,21 @@ hl.treesitter = {
 
 	-- vim
 	["@namespace.vim"] = colors.Orange,
+
+	-- vimdoc
+	["@label.vimdoc"] = colors.LightPurple,
+	["@string.special.vimdoc"] = colors.LightOrange,
+
+	-- css
+	["@type.tag.css"] = colors.Orange,
+	["@punctuation.bracket.css"] = colors.MidGrey,
+
+	-- gitcommit
+	["@keyword.gitcommit"] = colors.Blue,
+	["@text.title.gitcommit"] = { fg = c.orange, fmt = "bold" },
+
+	-- typescript
+	["@attribute.typescript"] = colors.Blue,
 }
 hl.lsp = {
 	["@lsp.type.comment"] = hl.treesitter[ "@comment"],
