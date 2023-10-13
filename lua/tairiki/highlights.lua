@@ -145,7 +145,7 @@ hl.syntax = {
 	SpecialComment = {fg = c.comment, fmt = cfg.code_style.comments},
 	Todo = {fg = c.Yellow, fmt = cfg.code_style.comments}
 }
-print(util.darken(c.cyan, 0.9, c.bg0))
+
 hl.treesitter = {
 	["@annotation"] = colors.Fg,
 	["@attribute"] = colors.Cyan,
