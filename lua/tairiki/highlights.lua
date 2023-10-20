@@ -74,7 +74,7 @@ hl.common = {
 	IncSearch = {fg = c.bg0, bg = c.orange},
 	Search = {bg = c.bg_d},
 	Substitute = {fg = c.bg0, bg = c.orange},
-	MatchParen = {fg = c.none, bg = c.light_grey},
+	MatchParen = colors.LightOrange,
 	NonText = {fg = c.light_grey},
 	--Whitespace = {fg = c.grey},
 	SpecialKey = {fg = c.grey}, -- is blue in orig
