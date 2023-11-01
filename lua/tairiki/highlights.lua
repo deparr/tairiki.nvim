@@ -143,7 +143,7 @@ hl.syntax = {
 	Delimiter = colors.MidGrey,
 	Comment = {fg = c.comment, fmt = cfg.code_style.comments},
 	SpecialComment = {fg = c.comment, fmt = cfg.code_style.comments},
-	Todo = {fg = c.Yellow, fmt = cfg.code_style.comments}
+	Todo = {fg = c.yellow, fmt = "bold" }
 }
 
 hl.treesitter = {
@@ -213,16 +213,19 @@ hl.treesitter = {
 	["@text.title.6.marker"] = {fg = c.orange, fmt = 'bold'},
 	["@text.literal"] = colors.Green,
 	["@text.uri"] = {fg = c.cyan, fmt = 'underline'},
-	["@text.todo"] = {fg = c.yellow, fmt = cfg.code_style.comments},
+	["@text.note"] = { link = '@note' },
+	["@text.warning"] = { link = '@warning' },
+	["@text.danger"] = { link = '@danger' },
+	["@text.todo"] = { link = 'Todo' },
 	["@text.math"] = colors.Orange,
 	["@text.reference"] = colors.Green,
 	["@text.environment"] = colors.Fg,
 	["@text.environment.name"] = colors.Fg,
 	["@text.diff.add"] = colors.Green,
 	["@text.diff.delete"] = colors.Red,
-	["@note"] = colors.Fg,
-	["@warning"] = colors.Fg,
-	["@danger"] = colors.Fg,
+	["@note"] = {fg = c.blue, fmt = 'bold' },
+	["@warning"] = {fg = c.orange, fmt = 'bold' },
+	["@danger"] = {fg = c.red, fmt = 'bold' },
 	["@type"] = colors.Yellow,
 	["@type.builtin"] = colors.LightOrange,
 	["@type.qualifier"] = colors.LightPurple,
@@ -262,7 +265,7 @@ hl.treesitter = {
 	["@attribute.typescript"] = colors.Blue,
 }
 hl.lsp = {
-	["@lsp.type.comment"] = hl.treesitter[ "@comment"],
+	["@lsp.type.comment"] = {},
 	["@lsp.type.enum"] = hl.treesitter["@type"],
 	["@lsp.type.enumMember"] = hl.treesitter["@constant.builtin"],
 	["@lsp.type.interface"] = hl.treesitter["@type"],
