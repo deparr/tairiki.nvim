@@ -14,8 +14,15 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
   * Customize `Colors`, `Highlights` and `Code style` of the theme as you like (Refer [Customization](#customization))
   * Toggle the theme style without exiting Neovim using `toggle_style_key` (Refer [Config](#default-configuration)) TODO: maybe add more styles
 
-## Themes
-TODO pictures
+### Showcase
+<details open>
+<summary>Toggle preview</summary>
+	
+![dark_theme](https://github.com/deparr/tairiki.nvim/assets/37233002/ad842387-ad87-4f69-a2c9-8531c5b592b9)
+
+_NOTE:_ The above image uses the rust treesitter parser for highlights
+
+</details>
 
 ## Installation
 Install via your favourite package manager
