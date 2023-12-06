@@ -72,7 +72,7 @@ colorscheme tairiki
 require('tairiki').setup {
     style = 'dark'
 }
-require('onedark').load()
+require('tairiki').load()
 ```
 
 ```vim
