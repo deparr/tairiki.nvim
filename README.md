@@ -6,7 +6,7 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
 
 *For latest [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlight, upgraded to Neovim 0.8.0 or later built with tree-sitter 0.20.3+*
 
-> Disclaimer: I wrote this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use.
+> Disclaimer: I wrote this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use. Create an issue if something is off, or set a custom highlight/color (see [Customization](#customization))
 
 ### Features
   * TODO: re-write these
@@ -41,12 +41,12 @@ use 'deparr/tairiki.nvim'
 {
   'deparr/tairiki.nvim',
   lazy = false,
-  priority = 1000,
+  priority = 1000, -- only necessary if you use tairiki as default theme
   config = function()
     require('tairiki').setup {
       -- optional configuration here
     }
-    require('tairiki').load()
+    require('tairiki').load() -- only necessary to use as default theme, has same behavior as ':colorscheme tairiki'
   end,
 }
 ```
@@ -150,7 +150,6 @@ colorscheme tairiki
 ## Customization
 
 Example custom colors and Highlights config
-Existing colors can be found [here](https://github.com/deparr/tairiki.nvim/blob/master/lua/tairiki/palette.lua).
 
 ```lua
 require('tairiki').setup {
