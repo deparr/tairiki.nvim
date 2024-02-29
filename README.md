@@ -17,7 +17,7 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
 ### Showcase
 <details open>
 <summary>Toggle preview</summary>
-	
+
 ![dark_theme](https://github.com/deparr/tairiki.nvim/assets/37233002/ad842387-ad87-4f69-a2c9-8531c5b592b9)
 
 _NOTE:_ The above image uses the rust treesitter parser for highlights

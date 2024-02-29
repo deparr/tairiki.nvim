@@ -72,7 +72,7 @@ hl.common = {
 	MoreMsg = colors.Purple,
 	CurSearch = {fg = c.bg0, bg = c.orange},
 	IncSearch = {fg = c.bg0, bg = c.orange},
-	Search = {bg = c.bg_d},
+	Search = {fg = c.bg0, bg = c.yellow},
 	Substitute = {fg = c.bg0, bg = c.orange},
 	MatchParen = colors.LightOrange,
 	NonText = {fg = c.light_grey},
@@ -133,12 +133,12 @@ hl.syntax = {
 	Statement = colors.Green,
 	Macro = colors.Orange,
 	Error = colors.Red,
-	Label = colors.Green,
-	Special = colors.Red,
+	Label = colors.LightOrange,
+	Special = { fg = c.red, fmt = 'bold' },
 	SpecialChar = colors.Red,
 	Function = {fg = c.blue, fmt = cfg.code_style.functions},
 	Operator = colors.LightGrey,
-	Title = { fg = c.light_grey, fmt = "bold" },
+	Title = { fg = c.fg, fmt = "bold" },
 	Tag = colors.Red,
 	Delimiter = colors.MidGrey,
 	Comment = {fg = c.comment, fmt = cfg.code_style.comments},
@@ -221,8 +221,6 @@ hl.treesitter = {
 	["@text.reference"] = colors.Green,
 	["@text.environment"] = colors.Fg,
 	["@text.environment.name"] = colors.Fg,
-	["@text.diff.add"] = colors.Green,
-	["@text.diff.delete"] = colors.Red,
 	["@note"] = {fg = c.blue, fmt = 'bold' },
 	["@warning"] = {fg = c.orange, fmt = 'bold' },
 	["@danger"] = {fg = c.red, fmt = 'bold' },
@@ -233,6 +231,10 @@ hl.treesitter = {
 	["@variable.builtin"] = {fg = c.red, fmt = cfg.code_style.variables},
 	["@variable.global"] = {fg = c.orange, fmt = cfg.code_style.variables},
 
+	["@diff.plus"] = { link = "DiffAdd" },
+	["@diff.minus"] = { link = "DiffDelete" },
+	["@diff.delta"] = { link = "DiffChange" },
+
 	-- language specific
 
 	-- html
@@ -242,9 +244,37 @@ hl.treesitter = {
 	["@function.latex"] = colors.Blue,
 
 	-- markdown
-	["@label.markdown"] = colors.Red,
-	["@punctuation.delimiter.markdown_inline"] = colors.MidGrey,
-	["@text.reference.markdown_inline"] = colors.Green,
+	["@markup.heading.marker"] = {fg = c.orange, fmt = "bold" },
+	["@markup.heading.1.marker"] = {link = "@markup.heading.marker" },
+	["@markup.heading.2.marker"] = {link = "@markup.heading.marker" },
+	["@markup.heading.3.marker"] = {link = "@markup.heading.marker" },
+	["@markup.heading.4.marker"] = {link = "@markup.heading.marker" },
+	["@markup.heading.5.marker"] = {link = "@markup.heading.marker" },
+	["@markup.heading.6.marker"] = {link = "@markup.heading.marker" },
+	["@markup.heading"] = {link = "Title"},
+	["@markup.list"] = { link = "Special" },
+	["@markup.link.label"] = {fg = c.orange},
+	["@markup.strong"] = { fg = c.fg, fmt="bold"},
+	["@markup.italic"] = { fg = c.fg, fmt="italic"},
+	["@markup.strikethrough"] = { fg = c.fg, fmt="strikethrough"},
+	["@markup.underline"] = { fg = c.fg, fmt="underline"},
+	["@markup.strong.markdown_inline"] = { fg = c.light_orange, fmt="bold"}, -- not sure here
+	["@markup.italic.markdown_inline"] = { fg = c.light_orange, fmt="italic"},
+	["@markup.strikethrough.markdown_inline"] = { fmt="strikethrough"},
+	["@conceal.markdown_inline"] = {fg = c.light_grey},
+
+	["@markup.raw"] = { fg = c.green},
+	["@markup.raw.delimiter"] = { fg = c.grey},
+	["@string.special.url"] = { fg = c.blue, fmt = 'underline' },
+	['@markup.link.url'] = { fg = c.blue, fmt = 'underline' },
+	["@label.markdown"] = { link = "Tag" },
+	['@markup.list.checked'] = { fg = c.diff_add, fmt = 'bold' },
+	['@markup.list.unchecked'] = { fg = c.grey, fmt = 'bold' },
+	['@markup.math'] = { fg = c.blue },
+	['@markup.link'] = { fg = c.blue},
+	['@markup.environment'] = { fg = c.cyan, fmt = 'bold' },
+	['@markup.environment.name'] = { link = 'Type' },
+	['@markup.quote'] = { fg = util.blend(c.fg, c.light_grey, 0.5) },
 
 	-- vim
 	["@namespace.vim"] = colors.Orange,
@@ -688,7 +718,7 @@ hl.langs.cpp = {
 -- unchanged
 hl.langs.markdown = {
 	markdownBlockquote = colors.Grey,
-	markdownBold = {fg = c.none, fmt = "bold"},
+	markdownBold = {fg = c.orange, fmt = "bold"},
 	markdownBoldDelimiter = colors.Grey,
 	markdownCode = colors.Green,
 	markdownCodeBlock = colors.Green,
@@ -788,7 +818,7 @@ hl.langs.vim = {
 	vimVar = { fg = c.fg, fmt = cfg.code_style.variables },
 }
 
--- unchanged
+-- TODO: revivew these
 local lsp_kind_icons_color = {
 	Default = c.purple,
 	Array = c.yellow,
