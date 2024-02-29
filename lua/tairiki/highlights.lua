@@ -97,7 +97,7 @@ hl.common = {
 	TabLineSel =  {fg = c.bg0, bg = c.comment},
 	VertSplit = {fg = c.grey},
 	WinSeparator = {fg = c.grey},
-	Visual = {bg = c.bg3, fmt = "bold"},
+	Visual = {bg = c.bg3, fmt = cfg.visual_bold and "bold" or nil},
 	VisualNOS = {bg = c.bg3, fmt = "bold"},
 	QuickFixLine = {fg = c.blue, fmt = "underline"},
 	Debug = {fg = c.yellow},
