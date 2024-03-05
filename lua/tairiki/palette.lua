@@ -32,24 +32,28 @@ return {
 		diff_text = "#a89984",
 	},
 	light = {
-		black = "#151515",
-		bg0 = "#f0f0f0", -- not sure if I like pure white bg
+		black = "#151515", -- only used in terminal colors
+		bg0 = "#e8e8e8", -- not sure if I like pure white bg
 		bg1 = "#dcdcd6",
-		bg2 = "#e6e6e0",
+		bg2 = "#ccccc6",
+		--bg2 = "#e6e6e0",
 		bg3 = "#dcdcd6",
 		fg = "#4d4d4c",
 		purple = "#8959a8",
 		green = "#718c00",
-		orange = "#f5871f",
+		-- orange = "#f5871f",
+		orange = "#e56710",
 		blue = "#4271ae",
-		yellow = "#eab700",
+		--yellow = "#eab700",
+		yellow = "#caa720",
 		-- cyan = "#3e999f",
 		cyan = "#1e797f",
 		red = "#c82829",
-		grey = "#afb2b0",
+		-- grey = "#afb2b0",
+		grey = "#696969",
 		mid_grey = "#505050",
 		light_grey = "#151515", -- light in terms of contrast, easy to read
-		light_orange = "#e78c45",
+		light_orange = "#d05200",
 		-- light_purple = "#c397d8",
 		light_purple = "#693988",
 		light_cyan = "#70c0b1",
@@ -58,8 +62,8 @@ return {
 		dark_red = "#833b3b",
 		dark_yellow = "#7c5c20",
 		dark_purple = "#79428a",
-		comment = "#8e9098", -- "#a88954" -- does it though? "#8e908c" is orig
-		-- diff_add = "#516c00",
+		comment = "#4271ce", -- "#a88954" -- does it though? "#8e908c" is orig
+		-- comment = "#8c6c30", -- "#a88954" -- does it though? "#8e908c" is orig
 		diff_add = "#718c00",
 		diff_delete = "#b81819",
 		diff_change = "#eab700",
@@ -67,4 +71,4 @@ return {
 	},
 }
 
---vim.keymap.set({ "n" }, "<leader>rcs", function() require("tairiki").setup(); vim.cmd "colorscheme tairiki" end)
+-- vim.keymap.set({ "n" }, "<leader>rcs", function() require("tairiki").setup(); vim.cmd "colorscheme tairiki"; end)
