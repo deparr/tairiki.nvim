@@ -1,13 +1,10 @@
 return {
 	dark = {
-		black = "#181a1f", -- find where used
+		black = "#181a1f", -- only used in terminal colors
 		bg0 = "#151515", -- bg0
 		bg1 = "#1d1f21", -- bg1
 		bg2 = "#282828", -- bg2
 		bg3 = "#3b3f4c",
-		bg_d = "#21252b", -- Whats this?
-		bg_blue = "#73b8f1", -- Where is this used?
-		bg_yellow = "#ebd09c", -- And this?
 		fg = "#c5c8c6", -- fg0
 		purple = "#b294bb", -- purple
 		green = "#b5bd68",

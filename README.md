@@ -6,7 +6,7 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
 
 *For latest [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlight, upgraded to Neovim 0.8.0 or later built with tree-sitter 0.20.3+*
 
-> Disclaimer: I wrote this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use.
+> Disclaimer: I wrote this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use. Create an issue if something is off, or set a custom highlight/color (see [Customization](#customization))
 
 ### Features
   * TODO: re-write these
@@ -14,8 +14,15 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
   * Customize `Colors`, `Highlights` and `Code style` of the theme as you like (Refer [Customization](#customization))
   * Toggle the theme style without exiting Neovim using `toggle_style_key` (Refer [Config](#default-configuration)) TODO: maybe add more styles
 
-## Themes
-TODO pictures
+### Showcase
+<details open>
+<summary>Toggle preview</summary>
+
+![dark_theme](https://github.com/deparr/tairiki.nvim/assets/37233002/ad842387-ad87-4f69-a2c9-8531c5b592b9)
+
+_NOTE:_ The above image uses the rust treesitter parser for highlights
+
+</details>
 
 ## Installation
 Install via your favourite package manager
@@ -34,12 +41,12 @@ use 'deparr/tairiki.nvim'
 {
   'deparr/tairiki.nvim',
   lazy = false,
-  priority = 1000,
+  priority = 1000, -- only necessary if you use tairiki as default theme
   config = function()
     require('tairiki').setup {
       -- optional configuration here
     }
-    require('tairiki').load()
+    require('tairiki').load() -- only necessary to use as default theme, has same behavior as ':colorscheme tairiki'
   end,
 }
 ```
@@ -65,7 +72,7 @@ colorscheme tairiki
 require('tairiki').setup {
     style = 'dark'
 }
-require('onedark').load()
+require('tairiki').load()
 ```
 
 ```vim
@@ -87,6 +94,7 @@ require('tairiki').setup  {
     term_colors = true, -- Change terminal color as per the selected theme style
     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
     cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+    visual_bold = false, -- bolden visual selections
 
     -- toggle theme style ---
     toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
@@ -143,7 +151,6 @@ colorscheme tairiki
 ## Customization
 
 Example custom colors and Highlights config
-Existing colors can be found [here](https://github.com/deparr/tairiki.nvim/blob/master/lua/tairiki/palette.lua).
 
 ```lua
 require('tairiki').setup {
