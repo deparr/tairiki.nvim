@@ -35,38 +35,39 @@ return {
 		diff_text = "#a89984",
 	},
 	light = {
-		black = "#101012",
-		bg0 = "#ffffff",
+		black = "#151515",
+		bg0 = "#f0f0f0", -- not sure if I like pure white bg
 		bg1 = "#dcdcd6",
 		bg2 = "#e6e6e0",
 		bg3 = "#dcdcd6",
-		bg_d = "#c9c9c9",
-		bg_blue = "#68aee8",
-		bg_yellow = "#e2c792",
 		fg = "#4d4d4c",
 		purple = "#8959a8",
 		green = "#718c00",
 		orange = "#f5871f",
 		blue = "#4271ae",
 		yellow = "#eab700",
-		cyan = "#3e999f",
+		-- cyan = "#3e999f",
+		cyan = "#1e797f",
 		red = "#c82829",
 		grey = "#afb2b0",
 		mid_grey = "#505050",
-		light_grey = "#282828", -- light in terms of contrast, easy to read
+		light_grey = "#151515", -- light in terms of contrast, easy to read
 		light_orange = "#e78c45",
-		light_purple = "#c397d8",
+		-- light_purple = "#c397d8",
+		light_purple = "#693988",
 		light_cyan = "#70c0b1",
 		light_red = "#d54e53",
 		dark_cyan = "#2b5d63",
 		dark_red = "#833b3b",
 		dark_yellow = "#7c5c20",
 		dark_purple = "#79428a",
-		comment = "#a88954", -- this needs to be changed
-		diff_add = "#e2fbe4",
-		diff_delete = "#fce2e5",
-		diff_change = "#e2ecfb",
-		diff_text = "#cad3e0",
+		comment = "#8e9098", -- "#a88954" -- does it though? "#8e908c" is orig
+		-- diff_add = "#516c00",
+		diff_add = "#718c00",
+		diff_delete = "#b81819",
+		diff_change = "#eab700",
+		diff_text = "#a88954",
 	},
 }
 
+--vim.keymap.set({ "n" }, "<leader>rcs", function() require("tairiki").setup(); vim.cmd "colorscheme tairiki" end)
