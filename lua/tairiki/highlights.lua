@@ -98,12 +98,12 @@ hl.common = {
 	VertSplit = {fg = c.grey},
 	WinSeparator = {fg = c.grey},
 	Visual = {bg = c.bg3, fmt = cfg.visual_bold and "bold" or nil},
-	VisualNOS = {bg = c.bg3, fmt = "bold"},
+	VisualNOS = {bg = c.bg3, fmt = cfg.visual_bold and "bold" or nil},
 	QuickFixLine = {fg = c.blue, fmt = "underline"},
 	Debug = {fg = c.yellow},
 	debugPC = {fg = c.bg0, bg = c.green},
 	debugBreakpoint = {fg = c.bg0, bg = c.red},
-	ToolbarButton = {fg = c.bg0, bg = c.bg_blue},
+	ToolbarButton = {fg = c.bg0, bg = c.blue},
 	FloatBorder = {fg = c.grey, bg = c.bg0},
 	NormalFloat = {fg = c.fg, bg = c.bg0},
 	healthSuccess = { fg = c.bg1, bg = "#00ff00"},
@@ -506,11 +506,11 @@ hl.plugins.gitsigns = {
 
 -- unchanged
 hl.plugins.neo_tree = {
-	NeoTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg_d },
-	NeoTreeNormalNC = { fg = c.fg, bg = cfg.transparent and c.none or c.bg_d },
+	NeoTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg2 },
+	NeoTreeNormalNC = { fg = c.fg, bg = cfg.transparent and c.none or c.bg2 },
 	NeoTreeVertSplit = { fg = c.bg1, bg = cfg.transparent and c.none or c.bg1 },
 	NeoTreeWinSeparator = { fg = c.bg1, bg = cfg.transparent and c.none or c.bg1 },
-	NeoTreeEndOfBuffer = { fg = cfg.ending_tildes and c.bg2 or c.bg_d, bg = cfg.transparent and c.none or c.bg_d },
+	NeoTreeEndOfBuffer = { fg = cfg.ending_tildes and c.bg2 or c.bg2, bg = cfg.transparent and c.none or c.bg2 },
 	NeoTreeRootName = { fg = c.orange, fmt = "bold" },
 	NeoTreeGitAdded = colors.Green,
 	NeoTreeGitDeleted = colors.Red,
@@ -547,11 +547,10 @@ hl.plugins.netrw = {
 	netrwSymLink = colors.Cyan,
 }
 
--- unchanged
 hl.plugins.nvim_tree = {
-	NvimTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg_d },
-	NvimTreeVertSplit = { fg = c.bg_d, bg = cfg.transparent and c.none or c.bg_d },
-	NvimTreeEndOfBuffer = { fg = cfg.ending_tildes and c.bg2 or c.bg_d, bg = cfg.transparent and c.none or c.bg_d },
+	NvimTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg2 },
+	NvimTreeVertSplit = { fg = c.bg2, bg = cfg.transparent and c.none or c.bg2 },
+	NvimTreeEndOfBuffer = { fg = cfg.ending_tildes and c.bg2 or c.bg2, bg = cfg.transparent and c.none or c.bg2 },
 	NvimTreeRootFolder = { fg = c.orange, fmt = "bold" },
 	NvimTreeGitDirty = colors.Yellow,
 	NvimTreeGitNew = colors.Green,
@@ -684,7 +683,7 @@ hl.plugins.mini = {
 	MiniTablineModifiedCurrent = { fg = c.orange, fmt = "bold,italic" },
 	MiniTablineModifiedHidden = { fg = c.light_grey, bg = c.bg1, fmt = "italic" },
 	MiniTablineModifiedVisible = { fg = c.yellow, bg = c.bg0, fmt = "italic" },
-	MiniTablineTabpagesection = { fg = c.bg0, bg = c.bg_yellow },
+	MiniTablineTabpageSection = { fg = c.bg0, bg = c.yellow },
 	MiniTablineVisible = { fg = c.light_grey, bg = c.bg0 },
 
 	MiniTestEmphasis = { fmt = "bold" },
