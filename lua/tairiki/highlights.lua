@@ -309,10 +309,10 @@ hl.lsp = {
 
 
 -- maybe, these are same right now
-local diagnostics_error_color = cfg.diagnostics.darker and c.dark_red or c.red
-local diagnostics_hint_color = cfg.diagnostics.darker and c.dark_purple or c.purple
-local diagnostics_warn_color = cfg.diagnostics.darker and c.dark_yellow or c.yellow
-local diagnostics_info_color = cfg.diagnostics.darker and c.dark_cyan or c.cyan
+local diag_error = cfg.diagnostics.darker and c.dark_red or c.red
+local diag_hint = cfg.diagnostics.darker and c.dark_purple or c.purple
+local diag_warn = cfg.diagnostics.darker and c.dark_yellow or c.yellow
+local diag_info = cfg.diagnostics.darker and c.dark_cyan or c.cyan
 hl.plugins.lsp = {
 	LspCxxHlGroupEnumConstant = { fg = c.orange },
 	LspCxxHlGroupMemberVariable = { fg = c.orange },
@@ -325,14 +325,10 @@ hl.plugins.lsp = {
 	DiagnosticInfo = {fg = c.cyan},
 	DiagnosticWarn = {fg = c.yellow},
 
-	DiagnosticVirtualTextError = { bg = cfg.diagnostics.background and util.darken(diagnostics_error_color, 0.1, c.bg0) or c.none,
-									fg = diagnostics_error_color },
-	DiagnosticVirtualTextWarn = { bg = cfg.diagnostics.background and util.darken(diagnostics_warn_color, 0.1, c.bg0) or c.none,
-									fg = diagnostics_warn_color },
-	DiagnosticVirtualTextInfo = { bg = cfg.diagnostics.background and util.darken(diagnostics_info_color, 0.1, c.bg0) or c.none,
-									fg = diagnostics_info_color },
-	DiagnosticVirtualTextHint = { bg = cfg.diagnostics.background and util.darken(diagnostics_hint_color, 0.1, c.bg0) or c.none,
-									fg = diagnostics_hint_color },
+	DiagnosticVirtualTextError = { bg = cfg.diagnostics.background and util.darken(diag_error, 0.1, c.bg0) or c.none, fg = diag_error },
+	DiagnosticVirtualTextWarn = { bg = cfg.diagnostics.background and util.darken(diag_warn, 0.1, c.bg0) or c.none, fg = diag_warn },
+	DiagnosticVirtualTextInfo = { bg = cfg.diagnostics.background and util.darken(diag_info, 0.1, c.bg0) or c.none, fg = diag_info },
+	DiagnosticVirtualTextHint = { bg = cfg.diagnostics.background and util.darken(diag_hint, 0.1, c.bg0) or c.none, fg = diag_hint },
 
 	DiagnosticUnderlineError = {fmt = cfg.diagnostics.undercurl and "undercurl" or "underline", sp = c.red},
 	DiagnosticUnderlineHint = {fmt = cfg.diagnostics.undercurl and "undercurl" or "underline", sp = c.purple},
@@ -360,11 +356,6 @@ hl.plugins.lsp.LspDiagnosticsVirtualTextError = hl.plugins.lsp.DiagnosticVirtual
 hl.plugins.lsp.LspDiagnosticsVirtualTextWarning = hl.plugins.lsp.DiagnosticVirtualTextWarn
 hl.plugins.lsp.LspDiagnosticsVirtualTextInformation = hl.plugins.lsp.DiagnosticVirtualTextInfo
 hl.plugins.lsp.LspDiagnosticsVirtualTextHint = hl.plugins.lsp.DiagnosticVirtualTextHint
-
--- j-hui/fidget.nvim
-hl.plugins.fidget = {
-	FidgetTitle = { fg = c.purple }
-}
 
 -- unchanged
 hl.plugins.ale = {
@@ -414,9 +405,9 @@ hl.plugins.whichkey = {
 
 -- unchanged
 hl.plugins.gitgutter = {
-	GitGutterAdd = {fg = c.green},
-	GitGutterChange = {fg = c.blue},
-	GitGutterDelete = {fg = c.red},
+	GitGutterAdd = {fg = c.diff_add},
+	GitGutterChange = {fg = c.diff_change},
+	GitGutterDelete = {fg = c.diff_delete},
 }
 
 -- unchanged
@@ -547,10 +538,10 @@ hl.plugins.nvim_tree = {
 
 hl.plugins.telescope = {
 	TelescopeBorder = { fg = c.grey },
-	TelescopeMatching = { fg = c.light_cyan },
+	TelescopeMatching = { fg = c.orange },
 	TelescopePromptPrefix = { fg = c.grey },
 	TelescopeSelection =  { fg = c.fg, bg = c.bg2, fmt = "bold" },
-	TelescopeSelectionCaret = { fg = c.light_orange, bg = c.bg1 },
+	TelescopeSelectionCaret = { fg = c.light_orange, bg = c.bg2 },
 	TelescopeMultiSelection = { fg = c.light_orange },
 	TelescopeMultiIcon = { fg = c.red },
 	TelescopeTitle = { fg = c.orange }
