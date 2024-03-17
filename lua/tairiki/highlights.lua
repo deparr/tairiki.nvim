@@ -135,6 +135,7 @@ hl.syntax = {
 hl.treesitter = {
   ["@annotation"] = { fg = c.fg },
   ["@attribute"] = { fg = c.cyan },
+  ["@attribute.builtin"] = { fg = c.red },
   ["@boolean"] = { fg = c.light_orange },
   ["@character"] = { fg = c.green },
   ["@comment"] = { fg = c.comment, fmt = cfg.code_style.comments },
@@ -155,6 +156,7 @@ hl.treesitter = {
   },
   ["@include"] = { fg = c.purple },
   ["@keyword"] = { fg = c.purple, fmt = cfg.code_style.keywords },
+  ["@keyword.modifier"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
   ["@keyword.function"] = {
     fg = c.light_purple,
     fmt = cfg.code_style.functions,
@@ -224,7 +226,6 @@ hl.treesitter = {
   ["@danger"] = { fg = c.red, fmt = "bold" },
   ["@type"] = { fg = c.yellow },
   ["@type.builtin"] = { fg = c.light_orange },
-  ["@type.qualifier"] = { fg = c.light_purple },
   ["@variable"] = { fg = c.fg, fmt = cfg.code_style.variables },
   ["@variable.builtin"] = { fg = c.red, fmt = cfg.code_style.variables },
   ["@variable.global"] = { fg = c.orange, fmt = cfg.code_style.variables },
@@ -292,6 +293,7 @@ hl.treesitter = {
   -- typescript
   ["@attribute.typescript"] = { fg = c.blue },
 }
+
 hl.lsp = {
   ["@lsp.type.comment"] = {},
   ["@lsp.type.enum"] = hl.treesitter["@type"],
@@ -317,6 +319,8 @@ hl.lsp = {
   ["@lsp.typemod.variable.static"] = hl.treesitter["@constant"],
 
   -- language specific
+  -- rust
+  ["@lsp.type.lifetime.rust"] = { fg = c.red },
 
   -- lua
   ["@lsp.typemod.variable.global.lua"] = hl.treesitter["@variable.global"],
