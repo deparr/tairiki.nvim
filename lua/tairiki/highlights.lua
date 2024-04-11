@@ -172,6 +172,7 @@ hl.treesitter = {
   ["@keyword.return"] = { fg = c.purple, fmt = cfg.code_style.keywords },
   ["@label"] = { fg = c.blue },
   ["@method"] = { fg = c.blue, fmt = cfg.code_style.functions },
+  ["@module"] = { fg = util.lighten("#ffffff", 0.1, c.blue) },
   ["@namespace"] = { fg = c.fg },
   ["@none"] = {},
   ["@number"] = { fg = c.light_orange },
