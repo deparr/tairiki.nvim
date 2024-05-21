@@ -1,5 +1,6 @@
 return {
   dark = {
+	hc_bg = "#000000",
     black = "#181a1f", -- only used in terminal colors
     bg0 = "#151515",
     bg1 = "#1d1f21",
@@ -32,6 +33,7 @@ return {
     diff_text = "#a89984",
   },
   light = {
+	hc_bg = "#ffffff",
     black = "#151515", -- only used in terminal colors
     bg0 = "#e8e8e8", -- not sure if I like pure white bg
     bg1 = "#dcdcd6",
