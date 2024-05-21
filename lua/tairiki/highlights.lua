@@ -56,6 +56,7 @@ hl.common = {
   ErrorMsg = { fg = c.red, fmt = "bold" },
   WarningMsg = { fg = c.yellow, fmt = "bold" },
   MoreMsg = { fg = c.purple },
+  ModeMsg = { fg = c.light_grey },
   CurSearch = { fg = c.bg0, bg = c.orange },
   IncSearch = { fg = c.bg0, bg = c.orange },
   Search = { fg = c.bg0, bg = c.yellow },
@@ -114,10 +115,10 @@ hl.syntax = {
   Define = { fg = c.purple },
   Typedef = { fg = c.yellow },
   Exception = { fg = c.red },
-  Conditional = { fg = c.purple, fmt = cfg.code_style.keywords },
+  Conditional = { fg = c.red, fmt = cfg.code_style.conditionals },
   Repeat = { fg = c.light_purple, fmt = cfg.code_style.keywords },
   Statement = { fg = c.green },
-  Macro = { fg = c.orange },
+  Macro = { fg = c.light_orange },
   Error = { fg = c.red },
   Label = { fg = c.light_orange },
   Special = { fg = c.red, fmt = "bold" },
@@ -133,148 +134,135 @@ hl.syntax = {
 }
 
 hl.treesitter = {
-  ["@annotation"] = { fg = c.fg },
-  ["@attribute"] = { fg = c.cyan },
-  ["@attribute.builtin"] = { fg = c.red },
-  ["@boolean"] = { fg = c.light_orange },
-  ["@character"] = { fg = c.green },
-  ["@comment"] = { fg = c.comment, fmt = cfg.code_style.comments },
-  ["@conditional"] = { fg = c.purple, fmt = cfg.code_style.keywords },
+  ["@variable"] = { fg = c.fg, fmt = cfg.code_style.variables },
+  ["@variable.builtin"] = { fg = c.red, fmt = cfg.code_style.variables },
+  ["@variable.parameter"] = { fg = c.fg },
+  ["@variable.parameter.builtin"] = { fg = c.red },
+  ["@variable.member"] = { fg = c.fg },
+
   ["@constant"] = { fg = c.orange, fmt = cfg.code_style.constants },
   ["@constant.builtin"] = { fg = c.orange, fmt = cfg.code_style.constants },
   ["@constant.macro"] = { fg = c.orange, fmt = cfg.code_style.constants },
-  ["@constructor"] = { fg = c.yellow },
-  ["@error"] = { fg = c.red },
-  ["@exception"] = { fg = c.purple }, -- maybe
-  ["@field"] = { fg = c.cyan },
-  ["@float"] = { fg = c.light_orange },
+
+  ["@module"] = { fg = util.lighten(c.fg, 0.7, c.blue) },
+  ["@module.builtin"] = { fg = c.red },
+  ["@label"] = { fg = c.blue },
+
+  ["@string"] = { link = "String" },
+  -- @string.documentation
+  ["@string.regexp"] = { fg = c.orange, fmt = cfg.code_style.strings },
+  ["@string.escape"] = { fg = c.red, fmt = cfg.code_style.strings },
+  ["@string.special"] = { link = "SpecialChar" },
+  -- @string.special.symbol
+  -- @string.special.path
+  ["@string.special.url"] = { fg = c.blue, fmt = "underline" },
+
+  ["@character"] = { fg = c.green },
+  ["@character.special"] = { link = "SpecialChar" },
+
+  ["@boolean"] = { fg = c.light_orange },
+  ["@number"] = { link = "Number" },
+  ["@number.float"] = { link = "Float" },
+
+  ["@type"] = { fg = c.yellow },
+  ["@type.builtin"] = { fg = c.light_orange },
+  -- @type.definition
+
+  ["@attribute"] = { fg = c.cyan },
+  ["@attribute.builtin"] = { fg = c.red },
+  ["@property"] = { fg = c.cyan },
+
   ["@function"] = { fg = c.blue, fmt = cfg.code_style.functions },
   ["@function.builtin"] = { fg = c.red, fmt = cfg.code_style.functions },
-  ["@function.macro"] = {
-    fg = c.light_orange,
-    fmt = cfg.code_style.functions,
-  },
-  ["@include"] = { fg = c.purple },
-  ["@keyword"] = { fg = c.purple, fmt = cfg.code_style.keywords },
-  ["@keyword.modifier"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
-  ["@keyword.function"] = {
-    fg = c.light_purple,
-    fmt = cfg.code_style.functions,
-  },
-  ["@keyword.operator"] = {
-    fg = c.light_purple,
-    fmt = cfg.code_style.keywords,
-  },
-  ["@keyword.coroutine"] = {
-    fg = c.light_purple,
-    fmt = cfg.code_style.keywords,
-  },
-  ["@keyword.return"] = { fg = c.purple, fmt = cfg.code_style.keywords },
-  ["@label"] = { fg = c.blue },
-  ["@method"] = { fg = c.blue, fmt = cfg.code_style.functions },
-  ["@module"] = { fg = util.lighten("#ffffff", 0.1, c.blue) },
-  ["@namespace"] = { fg = c.fg },
-  ["@none"] = {},
-  ["@number"] = { fg = c.light_orange },
+  -- @function.call
+  ["@function.macro"] = { fg = hl.syntax.Macro.fg, fmt = cfg.code_style.functions },
+  ["@function.method"] = { fg = c.blue, fmt = cfg.code_style.functions },
+  -- @function.method.call
+
+  ["@constructor"] = { fg = c.yellow },
   ["@operator"] = { fg = c.light_grey },
-  ["@parameter"] = { fg = c.fg },
-  ["@parameter.reference"] = { fg = c.fg },
-  ["@preproc"] = { fg = c.purple },
-  ["@property"] = { link = "@field" },
-  ["@property.class"] = { fg = c.yellow }, -- maybe is light_grey in orig, do specific color? linked to field
-  ["@property.id"] = { fg = c.red }, -- maybe is light_grey in orig, do specific color? linked to field
+
+  ["@keyword"] = { fg = c.purple, fmt = cfg.code_style.keywords },
+  ["@keyword.coroutine"] = { fg = c.light_purple, fmt = cfg.code_style.keywords, },
+  ["@keyword.function"] = { fg = c.light_purple, fmt = cfg.code_style.functions, },
+  ["@keyword.operator"] = { fg = c.light_purple, fmt = cfg.code_style.keywords, },
+  -- @keyword.import
+  -- @keyword.type
+  ["@keyword.modifier"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
+  -- @keyword.repeat
+  ["@keyword.return"] = { fg = c.purple, fmt = cfg.code_style.keywords },
+  -- @keyword.debug
+  ["@keyword.exception"] = { fg = c.red, fmt = cfg.code_style.keywords },
+
+  ["@keyword.conditional"] = { link = "Conditional" },
+  -- @keyword.conditional.ternary
+
+  -- @keyword.directive
+  -- @keyword.directive.define
+
   ["@punctuation.delimiter"] = { fg = c.grey },
   ["@punctuation.bracket"] = { fg = c.grey },
   ["@punctuation.special"] = { fg = c.red },
-  ["@repeat"] = { fg = c.purple, fmt = cfg.code_style.keywords },
-  ["@string"] = { fg = c.green, fmt = cfg.code_style.strings },
-  ["@string.regex"] = { fg = c.orange, fmt = cfg.code_style.strings },
-  ["@string.escape"] = { fg = c.red, fmt = cfg.code_style.strings },
-  ["@symbol"] = { fg = c.cyan }, -- maybe, linked to field
-  ["@tag"] = { fg = c.red },
-  ["@tag.attribute"] = { fg = c.orange },
-  ["@tag.delimiter"] = { fg = c.mid_grey },
-  ["@text"] = { fg = c.fg },
-  ["@text.strong"] = { fg = c.orange, fmt = "bold" },
-  ["@text.emphasis"] = { fg = c.orange, fmt = "italic" },
-  ["@text.underline"] = { fg = c.fg, fmt = "underline" },
-  ["@text.strike"] = { fg = c.fg, fmt = "strikethrough" },
-  ["@text.title"] = { fg = c.red, fmt = "bold" },
-  ["@text.title.1"] = { fg = c.red, fmt = "bold" },
-  ["@text.title.1.marker"] = { fg = c.orange, fmt = "bold" },
-  ["@text.title.2"] = { fg = c.yellow, fmt = "bold" },
-  ["@text.title.2.marker"] = { fg = c.orange, fmt = "bold" },
-  ["@text.title.3"] = { fg = c.green, fmt = "bold" },
-  ["@text.title.3.marker"] = { fg = c.orange, fmt = "bold" },
-  ["@text.title.4"] = { fg = c.cyan, fmt = "bold" },
-  ["@text.title.4.marker"] = { fg = c.orange, fmt = "bold" },
-  ["@text.title.5"] = { fg = c.blue, fmt = "bold" },
-  ["@text.title.5.marker"] = { fg = c.orange, fmt = "bold" },
-  ["@text.title.6"] = { fg = c.purple, fmt = "bold" },
-  ["@text.title.6.marker"] = { fg = c.orange, fmt = "bold" },
-  ["@text.literal"] = { fg = c.green },
-  ["@text.uri"] = { fg = c.cyan, fmt = "underline" },
-  ["@text.note"] = { link = "@note" },
-  ["@text.warning"] = { link = "@warning" },
-  ["@text.danger"] = { link = "@danger" },
-  ["@text.todo"] = { link = "Todo" },
-  ["@text.math"] = { fg = c.orange },
-  ["@text.reference"] = { fg = c.green },
-  ["@text.environment"] = { fg = c.fg },
-  ["@text.environment.name"] = { fg = c.fg },
-  ["@note"] = { fg = c.blue, fmt = "bold" },
-  ["@warning"] = { fg = c.orange, fmt = "bold" },
-  ["@danger"] = { fg = c.red, fmt = "bold" },
-  ["@type"] = { fg = c.yellow },
-  ["@type.builtin"] = { fg = c.light_orange },
-  ["@variable"] = { fg = c.fg, fmt = cfg.code_style.variables },
-  ["@variable.builtin"] = { fg = c.red, fmt = cfg.code_style.variables },
-  ["@variable.global"] = { fg = c.orange, fmt = cfg.code_style.variables },
+
+  ["@comment"] = { fg = c.comment, fmt = cfg.code_style.comments },
+  -- @comment.documentation
+
+  -- @comment.error -> DiagnosticError
+  -- @comment.warn -> DiagnosticWarn
+  -- @comment.todo -> Todo
+  -- @comment.info -> DiagnosticInfo
+
+  ["@markup.strong"] = { fg = c.fg, fmt = "bold" },
+  ["@markup.italic"] = { fg = c.fg, fmt = "italic" },
+  ["@markup.strikethrough"] = { fg = c.fg, fmt = "strikethrough" },
+  ["@markup.underline"] = { fg = c.fg, fmt = "underline" },
+
+  ["@markup.heading"] = { link = "Title" },
+  -- @markup.heading.1
+  -- @markup.heading.2
+  -- @markup.heading.3
+  -- @markup.heading.4
+  -- @markup.heading.5
+  -- @markup.headina.6
+
+  ["@markup.quote"] = { fg = c.mid_grey },
+  ["@markup.math"] = { fg = c.blue },
+
+  ["@markup.link"] = { fg = c.blue },
+  ["@markup.link.label"] = { fg = c.orange },
+  ["@markup.link.url"] = { fg = c.blue, fmt = "underline" },
+
+  ["@markup.raw"] = { fg = c.green },
+  ["@markup.raw.block"] = { fg = c.mid_grey },
+
+  ["@markup.list"] = { link = "Special" },
+  ["@markup.list.checked"] = { fg = c.diff_add, fmt = "bold" },
+  ["@markup.list.unchecked"] = { fg = c.grey, fmt = "bold" },
 
   ["@diff.plus"] = { link = "DiffAdd" },
   ["@diff.minus"] = { link = "DiffDelete" },
   ["@diff.delta"] = { link = "DiffChange" },
 
-  -- language specific
+  ["@tag"] = { fg = c.red },
+  -- @tag.builtin -> Special
+  ["@tag.attribute"] = { fg = c.orange },
+  ["@tag.delimiter"] = { fg = c.mid_grey },
 
-  -- html
-  ["@text.title.html"] = { fg = c.comment, fmt = "bold" },
+  ["@none"] = {},
+
+  -- language specific
 
   -- latex
   ["@function.latex"] = { fg = c.blue },
 
-  -- markdown
-  ["@markup.heading.marker"] = { fg = c.orange, fmt = "bold" },
-  ["@markup.heading.1.marker"] = { link = "@markup.heading.marker" },
-  ["@markup.heading.2.marker"] = { link = "@markup.heading.marker" },
-  ["@markup.heading.3.marker"] = { link = "@markup.heading.marker" },
-  ["@markup.heading.4.marker"] = { link = "@markup.heading.marker" },
-  ["@markup.heading.5.marker"] = { link = "@markup.heading.marker" },
-  ["@markup.heading.6.marker"] = { link = "@markup.heading.marker" },
-  ["@markup.heading"] = { link = "Title" },
-  ["@markup.list"] = { link = "Special" },
-  ["@markup.link.label"] = { fg = c.orange },
-  ["@markup.strong"] = { fg = c.fg, fmt = "bold" },
-  ["@markup.italic"] = { fg = c.fg, fmt = "italic" },
-  ["@markup.strikethrough"] = { fg = c.fg, fmt = "strikethrough" },
-  ["@markup.underline"] = { fg = c.fg, fmt = "underline" },
+  -- markdown_inline
   ["@markup.strong.markdown_inline"] = { fg = c.light_orange, fmt = "bold" }, -- not sure here
   ["@markup.italic.markdown_inline"] = { fg = c.light_orange, fmt = "italic" },
   ["@markup.strikethrough.markdown_inline"] = { fmt = "strikethrough" },
   ["@conceal.markdown_inline"] = { fg = c.light_grey },
-
-  ["@markup.raw"] = { fg = c.green },
-  ["@markup.raw.delimiter"] = { fg = c.grey },
-  ["@string.special.url"] = { fg = c.blue, fmt = "underline" },
-  ["@markup.link.url"] = { fg = c.blue, fmt = "underline" },
   ["@label.markdown"] = { link = "Tag" },
-  ["@markup.list.checked"] = { fg = c.diff_add, fmt = "bold" },
-  ["@markup.list.unchecked"] = { fg = c.grey, fmt = "bold" },
-  ["@markup.math"] = { fg = c.blue },
-  ["@markup.link"] = { fg = c.blue },
   ["@markup.environment"] = { fg = c.cyan, fmt = "bold" },
   ["@markup.environment.name"] = { link = "Type" },
-  ["@markup.quote"] = { fg = util.blend(c.fg, c.light_grey, 0.5) },
 
   -- vim
   ["@namespace.vim"] = { fg = c.orange },
@@ -297,6 +285,7 @@ hl.treesitter = {
 
 hl.lsp = {
   ["@lsp.type.comment"] = {},
+  ["@lsp.type.decorator"] = { link = "Macro" },
   ["@lsp.type.enum"] = hl.treesitter["@type"],
   ["@lsp.type.enumMember"] = hl.treesitter["@constant.builtin"],
   ["@lsp.type.interface"] = hl.treesitter["@type"],

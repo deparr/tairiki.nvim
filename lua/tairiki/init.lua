@@ -59,7 +59,7 @@ local default_config = {
   -- Changing Formats --
   code_style = {
     comments = "italic",
-    conditionals = "italic",
+    conditionals = "none",
     keywords = "none",
     functions = "none",
     strings = "none",
