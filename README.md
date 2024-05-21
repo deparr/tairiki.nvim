@@ -6,7 +6,9 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
 
 *For latest [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlight, upgraded to Neovim 0.8.0 or later built with tree-sitter 0.20.3+*
 
-> Disclaimer: I wrote this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use. Create an issue if something is off, or set a custom highlight/color (see [Customization](#customization))
+Experimental: Use the `minimal` branch for a simplified version that sets fewer highlight groups; primarily the base nvim groups and a few tree-sitter ones.
+
+> Disclaimer: I compiled this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use. Create an issue if something is off, or set a custom highlight/color (see [Customization](#customization))
 
 ### Features
   * TODO: re-write these
