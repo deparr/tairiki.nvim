@@ -139,82 +139,82 @@ hl.syntax = {
 hl.treesitter = {
   ["@variable"] = { fg = c.fg, fmt = cfg.code_style.variables },
   ["@variable.builtin"] = { fg = c.red, fmt = cfg.code_style.variables },
-  -- ["@variable.parameter"] = { fg = c.fg },
-  -- ["@variable.parameter.builtin"] = { fg = c.red },
-  -- ["@variable.member"] = { fg = c.cyan },
-  --
-  -- ["@constant"] = { fg = c.orange, fmt = cfg.code_style.constants },
+  ["@variable.parameter"] = { fg = c.fg },
+  ["@variable.parameter.builtin"] = { fg = c.red },
+  ["@variable.member"] = { fg = c.cyan },
+
+  ["@constant"] = { fg = c.orange, fmt = cfg.code_style.constants },
   ["@constant.builtin"] = { fg = c.orange, fmt = cfg.code_style.constants },
-  -- ["@constant.macro"] = { fg = c.orange, fmt = cfg.code_style.constants },
-  --
-  -- ["@module"] = { fg = util.lighten(c.fg, 0.7, c.blue) },
+  ["@constant.macro"] = { fg = c.orange, fmt = cfg.code_style.constants },
+
+  ["@module"] = { fg = util.lighten(c.fg, 0.7, c.blue) },
   ["@module.builtin"] = { fg = c.red },
-  -- ["@label"] = { fg = c.blue },
-  --
-  -- ["@string"] = { link = "String" },
-  -- -- @string.documentation
-  -- ["@string.regexp"] = { fg = c.orange, fmt = cfg.code_style.strings },
-  -- ["@string.escape"] = { fg = c.red, fmt = cfg.code_style.strings },
-  -- ["@string.special"] = { link = "SpecialChar" },
-  -- -- @string.special.symbol
-  -- -- @string.special.path
-  -- ["@string.special.url"] = { fg = c.blue, fmt = "underline" },
-  --
-  -- ["@character"] = { fg = c.green },
-  -- ["@character.special"] = { link = "SpecialChar" },
-  --
-  -- ["@boolean"] = { fg = c.light_orange },
-  -- ["@number"] = { link = "Number" },
-  -- ["@number.float"] = { link = "Float" },
-  --
-  -- ["@type"] = { fg = c.yellow },
+  ["@label"] = { fg = c.blue },
+
+  ["@string"] = { link = "String" },
+  -- @string.documentation
+  ["@string.regexp"] = { fg = c.orange, fmt = cfg.code_style.strings },
+  ["@string.escape"] = { fg = c.red, fmt = cfg.code_style.strings },
+  ["@string.special"] = { link = "SpecialChar" },
+  -- @string.special.symbol
+  -- @string.special.path
+  ["@string.special.url"] = { fg = c.blue, fmt = "underline" },
+
+  ["@character"] = { fg = c.green },
+  ["@character.special"] = { link = "SpecialChar" },
+
+  ["@boolean"] = { fg = c.light_orange },
+  ["@number"] = { link = "Number" },
+  ["@number.float"] = { link = "Float" },
+
+  ["@type"] = { fg = c.yellow },
   ["@type.builtin"] = { fg = c.light_orange },
-  -- -- @type.definition
-  --
-  -- ["@attribute"] = { fg = c.cyan },
-  -- ["@attribute.builtin"] = { fg = c.red },
+  -- @type.definition
+
+  ["@attribute"] = { fg = c.cyan },
+  ["@attribute.builtin"] = { fg = c.red },
   ["@property"] = { fg = c.cyan },
 
   ["@function"] = { fg = c.blue, fmt = cfg.code_style.functions },
   ["@function.builtin"] = { fg = c.red, fmt = cfg.code_style.functions },
   -- @function.call
-  -- ["@function.macro"] = { fg = hl.syntax.Macro.fg, fmt = cfg.code_style.functions },
-  -- ["@function.method"] = { fg = c.blue, fmt = cfg.code_style.functions },
-  -- -- @function.method.call
+  ["@function.macro"] = { fg = hl.syntax.Macro.fg, fmt = cfg.code_style.functions },
+  ["@function.method"] = { fg = c.blue, fmt = cfg.code_style.functions },
+  -- @function.method.call
 
   ["@constructor"] = { fg = c.yellow },
-  -- ["@operator"] = { fg = c.light_grey },
-  --
-  -- ["@keyword"] = { fg = c.purple, fmt = cfg.code_style.keywords },
-  -- ["@keyword.coroutine"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
-  -- ["@keyword.function"] = { fg = c.light_purple, fmt = cfg.code_style.functions },
-  -- ["@keyword.operator"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
-  -- -- @keyword.import
-  -- -- @keyword.type
-  -- ["@keyword.modifier"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
-  -- -- @keyword.repeat
-  -- ["@keyword.return"] = { fg = c.purple, fmt = cfg.code_style.keywords },
-  -- -- @keyword.debug
-  -- ["@keyword.exception"] = { fg = c.red, fmt = cfg.code_style.keywords },
-  --
-  -- ["@keyword.conditional"] = { link = "Conditional" },
-  -- -- @keyword.conditional.ternary
-  --
-  -- -- @keyword.directive
-  -- -- @keyword.directive.define
-  --
-  -- ["@punctuation.delimiter"] = { fg = c.grey },
-  -- ["@punctuation.bracket"] = { fg = c.grey },
-  -- ["@punctuation.special"] = { fg = c.red },
-  --
-  -- ["@comment"] = { fg = c.comment, fmt = cfg.code_style.comments },
-  -- -- @comment.documentation
-  --
-  -- -- @comment.error -> DiagnosticError
-  -- -- @comment.warn -> DiagnosticWarn
-  -- -- @comment.todo -> Todo
-  -- -- @comment.info -> DiagnosticInfo
-  --
+  ["@operator"] = { fg = c.light_grey },
+
+  ["@keyword"] = { fg = c.purple, fmt = cfg.code_style.keywords },
+  ["@keyword.coroutine"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
+  ["@keyword.function"] = { fg = c.light_purple, fmt = cfg.code_style.functions },
+  ["@keyword.operator"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
+  -- @keyword.import
+  -- @keyword.type
+  ["@keyword.modifier"] = { fg = c.light_purple, fmt = cfg.code_style.keywords },
+  -- @keyword.repeat
+  ["@keyword.return"] = { fg = c.purple, fmt = cfg.code_style.keywords },
+  -- @keyword.debug
+  ["@keyword.exception"] = { fg = c.red, fmt = cfg.code_style.keywords },
+
+  ["@keyword.conditional"] = { link = "Conditional" },
+  -- @keyword.conditional.ternary
+
+  -- @keyword.directive
+  -- @keyword.directive.define
+
+  ["@punctuation.delimiter"] = { fg = c.grey },
+  ["@punctuation.bracket"] = { fg = c.grey },
+  ["@punctuation.special"] = { fg = c.red },
+
+  ["@comment"] = { fg = c.comment, fmt = cfg.code_style.comments },
+  -- @comment.documentation
+
+  -- @comment.error -> DiagnosticError
+  -- @comment.warn -> DiagnosticWarn
+  -- @comment.todo -> Todo
+  -- @comment.info -> DiagnosticInfo
+
   ["@markup.strong"] = { fg = c.fg, fmt = "bold" },
   ["@markup.italic"] = { fg = c.fg, fmt = "italic" },
   ["@markup.strikethrough"] = { fg = c.fg, fmt = "strikethrough" },
@@ -238,9 +238,9 @@ hl.treesitter = {
   ["@markup.raw"] = { fg = c.green },
   ["@markup.raw.block"] = { fg = c.mid_grey },
 
-  -- ["@markup.list"] = { link = "Special" },
-  -- ["@markup.list.checked"] = { fg = c.diff_add, fmt = "bold" },
-  -- ["@markup.list.unchecked"] = { fg = c.grey, fmt = "bold" },
+  ["@markup.list"] = { link = "Special" },
+  ["@markup.list.checked"] = { fg = c.diff_add, fmt = "bold" },
+  ["@markup.list.unchecked"] = { fg = c.grey, fmt = "bold" },
 
   ["@diff.plus"] = { link = "DiffAdd" },
   ["@diff.minus"] = { link = "DiffDelete" },
