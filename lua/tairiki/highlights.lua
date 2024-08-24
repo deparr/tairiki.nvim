@@ -331,7 +331,6 @@ hl.plugins.lsp = {
   LspCxxHlSkippedRegion = { fg = c.grey },
   LspCxxHlSkippedRegionBeginEnd = { fg = c.red },
 
-
   DiagnosticVirtualTextError = {
     bg = cfg.diagnostics.background and util.darken(diag_error, 0.1, c.bg0) or c.none,
     fg = diag_error,
@@ -361,6 +360,10 @@ hl.plugins.lsp = {
     fmt = cfg.diagnostics.undercurl and "undercurl" or "underline",
     sp = c.blue,
   },
+  DiagnosticUnderlineOk = {
+    fmt = cfg.diagnostics.undercurl and "undercurl" or "underline",
+    sp = c.green,
+  },
   DiagnosticUnderlineWarn = {
     fmt = cfg.diagnostics.undercurl and "undercurl" or "underline",
     sp = c.yellow,
@@ -369,6 +372,7 @@ hl.plugins.lsp = {
   DiagnosticError = { fg = c.red },
   DiagnosticHint = { fg = c.purple },
   DiagnosticInfo = { fg = c.cyan },
+  DiagnosticOk = { fg = c.green },
   DiagnosticWarn = { fg = c.yellow },
 
   LspReferenceText = { bg = c.bg2 },
@@ -428,7 +432,6 @@ hl.plugins.gitsigns = {
   GitSignsDeleteLn = { fg = c.diff_delete },
   GitSignsDeleteNr = { fg = c.diff_delete },
 }
-
 
 hl.plugins.telescope = {
   TelescopeBorder = { fg = c.grey },
@@ -532,7 +535,6 @@ local lsp_kind_icons_color = {
   Value = c.orange,
   Variable = c.purple,
 }
-
 
 function M.setup()
   -- define cmp and aerial kind highlights with lsp_kind_icons_color
