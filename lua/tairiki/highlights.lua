@@ -331,6 +331,7 @@ hl.plugins.lsp = {
   DiagnosticError = { fg = c.red },
   DiagnosticHint = { fg = c.purple },
   DiagnosticInfo = { fg = c.cyan },
+  DiagnosticOk = { fg = c.green },
   DiagnosticWarn = { fg = c.yellow },
 
   DiagnosticVirtualTextError = {
@@ -361,6 +362,10 @@ hl.plugins.lsp = {
   DiagnosticUnderlineInfo = {
     fmt = cfg.diagnostics.undercurl and "undercurl" or "underline",
     sp = c.blue,
+  },
+  DiagnosticUnderlineOk = {
+    fmt = cfg.diagnostics.undercurl and "undercurl" or "underline",
+    sp = c.green,
   },
   DiagnosticUnderlineWarn = {
     fmt = cfg.diagnostics.undercurl and "undercurl" or "underline",
