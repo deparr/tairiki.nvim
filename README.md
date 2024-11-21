@@ -11,10 +11,9 @@ Experimental: Use the `minimal` branch for a simplified version that sets fewer 
 > Disclaimer: I compiled this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use. Create an issue if something is off, or set a custom highlight/color (see [Customization](#customization))
 
 ### Features
-  * TODO: re-write these
   * Supporting multiple plugins with hand picked proper colors
   * Customize `Colors`, `Highlights` and `Code style` of the theme as you like (Refer [Customization](#customization))
-  * Toggle the theme style without exiting Neovim using `toggle_style_key` (Refer [Config](#default-configuration)) TODO: maybe add more styles
+  * Toggle the theme style without exiting Neovim using `toggle_style_key` (Refer [Config](#default-configuration))
 
 ### Showcase
 <details open>
@@ -100,7 +99,7 @@ require('tairiki').setup  {
 
     -- toggle theme style ---
     toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-    toggle_style_list = {'dark'}, -- List of styles to toggle between TODO
+    toggle_style_list = {'dark'},
 
     -- Change code style ---
     -- Options are italic, bold, underline, none
@@ -186,7 +185,6 @@ require('lualine').setup {
 ```
 
 ## Plugins Supported
-  + TODO check these
   + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
   + [LSPDiagnostics](https://neovim.io/doc/user/lsp.html)
   + [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
@@ -203,10 +201,15 @@ require('lualine').setup {
   + [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
   + [Neotest](https://github.com/nvim-neotest/neotest)
   + [Barbecue](https://github.com/utilyre/barbecue.nvim)
+  + ...and more!
+
+_NOTE:_ I don't use most of these, so if colors are off feel free to submit an issue/pr. Or use [overrides](#customization)
 
 ## Reference
-  * [onedark.nvim](https://github.com/navarasu/onedark.nvim)
-  * [tomorrow theme](https://github.com/chriskempson/tomorrow-theme)
+  * [onedark.nvim](https://github.com/navarasu/onedark.nvim) - used as a
+	template
+  * [tomorrow theme](https://github.com/chriskempson/tomorrow-theme) -
+	base colors
   * [gruvbox](https://github.com/morhetz/gruvbox)
   * [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
   * [bamboo.nvim](https://github.com/ribru17/bamboo.nvim)

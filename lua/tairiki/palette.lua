@@ -6,7 +6,7 @@ return {
     bg2 = "#282828",
     bg3 = "#3b3f4c",
     fg = "#c5c8c6",
-    purple = "#b294bb", -- purple
+    purple = "#b294bb",
     green = "#b5bd68",
     orange = "#de935f",
     blue = "#81a2be",
@@ -19,21 +19,14 @@ return {
     light_grey = "#afb2b0",
     light_orange = "#e78c45",
     light_purple = "#c397d8",
-    light_cyan = "#70c0b1",
-    light_red = "#d54e53",
     dark_cyan = "#70c0b1",
     dark_red = "#d54e53",
     dark_yellow = "#e7c547",
-    dark_purple = "#c397d8",
     comment = "#a89984",
-    diff_add = "#b9ca4a",
-    diff_delete = "#d54e53",
-    diff_change = "#70c0b1",
-    diff_text = "#a89984",
   },
   light = {
     black = "#151515", -- only used in terminal colors
-    bg0 = "#e8e8e8", -- not sure if I like pure white bg
+    bg0 = "#e8e8e8",
     bg1 = "#dcdcd6",
     bg2 = "#ccccc6",
     --bg2 = "#e6e6e0",
@@ -55,17 +48,10 @@ return {
     light_grey = "#151515", -- light in terms of contrast, easy to read
     light_orange = "#d05200",
     light_purple = "#693988",
-    light_cyan = "#70c0b1", -- TODO: rethink these
-    light_red = "#d54e53",
     dark_cyan = "#2b5d63",
     dark_red = "#833b3b",
     dark_yellow = "#7c5c20",
-    dark_purple = "#79428a",
 	-- not sure about this comment color
     comment = "#4271ce", -- "#a88954""#8e908c" is orig,"#8c6c30",
-    diff_add = "#718c00",
-    diff_delete = "#b81819",
-    diff_change = "#eab700",
-    diff_text = "#a88954",
   },
 }

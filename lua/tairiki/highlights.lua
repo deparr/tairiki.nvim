@@ -44,10 +44,10 @@ hl.common = {
   CursorLineNr = { fg = c.light_grey, fmt = "bold" },
   LineNr = { fg = c.mid_grey },
   Conceal = { fg = c.comment },
-  DiffAdd = { fg = c.diff_add },
-  DiffChange = { fg = c.diff_change },
-  DiffDelete = { fg = c.diff_delete },
-  DiffText = { fg = c.diff_text },
+  DiffAdd = { fg = c.fg, bg = util.blend(c.green, c.bg0, 0.3) },
+  DiffChange = { fg = c.fg, bg = util.blend(c.grey, c.bg0, 0.3) },
+  DiffDelete = { fg = c.red, bg = util.blend(c.red, c.bg0, 0.1) },
+  DiffText = { fg = c.fg, bg = util.blend(c.blue, c.bg0, 0.3) },
   DiffAdded = { fg = c.green },
   DiffRemoved = { fg = c.red },
   DiffFile = { fg = c.cyan },
@@ -95,6 +95,7 @@ hl.common = {
   NormalFloat = { fg = c.fg, bg = c.bg0 },
   healthSuccess = { fg = c.bg1, bg = "#00ff00" },
   helpHeader = { fg = c.light_purple },
+  Bold = { fmt = "bold" },
 }
 
 hl.syntax = {
@@ -236,7 +237,7 @@ hl.treesitter = {
   ["@markup.raw.block"] = { fg = c.mid_grey },
 
   ["@markup.list"] = { link = "Special" },
-  ["@markup.list.checked"] = { fg = c.diff_add, fmt = "bold" },
+  ["@markup.list.checked"] = { fg = c.light_grey, fmt = "bold" },
   ["@markup.list.unchecked"] = { fg = c.grey, fmt = "bold" },
 
   ["@diff.plus"] = { link = "DiffAdd" },
@@ -318,16 +319,11 @@ hl.lsp = {
 
 -- maybe, these are same right now
 local diag_error = cfg.diagnostics.darker and c.dark_red or c.red
-local diag_hint = cfg.diagnostics.darker and c.dark_purple or c.purple
+local diag_hint = cfg.diagnostics.darker and c.light_purple or c.purple
 local diag_warn = cfg.diagnostics.darker and c.dark_yellow or c.yellow
 local diag_info = cfg.diagnostics.darker and c.dark_cyan or c.cyan
+local diag_ok = cfg.diagnostics.darker and util.darken(c.green, 0.9, c.bg0) or c.green
 hl.plugins.lsp = {
-  LspCxxHlGroupEnumConstant = { fg = c.orange },
-  LspCxxHlGroupMemberVariable = { fg = c.orange },
-  LspCxxHlGroupNamespace = { fg = c.blue },
-  LspCxxHlSkippedRegion = { fg = c.grey },
-  LspCxxHlSkippedRegionBeginEnd = { fg = c.red },
-
   DiagnosticError = { fg = c.red },
   DiagnosticHint = { fg = c.purple },
   DiagnosticInfo = { fg = c.cyan },
@@ -349,6 +345,10 @@ hl.plugins.lsp = {
   DiagnosticVirtualTextHint = {
     bg = cfg.diagnostics.background and util.darken(diag_hint, 0.1, c.bg0) or c.none,
     fg = diag_hint,
+  },
+  DiagnosticVirtualTextOk = {
+    bg = cfg.diagnostics.background and util.darken(diag_ok, 0.1, c.bg0) or c.none,
+    fg = diag_ok,
   },
 
   DiagnosticUnderlineError = {
@@ -435,34 +435,41 @@ hl.plugins.coc = {
   CocWarningSign = hl.plugins.lsp.DiagnosticWarn,
 }
 
--- unchaged
 hl.plugins.whichkey = {
   WhichKey = { fg = c.red },
-  WhichKeyDesc = { fg = c.blue },
+  WhichKeyDesc = { fg = c.purple },
   WhichKeyGroup = { fg = c.orange },
   WhichKeySeparator = { fg = c.green },
+  WhichKeyIconAzure = { fg = c.cyan },
+  WhichKeyIconBlue  = { fg = c.blue },
+  WhichKeyIconCyan  = { fg = c.cyan },
+  WhichKeyIconGreen = { fg = c.green },
+  WhichKeyIconGrey  = { fg = c.mid_grey },
+  WhichKeyIconOrange= { fg = c.orange },
+  WhichKeyIconPurple= { fg = c.purple },
+  WhichKeyIconRed   = { fg = c.red },
+  WhichKeyIconYellow= { fg = c.yellow },
 }
 
 -- unchanged
 hl.plugins.gitgutter = {
-  GitGutterAdd = { fg = c.diff_add },
-  GitGutterChange = { fg = c.diff_change },
-  GitGutterDelete = { fg = c.diff_delete },
+  GitGutterAdd = { fg = c.green },
+  GitGutterChange = { fg = c.cyan },
+  GitGutterDelete = { fg = c.red },
 }
 
--- unchanged
 hl.plugins.hop = {
   HopNextKey = { fg = c.red, fmt = "bold" },
   HopNextKey1 = { fg = c.cyan, fmt = "bold" },
   HopNextKey2 = { fg = util.darken(c.blue, 0.7) },
   HopUnmatched = { fg = c.grey },
+  HopCursor = { bg = c.fg },
 }
 
--- unchanged
 hl.plugins.diffview = {
-  DiffviewFilePanelTitle = { fg = c.blue, fmt = "bold" },
-  DiffviewFilePanelCounter = { fg = c.purple, fmt = "bold" },
-  DiffviewFilePanelFileName = { fg = c.fg },
+  DiffviewFilePanelTitle = { fg = c.purple },
+  DiffviewFilePanelCounter = { fg = c.light_orange },
+  DiffviewFilePanelFileName = { fg = c.light_grey },
   DiffviewNormal = hl.common.Normal,
   DiffviewCursorLine = hl.common.CursorLine,
   DiffviewVertSplit = hl.common.VertSplit,
@@ -470,16 +477,17 @@ hl.plugins.diffview = {
   DiffviewStatusLine = hl.common.StatusLine,
   DiffviewStatusLineNC = hl.common.StatusLineNC,
   DiffviewEndOfBuffer = hl.common.EndOfBuffer,
-  DiffviewFilePanelRootPath = { fg = c.grey },
-  DiffviewFilePanelPath = { fg = c.grey },
+  DiffviewFilePanelRootPath = { fg = c.light_grey },
+  DiffviewFilePanelPath = { fg = c.light_grey },
   DiffviewFilePanelInsertions = { fg = c.green },
   DiffviewFilePanelDeletions = { fg = c.red },
+  DiffviewFolderSign = { fg = c.blue },
   DiffviewStatusAdded = { fg = c.green },
-  DiffviewStatusUntracked = { fg = c.blue },
-  DiffviewStatusModified = { fg = c.blue },
-  DiffviewStatusRenamed = { fg = c.blue },
-  DiffviewStatusCopied = { fg = c.blue },
-  DiffviewStatusTypeChange = { fg = c.blue },
+  DiffviewStatusUntracked = { fg = c.red },
+  DiffviewStatusModified = { fg = c.orange },
+  DiffviewStatusRenamed = { fg = c.orange },
+  DiffviewStatusCopied = { fg = c.orange },
+  DiffviewStatusTypeChange = { fg = c.orange },
   DiffviewStatusUnmerged = { fg = c.blue },
   DiffviewStatusUnknown = { fg = c.red },
   DiffviewStatusDeleted = { fg = c.red },
@@ -506,30 +514,30 @@ hl.plugins.fugitive = {
 }
 
 hl.plugins.gitsigns = {
-  GitSignsAdd = { fg = c.diff_add },
-  GitSignsAddLn = { fg = c.diff_add },
-  GitSignsAddNr = { fg = c.diff_add },
-  GitSignsChange = { fg = c.diff_change },
-  GitSignsChangeLn = { fg = c.diff_change },
-  GitSignsChangeNr = { fg = c.diff_change },
-  GitSignsDelete = { fg = c.diff_delete },
-  GitSignsDeleteLn = { fg = c.diff_delete },
-  GitSignsDeleteNr = { fg = c.diff_delete },
+  GitSignsAdd = { fg = c.green },
+  GitSignsAddLn = { fg = c.green },
+  GitSignsAddNr = { fg = c.green },
+  GitSignsChange = { fg = c.cyan },
+  GitSignsChangeLn = { fg = c.cyan },
+  GitSignsChangeNr = { fg = c.cyan },
+  GitSignsDelete = { fg = c.red },
+  GitSignsDeleteLn = { fg = c.red },
+  GitSignsDeleteNr = { fg = c.red },
 }
 
--- unchanged
 hl.plugins.neo_tree = {
-  NeoTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg2 },
-  NeoTreeNormalNC = { fg = c.fg, bg = cfg.transparent and c.none or c.bg2 },
+  NeoTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg1 },
+  NeoTreeNormalNC = { fg = c.fg, bg = cfg.transparent and c.none or c.bg1 },
   NeoTreeVertSplit = { fg = c.bg1, bg = cfg.transparent and c.none or c.bg1 },
   NeoTreeWinSeparator = {
     fg = c.bg1,
     bg = cfg.transparent and c.none or c.bg1,
   },
   NeoTreeEndOfBuffer = {
-    fg = cfg.ending_tildes and c.bg2 or c.bg2,
-    bg = cfg.transparent and c.none or c.bg2,
+    fg = cfg.ending_tildes and c.bg2 or c.bg1,
+    bg = cfg.transparent and c.none or c.bg1,
   },
+  NeoTreeCursorLine = { bg = cfg.transparent and c.none or c.bg2 },
   NeoTreeRootName = { fg = c.orange, fmt = "bold" },
   NeoTreeGitAdded = { fg = c.green },
   NeoTreeGitDeleted = { fg = c.red },
@@ -567,21 +575,26 @@ hl.plugins.netrw = {
 }
 
 hl.plugins.nvim_tree = {
-  NvimTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg2 },
-  NvimTreeVertSplit = { fg = c.bg2, bg = cfg.transparent and c.none or c.bg2 },
+  NvimTreeNormal = { fg = c.fg, bg = cfg.transparent and c.none or c.bg0 },
+  NvimTreeVertSplit = { fg = c.bg2, bg = cfg.transparent and c.none or c.bg0 },
   NvimTreeEndOfBuffer = {
-    fg = cfg.ending_tildes and c.bg2 or c.bg2,
-    bg = cfg.transparent and c.none or c.bg2,
+    fg = cfg.ending_tildes and c.bg0 or c.bg1,
+    bg = cfg.transparent and c.none or c.bg0,
   },
-  NvimTreeRootFolder = { fg = c.orange, fmt = "bold" },
-  NvimTreeGitDirty = { fg = c.yellow },
-  NvimTreeGitNew = { fg = c.green },
-  NvimTreeGitDeleted = { fg = c.red },
-  NvimTreeSpecialFile = { fg = c.yellow, fmt = "underline" },
-  NvimTreeIndentMarker = { fg = c.fg },
-  NvimTreeImageFile = { fg = c.dark_purple },
-  NvimTreeSymlink = { fg = c.purple },
+  NvimTreeExecFile = { fg = c.green },
+  NvimTreeFileIcon = { fg = c.grey },
+  NvimTreeFolderIcon = { fg = util.blend(c.blue, c.mid_grey, 0.6)  },
   NvimTreeFolderName = { fg = c.blue },
+  NvimTreeGitDeleted = { fg = c.red },
+  NvimTreeGitDeletedIcon = { fg = c.red },
+  NvimTreeGitDirty = { fg = c.yellow },
+  NvimTreeGitDirtyIcon = { fg = c.yellow },
+  NvimTreeGitNew = { fg = c.green },
+  NvimTreeImageFile = { fg = c.light_purple },
+  NvimTreeIndentMarker = { fg = c.grey },
+  NvimTreeRootFolder = { fg = c.orange, fmt = "bold" },
+  NvimTreeSpecialFile = { fg = c.yellow, fmt = "underline" },
+  NvimTreeSymlink = { fg = c.cyan },
 }
 
 hl.plugins.telescope = {
@@ -595,12 +608,20 @@ hl.plugins.telescope = {
   TelescopeTitle = { fg = c.orange },
 }
 
--- unchanged
 hl.plugins.dashboard = {
-  DashboardShortCut = { fg = c.blue },
-  DashboardHeader = { fg = c.yellow },
-  DashboardCenter = { fg = c.cyan },
-  DashboardFooter = { fg = c.dark_red, fmt = "italic" },
+  DashboardDesc = { fg = c.light_grey },
+  DashboardFiles = { fg = c.mid_grey },
+  DashboardFooter = { fg = c.grey },
+  DashboardHeader = { fg = c.light_orange },
+  DashboardIcon = { fg = c.red },
+  DashboardKey = { fg = c.light_orange },
+  DashboardMruIcon = { fg = c.red},
+  DashboardMruTitle = { fg = c.red },
+  DashboardProjectIcon = { fg = c.light_grey },
+  DashboardProjectTitle = { fg = c.orange },
+  DashboardProjectTitleIcon = { fg = c.orange },
+  DashboardShortCut = { fg = c.grey },
+  DashboardShortCutIcon = { fg = c.light_grey },
 }
 
 -- unchanged
@@ -900,7 +921,7 @@ function M.setup()
   for _, group in pairs(hl.langs) do
     vim_highlights(group)
   end
-  for _, group in pairs(hl.plugins) do
+  for key, group in pairs(hl.plugins) do
     vim_highlights(group)
   end
 
