@@ -54,4 +54,29 @@ return {
 	-- not sure about this comment color
     comment = "#4271ce", -- "#a88954""#8e908c" is orig,"#8c6c30",
   },
+  dimmed = {
+    black = "#181a1f", -- only used in terminal colors
+    bg0 = "#1d1f21",
+    bg1 = "#242627",
+    bg2 = "#323435",
+	bg3 = "#323435",
+    fg = "#afb2b0",
+    purple = "#b294bb",
+    green = "#b5bd68",
+    orange = "#de935f",
+    blue = "#81a2be",
+    yellow = "#f0c674",
+    --cyan = "#8abeb7",
+    cyan = "#7eada7",
+    red = "#cc6666",
+    grey = "#696969",
+    mid_grey = "#969896",
+    light_grey = "#c5c8c6",
+    light_orange = "#de935f",
+    light_purple = "#b294bb",
+    dark_cyan = "#7eada7",
+    dark_red = "#cc6666",
+    dark_yellow = "#f0c674",
+    comment = "#a89984",
+  }
 }
