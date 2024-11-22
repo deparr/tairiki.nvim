@@ -41,7 +41,7 @@ hl.common = {
   CursorColumn = { bg = c.bg0 },
   CursorLine = { bg = cfg.transparent and c.none or c.bg1 },
   ColorColumn = { bg = c.bg2 },
-  CursorLineNr = { fg = c.light_grey, fmt = "bold" },
+  CursorLineNr = { fg = c.fg, fmt = "bold" },
   LineNr = { fg = c.mid_grey },
   Conceal = { fg = c.comment },
   DiffAdd = { fg = c.fg, bg = util.blend(c.green, c.bg0, 0.3) },
@@ -91,11 +91,12 @@ hl.common = {
   debugPC = { fg = c.bg0, bg = c.green },
   debugBreakpoint = { fg = c.bg0, bg = c.red },
   ToolbarButton = { fg = c.bg0, bg = c.blue },
-  FloatBorder = { fg = c.grey, bg = c.bg0 },
-  NormalFloat = { fg = c.fg, bg = c.bg0 },
+  FloatBorder = { fg = c.grey, bg = c.bg1 },
+  NormalFloat = { fg = c.fg, bg = c.bg1 },
+  Bold = { fmt = "bold" },
   healthSuccess = { fg = c.bg1, bg = "#00ff00" },
   helpHeader = { fg = c.light_purple },
-  Bold = { fmt = "bold" },
+  helpSectionDelim = { fg = c.light_Grey, fmt = "underline" },
 }
 
 hl.syntax = {
@@ -378,6 +379,7 @@ hl.plugins.lsp = {
 
   LspCodeLens = { fg = c.grey, fmt = cfg.code_style.comments },
   LspCodeLensSeparator = { fg = c.grey },
+  LspSignatureActiveParameter = { fmt = "bold,underline" },
 }
 
 -- unchanged
@@ -740,6 +742,11 @@ hl.plugins.mini = {
   MiniTrailspace = { bg = c.red },
 }
 
+hl.plugins.ts_context = {
+	TreesitterContext = { bg = c.bg1 },
+    TreesitterContextLineNumber = { fg = c.blue, bg = c.bg1 },
+}
+
 -- unchanged
 hl.langs.c = {
   cInclude = { fg = c.blue },
@@ -921,7 +928,7 @@ function M.setup()
   for _, group in pairs(hl.langs) do
     vim_highlights(group)
   end
-  for key, group in pairs(hl.plugins) do
+  for _, group in pairs(hl.plugins) do
     vim_highlights(group)
   end
 
