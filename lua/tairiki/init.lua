@@ -1,6 +1,6 @@
 local M = {}
 
-M.styles_list = { "dark", "light" }
+M.styles_list = { "dark", "light", "dimmed" }
 
 ---Change tairiki option (vim.g.tairiki_config.option)
 ---It can't be changed directly by modifying that field due to a Neovim lua bug with global variables (tairiki_config is a global variable)
@@ -47,7 +47,7 @@ end
 
 local default_config = {
   -- Main options --
-  style = "dark", -- choose between 'dark', 'light', TODO
+  style = "dark", -- choose between 'dark', 'light', 'dimmed'
   toggle_style_key = nil,
   toggle_style_list = M.styles_list,
   transparent = false, -- don't set background
