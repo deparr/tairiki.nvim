@@ -117,7 +117,7 @@ hl.syntax = {
   Define = { fg = c.purple },
   Typedef = { fg = c.yellow },
   Exception = { fg = c.red },
-  Conditional = { fg = c.red, fmt = cfg.code_style.conditionals },
+  Conditional = { fg = c.purple, fmt = cfg.code_style.conditionals },
   Repeat = { fg = c.light_purple, fmt = cfg.code_style.keywords },
   Statement = { fg = c.green },
   Macro = { fg = c.light_orange },
@@ -172,7 +172,7 @@ hl.treesitter = {
 
   ["@attribute"] = { fg = c.cyan },
   ["@attribute.builtin"] = { fg = c.red },
-  ["@property"] = { fg = c.cyan },
+  ["@property"] = { fg = c.fg },
 
   ["@function"] = { fg = c.blue, fmt = cfg.code_style.functions },
   ["@function.builtin"] = { fg = c.red, fmt = cfg.code_style.functions },
@@ -210,7 +210,7 @@ hl.treesitter = {
   -- @comment.documentation
 
   -- @comment.error -> DiagnosticError
-  -- @comment.warn -> DiagnosticWarn
+  ["@comment.warn"] = { fg = c.orange },
   -- @comment.todo -> Todo
   -- @comment.info -> DiagnosticInfo
 
