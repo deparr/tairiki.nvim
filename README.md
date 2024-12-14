@@ -90,7 +90,7 @@ colorscheme tairiki
 -- Lua
 require('tairiki').setup  {
     -- Main options --
-    style = 'dark', -- Default theme style. Choose between 'dark' (more styles on the way)
+    style = 'dark', -- Default theme style. Choose between 'dark', 'light' and 'dimmed'
     transparent = false,  -- Show/hide background
     term_colors = true, -- Change terminal color as per the selected theme style
     ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
@@ -99,7 +99,7 @@ require('tairiki').setup  {
 
     -- toggle theme style ---
     toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-    toggle_style_list = {'dark'},
+    toggle_style_list = { 'dark' }, -- which styles `toggle_style_key` will cycle through
 
     -- Change code style ---
     -- Options are italic, bold, underline, none
@@ -160,10 +160,10 @@ require('tairiki').setup {
     green = '#00ffaa',            -- redefine an existing color
   },
   highlights = {
-    ["@keyword"] = {fg = '$green'},
-    ["@string"] = {fg = '$bright_orange', bg = '#00ff00', fmt = 'bold'},
-    ["@function"] = {fg = '#0000ff', sp = '$cyan', fmt = 'underline,italic'},
-    ["@function.builtin"] = {fg = '#0059ff'}
+    ["@keyword"] = { fg = '$green' },
+    ["@string"] = { fg = '$bright_orange', bg = '#00ff00', fmt = 'bold' },
+    ["@function"] = { fg = '#0000ff', sp = '$cyan', fmt = 'underline,italic' },
+    ["@function.builtin"] = { fg = '#0059ff' }
   }
 }
 ```
