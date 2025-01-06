@@ -26,33 +26,29 @@ return {
   },
   light = {
     black = "#151515", -- only used in terminal colors
-    bg0 = "#e8e8e8",
-    bg1 = "#dcdcd6",
-    bg2 = "#ccccc6",
-    --bg2 = "#e6e6e0",
-    bg3 = "#dcdcd6",
-    fg = "#4d4d4c",
-    purple = "#8959a8",
-    green = "#718c00",
-    -- orange = "#f5871f",
-    orange = "#e56710",
-    blue = "#4271ae",
-    --yellow = "#eab700",
-    yellow = "#caa720",
-    -- cyan = "#3e999f",
+	bg0 = "#ffffff",
+    bg1 = "#f0f0e8",
+    bg2 = "#e8e8e0",
+    bg3 = "#d8d8d0",
+    fg = "#001070",
+	purple = "#7929c8",
+    green = "#008000",
+    orange = "#df5926",
+	blue = "#0070c1",
+    yellow = "#7c5c20",
     cyan = "#1e797f",
-    red = "#c82829",
-    -- grey = "#afb2b0",
-    grey = "#696969",
-    mid_grey = "#505050",
-    light_grey = "#151515", -- light in terms of contrast, easy to read
-    light_orange = "#d05200",
+    -- cyan = "#009999",
+    red = "#a31515",
+    grey = "#000000",
+    mid_grey = "#000000",
+    light_grey = "#202020", -- light in terms of contrast, easy to read
+    light_orange = "#c72e0f",
     light_purple = "#693988",
     dark_cyan = "#2b5d63",
     dark_red = "#833b3b",
     dark_yellow = "#7c5c20",
-	-- not sure about this comment color
-    comment = "#4271ce", -- "#a88954""#8e908c" is orig,"#8c6c30",
+	-- sitll not sure about this comment color
+    comment = "#cd0009", -- "#a88954""#8e908c" is orig,"#9c7c50", "#29b299", "#75b938"
   },
   dimmed = {
     black = "#181a1f", -- only used in terminal colors
