@@ -1,6 +1,9 @@
----@type table<string, tairiki.Palette>
-local M = {}
+local M = {
+	---@type table<string, tairiki.Palette>
+	palettes = {}
+}
 
+-- TODO NONE
 ---@class tairiki.Palette
 ---@field bg string
 ---@field fg string
@@ -18,9 +21,11 @@ local M = {}
 ---@field cyan string
 ---@field red string
 ---@field comment string
----@field diag tairiki.Palette.Diagnostic
----@field diff tairiki.Palette.Diff
----@field syn tairiki.Palette.Syntax
+---@field diag? tairiki.Palette.Diagnostic
+---@field diff? tairiki.Palette.Diff
+---@field syn? tairiki.Palette.Syntax
+---@field x? table<string, string>
+---@field group_x? fun(self: tairiki.Palette): table<string, table<string, string|tairiki.Highlights>>
 
 ---@class tairiki.Palette.Diagnostic
 ---@field error? string
@@ -49,9 +54,15 @@ local M = {}
 ---@field exception? string
 ---@field operator? string
 
--- todo builtin palettes should also register themselves
-M.dimmed = require "tairiki.palette.dimmed"
-M.dark = require "tairiki.palette.dark"
-M.light = require "tairiki.palette.light"
+-- todo builtin palettes should also properly register themselves
+M.palettes.dimmed = require "tairiki.palette.dimmed"
+M.palettes.dark = require "tairiki.palette.dark"
+M.palettes.light = require "tairiki.palette.light"
+
+---@param which string
+function M.load(which)
+	-- todo rethink this
+	return M.palettes[which]
+end
 
 return M

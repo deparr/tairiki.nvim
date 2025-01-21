@@ -1,3 +1,4 @@
+local util = require "tairiki.util"
 local M = {}
 
 -- see :help highlight-groups for group info
@@ -17,9 +18,9 @@ function M.get(c, opts)
 		CursorLineFold              = "FoldColumn",
 		CursorLineNr                = { fg = c.fg, bold = true },
 		CursorLineSign              = "SignColumn",
-		DiffAdd                     = { fg = c.fg, bg = c.diff.add }, -- todo fg on these
+		DiffAdd                     = { fg = c.fg, bg = c.diff.add },
 		DiffChange                  = { fg = c.fg, bg = c.diff.change },
-		DiffDelete                  = { fg = c.fg, bg = c.diff.remove },
+		DiffDelete                  = { fg = c.red, bg = c.diff.remove },
 		DiffText                    = { fg = c.fg, bg = c.diff.text },
 		Directory                   = { fg = c.blue },
 		EndOfBuffer                 = { fg = opts.ending_tildes and c.fg_dark or c.bg },
@@ -30,15 +31,15 @@ function M.get(c, opts)
 		FoldColumn                  = "SignColumn",
 		Folded                      = { fg = c.fg, bg = opts.transparent and c.none or c.bg_light }, -- diff
 		IncSearch                   = { fg = c.bg, bg = c.orange },
-		LineNr                      = { fg = c.fg_dark3 },
+		LineNr                      = { fg = c.fg_dark2 },
 		LineNrAbove                 = "LineNr",
 		LineNrBelow                 = "LineNr",
-		MatchParen                  = { fg = c.orange }, -- todo util
+		MatchParen                  = { fg = c.orange },
 		ModeMsg                     = { fg = c.fg_dark },
 		MoreMsg                     = { fg = c.purple },
 		MsgArea                     = { fg = c.none, bg = c.none },
 		MsgSeparator                = "StatusLine",
-		NonText                     = { fg = c.fg_dark }, -- todo util
+		NonText                     = { fg = c.fg_dark },
 		Normal                      = { fg = c.fg, bg = opts.transparent and c.none or c.bg },
 		NormalFloat                 = { fg = c.fg, bg = c.bg_light },
 		NormalNC                    = { fg = c.none, bg = c.none },
@@ -67,11 +68,11 @@ function M.get(c, opts)
 		StatusLineTerm              = { fg = c.fg_dark, bg = c.bg_light },
 		StatusLineTermNC            = { fg = c.fg_dark2, bg = c.bg_light },
 		Substitute                  = "CurSearch",
-		TabLine                     = { fg = c.comment, bg = c.bg }, -- todo
+		TabLine                     = { fg = c.comment, bg = c.bg },
 		TabLineFill                 = { bg = c.bg },
 		TabLineSel                  = { fg = c.bg, bg = c.comment },
-		TermCursor                  = { fg = c.none, bg = c.none }, -- diff
-		TermCursorNC                = { fg = c.none, bg = c.none }, -- diff
+		TermCursor                  = { fg = c.none, bg = c.none },
+		TermCursorNC                = { fg = c.none, bg = c.none },
 		Title                       = { fg = c.fg, bold = true },
 		Visual                      = { fg = c.none, bg = c.bg_light3, bold = opts.visual_bold },
 		VisualNOS                   = "Visual",
@@ -85,7 +86,7 @@ function M.get(c, opts)
 
 		Added                       = { fg = c.diff.add },
 		Bold                        = { bold = true },
-		Boolean                     = { fg = c.syn.literal }, -- todo util I guess dark can redfine these
+		Boolean                     = { fg = c.syn.literal },
 		Changed                     = { fg = c.diff.change },
 		Character                   = { fg = c.syn.string },
 		Comment                     = { fg = c.comment, italic = opts.italics },
@@ -103,7 +104,7 @@ function M.get(c, opts)
 		Include                     = { fg = c.syn.keyword },
 		Italic                      = { italic = true },
 		Keyword                     = { fg = c.syn.keyword },
-		Label                       = { fg = c.blue }, -- todo diff orange
+		Label                       = { fg = c.blue },
 		Macro                       = { fg = c.syn.literal },
 		Number                      = { fg = c.syn.literal },
 		Operator                    = { fg = c.syn.operator },
@@ -114,7 +115,7 @@ function M.get(c, opts)
 		Special                     = { fg = c.syn.special, bold = true },
 		SpecialChar                 = { fg = c.syn.special },
 		SpecialComment              = "Comment",
-		Statement                   = { fg = c.red }, -- todo diff green
+		Statement                   = { fg = c.red },
 		StorageClass                = { fg = c.syn.keyword_mod },
 		String                      = { fg = c.syn.string },
 		Structure                   = { fg = c.syn.type },
@@ -130,10 +131,10 @@ function M.get(c, opts)
 		-- LspCodeLensSeparator        = {},
 		LspInfoBorder               = { fg = c.fg_dark, bg = opts.transparent and c.none or c.bg_light },
 		LspInlayHint                = "NonText",
-		-- LspReferenceRead            = {},
-		-- LspReferenceTarget          = {},
-		-- LspReferenceText            = {},
-		-- LspReferenceWrite           = {},
+		LspReferenceRead            = { bg = c.bg_light2 },
+		LspReferenceTarget          = { bg = c.bg_light2 },
+		LspReferenceText            = { bg = c.bg_light2 },
+		LspReferenceWrite           = { bg = c.bg_light2 },
 		LspSignatureActiveParameter = { underline = true, bold = true },
 
 		DiagnosticOk                = { fg = c.diag.ok },
@@ -141,12 +142,21 @@ function M.get(c, opts)
 		DiagnosticInfo              = { fg = c.diag.info },
 		DiagnosticWarn              = { fg = c.diag.warn },
 		DiagnosticError             = { fg = c.diag.error },
-		DiagnosticUnderlineOk       = { sp = c.diag.ok, underline = not opts.undercurls, undercurls = opts.undercurls },
-		DiagnosticUnderlineHint     = { sp = c.diag.hint, underline = not opts.undercurls, undercurls = opts.undercurls },
-		DiagnosticUnderlineInfo     = { sp = c.diag.info, underline = not opts.undercurls, undercurls = opts.undercurls },
-		DiagnosticUnderlineWarn     = { sp = c.diag.warn, underline = not opts.undercurls, undercurls = opts.undercurls },
-		DiagnosticUnderlineError    = { sp = c.diag.error, underline = not opts.undercurls, undercurls = opts.undercurls },
-		-- todo big util virutal text
+		DiagnosticUnderlineOk       = { sp = c.diag.ok, underline = not opts.diagnostics.undercurls, undercurls = opts.diagnostics.undercurls },
+		DiagnosticUnderlineHint     = { sp = c.diag.hint, underline = not opts.diagnostics.undercurls, undercurls = opts.diagnostics.undercurls },
+		DiagnosticUnderlineInfo     = { sp = c.diag.info, underline = not opts.diagnostics.undercurls, undercurls = opts.diagnostics.undercurls },
+		DiagnosticUnderlineWarn     = { sp = c.diag.warn, underline = not opts.diagnostics.ndercurls, undercurls = opts.diagnostics.undercurls },
+		DiagnosticUnderlineError    = { sp = c.diag.error, underline = not opts.diagnostics.undercurls, undercurls = opts.diagnostics.undercurls },
+		DiagnosticVirtualTextOk     = { fg = c.diag.ok, bg = opts.diagnostics.background and util.darken(c.diag.ok, 0.1, c.bg) or c.none },
+		DiagnosticVirtualTextHint   = { fg = c.diag.hint, bg = opts.diagnostics.background and util.darken(c.diag.hint, 0.1, c.bg) or c.none },
+		DiagnosticVirtualTextInfo   = { fg = c.diag.info, bg = opts.diagnostics.background and util.darken(c.diag.info, 0.1, c.bg) or c.none },
+		DiagnosticVirtualTextWarn   = { fg = c.diag.warn, bg = opts.diagnostics.background and util.darken(c.diag.warn, 0.1, c.bg) or c.none },
+		DiagnosticVirtualTextError  = { fg = c.diag.error, bg = opts.diagnostics.background and util.darken(c.diag.error, 0.1, c.bg) or c.none },
+
+		-- double define @variable so the theme is always cohesive, even when
+		-- opts.plugins.none is given
+		-- avoids https://github.com/morhetz/gruvbox/issues/459
+		["@variable"] = { fg = c.syn.ident },
 	}
 end
 

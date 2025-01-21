@@ -1,17 +1,13 @@
+local config = require("tairiki.config")
+
 local M = {}
 
-local global_conf = {}
+M.setup = config.setup
 
-function M.setup(opts)
-	global_conf = opts
-end
+function M.load(opts)
+	opts = config.extend(opts)
 
-
-function M.load()
-	local palettes = require "tairiki.palette"
-	local group = require "tairiki.groups"
-
-	group.load(palettes.dimmed, global_conf)
+	require("tairiki.theme").load(opts)
 end
 
 return M

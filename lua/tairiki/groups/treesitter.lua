@@ -1,3 +1,4 @@
+local util = require "tairiki.util"
 local M = {}
 
 -- see :help treesitter-highlight-groups for group info
@@ -14,40 +15,40 @@ function M.get(c, opts)
 		["@constant"]                   = "Constant",
 		["@constant.builtin"]           = { fg = c.syn.special },
 		["@constant.macro"]             = "Macro",
-		["@module"]                     = { fg = c.blue },      -- todo
-		["@module.builtin"]             = { fg = c.syn.special }, -- todo rethink
+		["@module"]                     = { fg = util.lighten(c.fg, 0.7, c.blue) },
+		["@module.builtin"]             = { fg = c.syn.special },
 		["@label"]                      = { fg = c.blue },
 		["@string"]                     = "String",
 		["@string.special.url"]         = { fg = c.cyan, underline = true },
 		["@character"]                  = "String",
-		["@chracter.special"]           = { fg = c.syn.special },
+		["@character.special"]          = "SpecialChar",
 		["@boolean"]                    = "Boolean",
 		["@number"]                     = "Number",
 		["@number.float"]               = "Float",
 		["@type"]                       = { fg = c.syn.type },
-		["@type.builtin"]               = { fg = c.cyan },
+		["@type.builtin"]               = { fg = c.syn.literal },
 		["@attribute"]                  = { fg = c.cyan },
 		["@property"]                   = { fg = c.syn.ident },
 		["@function"]                   = "Function",
 		["@function.builtin"]           = { fg = c.syn.special },
-		["@constructor"]                = { fg = c.syn.special }, -- todo rethink
+		["@constructor"]                = { fg = c.syn.special },
 		["@operator"]                   = "Operator",
-		["@keyword"]                    = { fg = c.syn.keyword, }, -- TODO specific token styles
-		["@keyword.coroutine"]          = "@keyword",
-		-- ["@keyword.function"]           = {},                        -- todo util
-		-- ["@keyword.operator"]           = {},                        -- todo util
-		-- ["@keyword.import"]             = {},                        -- todo util
-		-- ["@keyword.type"]               = {},                        -- todo util
-		["@keyword.modifier"]           = { fg = c.syn.keyword_mod }, -- todo util
-		-- ["@keyword.repeat"]             = {},                        -- todo util
-		-- ["@keyword.return"]             = {},                        -- todo util
-		-- ["@keyword.debug"]              = {},                        -- todo util
-		-- ["@keyword.exception"]          = {},                        -- todo util
-		["@keyword.conditional"]        = "Conditional",            -- todo util
-		["@keyword.directive"]          = { fg = c.syn.keyword_mod }, -- todo util
+		["@keyword"]                    = { fg = c.syn.keyword, },
+		-- ["@keyword.coroutine"]          = {},
+		-- ["@keyword.function"]           = {},
+		-- ["@keyword.operator"]           = {},
+		-- ["@keyword.import"]             = {},
+		-- ["@keyword.type"]               = {},
+		["@keyword.modifier"]           = { fg = c.syn.keyword_mod },
+		-- ["@keyword.repeat"]             = {},
+		-- ["@keyword.return"]             = {},
+		-- ["@keyword.debug"]              = {},
+		-- ["@keyword.exception"]          = {},
+		["@keyword.conditional"]        = "Conditional",
+		["@keyword.directive"]          = { fg = c.syn.keyword_mod },
 		["@punctuation.delimiter"]      = { fg = c.syn.delim },
 		["@punctuation.bracket"]        = { fg = c.syn.delim },
-		["@punctuation.special"]        = { fg = c.syn.special }, -- todo rethink
+		["@punctuation.special"]        = { fg = c.syn.special },
 		["@comment"]                    = "Comment",
 		["@comment.error"]              = { fg = c.diag.error },
 		["@comment.warning"]            = { fg = c.diag.warn },
@@ -59,7 +60,7 @@ function M.get(c, opts)
 		["@markup.underline"]           = { underline = true },
 		["@markup.heading"]             = "Title",
 		["@markup.quote"]               = { fg = c.fg },
-		["@markup.math"]                = { fg = c.cyan },    -- todo util
+		["@markup.math"]                = { fg = c.cyan },
 		["@markup.link"]                = { fg = c.blue },    -- todo util
 		["@markup.link.label"]          = { fg = c.orange },  -- todo util
 		["@markup.link.url"]            = { underline = true }, -- todo util
@@ -74,10 +75,9 @@ function M.get(c, opts)
 		["@tag.builtin"]                = { fg = c.syn.special },
 		["@tag.attribute"]              = "@property",
 		["@tag.delimiter"]              = "Delimiter",
-	}
 
-	-- if opts.rainbow_heading then
-	-- end
+		["@string.special.url.comment"] = "Comment",
+	}
 
 	return ret
 end
