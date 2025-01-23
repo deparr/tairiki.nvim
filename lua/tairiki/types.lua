@@ -3,8 +3,6 @@
 
 ---@alias tairiki.Highlights table<string,tairiki.Highlight|string>
 
----@alias tairiki.HighlightsFn fun(colors: ColorScheme, opts:tairiki.Config):tairiki.Highlights
-
 ---@class tairiki.Cache
 ---@field groups tairiki.Highlights
 ---@field inputs table

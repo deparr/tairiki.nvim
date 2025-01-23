@@ -5,8 +5,6 @@ local util = require("tairiki.util")
 local M = {}
 local hl = { langs = {}, plugins = {} }
 
-print("highlights being loaded")
-
 local function vim_highlights(highlights)
   for group_name, group_settings in pairs(highlights) do
     local settings = {
