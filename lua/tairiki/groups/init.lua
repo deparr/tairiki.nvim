@@ -55,18 +55,20 @@ function M.load(opts, colors)
 					end
 				end
 			else
-				vim.notify("tairiki.nvim: unable to load lazy.nvim for plugin autodetect", vim.log.levels.ERROR)
+				vim.notify("tairiki.nvim: lazy.nvim not loaded, can't auto discover plugins", vim.log.levels.ERROR)
 			end
 		end
 
 		for plugin, module in pairs(M.plugins) do
 			local cfg = opts.plugins[plugin]
-			cfg = cfg == nil and opts.plugins[module] or cfg
+			if cfg == nil then
+				cfg = opts.plugins[module]
+			end
 			if cfg ~= nil then
 				if type(cfg) == "table" then
 					cfg = cfg.enabled
 				end
-				groups[module] = cfg or nil
+				groups[module] = cfg
 			end
 		end
 	end
