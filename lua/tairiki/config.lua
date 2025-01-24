@@ -30,6 +30,7 @@ M.defaults = {
 		functions = {},
 		strings = {},
 		variables = {},
+		parameters = {},
 		types = {},
 	},
 	---@type table<string, boolean|{enabled: boolean}>

@@ -1,3 +1,4 @@
+local util = require("tairiki.util")
 local M = {}
 
 -- see :help lsp-semantic-highlight for group info
@@ -18,17 +19,17 @@ function M.get(c, opts)
 		["@lsp.type.macro"]         = { fg = c.syn.constant },
 		["@lsp.type.method"]        = { fg = c.syn.func },
 		["@lsp.type.modifier"]      = { fg = c.syn.keyword_mod },
-		["@lsp.type.namespace"]     = { fg = c.syn.ident}, -- todo
+		["@lsp.type.namespace"]     = { fg = c.syn.ident }, -- todo
 		["@lsp.type.number"]        = { fg = c.syn.literal },
 		["@lsp.type.operator"]      = { fg = c.syn.operator },
-		["@lsp.type.parameter"]     = { fg = c.syn.ident, italic = true },
+		["@lsp.type.parameter"]     = { fg = c.syn.ident, style = opts.code_style.parameters },
 		["@lsp.type.property"]      = { fg = c.syn.ident },
 		["@lsp.type.regexp"]        = { fg = c.syn.special },
 		["@lsp.type.string"]        = { fg = c.syn.string },
 		["@lsp.type.struct"]        = { fg = c.syn.type },
 		["@lsp.type"]               = { fg = c.syn.type },
 		["@lsp.type.type"]          = { fg = c.syn.type },
-		["@lsp.type.typeParameter"] = { fg = c.syn.type }, -- todo darken
+		["@lsp.type.typeParameter"] = { fg = util.darken(c.syn.type, 0.1), style = opts.code_style.parameters },
 		["@lsp.type.variable"]      = { fg = c.syn.ident }, -- todo this seems weird
 
 		-- TODO big

@@ -9,8 +9,8 @@ function M.get(c, opts)
 	local ret = {
 		["@variable"]                   = { fg = c.syn.ident, style = opts.code_style.variables },
 		["@variable.builtin"]           = { fg = c.syn.special, style = opts.code_style.variables },
-		["@variable.parameter"]         = { fg = c.fg, italic = true },
-		["@variable.parameter.builtin"] = { fg = c.syn.special, italic = true },
+		["@variable.parameter"]         = { fg = c.fg, style = opts.code_style.parameters },
+		["@variable.parameter.builtin"] = { fg = c.syn.special, style = opts.code_style.parameters },
 		["@variable.member"]            = { fg = c.syn.ident },
 		["@constant"]                   = "Constant",
 		["@constant.macro"]             = "Macro",
