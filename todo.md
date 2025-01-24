@@ -1,1 +1,6 @@
 - [ ] more plugins
+- [ ] diff line color, blue doesn't look great
+- [ ] readme updates
+	- vim docs ?
+- [ ] lighthteme fg_darks
+- [ ] manual plugin disables and auto dont seem to work correctly

@@ -42,7 +42,7 @@ function M.regen_sub_groups(self)
 	}
 	self.syn      = {
 		ident       = self.fg,
-		constant    = self.red,
+		constant    = self.orange,
 		literal     = self.orange,
 		func        = self.blue,
 		string      = self.green,

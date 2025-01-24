@@ -13,7 +13,6 @@ function M.get(c, opts)
 		["@variable.parameter.builtin"] = { fg = c.syn.special, italic = true },
 		["@variable.member"]            = { fg = c.syn.ident },
 		["@constant"]                   = "Constant",
-		["@constant.builtin"]           = { fg = c.syn.special },
 		["@constant.macro"]             = "Macro",
 		["@module"]                     = { fg = util.lighten(c.fg, 0.7, c.blue) },
 		["@module.builtin"]             = { fg = c.syn.special },

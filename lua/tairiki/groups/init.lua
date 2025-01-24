@@ -3,15 +3,26 @@ local M = {}
 
 -- realname > modname
 M.plugins = {
-	["diffview.nvim"]   = "diffview",
-	["gitsigns.nvim"]   = "gitsigns",
-	["neovim"]          = "neovim",
-	["nvim-cmp"]        = "cmp",
-	["oil.nvim"]        = "oil",
-	["semantic-tokens"] = "semantic_tokens",
-	["telescope.nvim"]  = "telescope",
-	["treesitter"]      = "treesitter",
-	["vim-fugitive"]    = "fugitive",
+	["barbar.nvim"]             = "barbar",
+	["dashboard-nvim"]          = "dashboard",
+	["diffview.nvim"]           = "diffview",
+	["gitsigns.nvim"]           = "gitsigns",
+	["hop.nvim"]                = "hop",
+	["indent-blankline.nvim"]   = "indent_blankline",
+	["neo-tree.nvim"]           = "neotree",
+	["neotest"]                 = "neotest",
+	["neovim"]                  = "neovim",
+	["nvim-cmp"]                = "cmp",
+	["nvim-tree.lua"]           = "nvim_tree",
+	["nvim-treesitter-context"] = "treesitter_context",
+	["oil.nvim"]                = "oil",
+	["rainbow-delimiters.nvim"] = "rainbow_delimiters",
+	["semantic-tokens"]         = "semantic_tokens",
+	["telescope.nvim"]          = "telescope",
+	["treesitter"]              = "treesitter",
+	["vim-fugitive"]            = "fugitive",
+	["vim-gitgutter"]           = "gitgutter",
+	["which-key.nvim"]          = "which_key",
 }
 
 function M.flatten_styles(groups)
