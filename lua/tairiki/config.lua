@@ -41,6 +41,11 @@ M.defaults = {
 		treesitter = true,
 		semantic_tokens = true,
 	},
+
+	lualine = {
+		transparent = false,
+	},
+
 	---@type tairiki.Config.ColorExtFunc?
 	colors = nil,
 

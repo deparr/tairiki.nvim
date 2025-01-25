@@ -1,21 +1,21 @@
-local c = require("tairiki.colors")
-local cfg = vim.g.tairiki_config
+local opts = require("tairiki.config").options
+local c = require("tairiki.palette").load(opts.palette)
 
-local tairiki = {
+local theme = {
   inactive = {
     a = { fg = c.grey, bg = c.bg, gui = "bold" },
     b = { fg = c.grey, bg = c.bg },
-    c = { fg = c.grey, bg = cfg.lualine.transparent and c.none or c.bg1 },
+    c = { fg = c.grey, bg = opts.lualine.transparent and c.none or c.bg_light },
   },
   normal = {
-    a = { fg = c.light_grey, bg = c.bg2, gui = "bold" },
-    b = { fg = c.fg, bg = c.bg1 },
-    c = { fg = c.fg, bg = cfg.lualine.transparent and c.none or c.bg1 },
+    a = { fg = c.fg_dark, bg = c.bg_light2, gui = "bold" },
+    b = { fg = c.fg, bg = c.bg_light },
+    c = { fg = c.fg, bg = opts.lualine.transparent and c.none or c.bg_light },
   },
-  visual = { a = { fg = c.purple, bg = c.bg2, gui = "bold" } },
-  replace = { a = { fg = c.red, bg = c.bg2, gui = "bold" } },
-  insert = { a = { fg = c.blue, bg = c.bg2, gui = "bold" } },
-  command = { a = { fg = c.orange, bg = c.bg2, gui = "bold" } },
-  terminal = { a = { fg = c.cyan, bg = c.bg2, gui = "bold" } },
+  visual = { a = { fg = c.purple, bg = c.bg_light2, gui = "bold" } },
+  replace = { a = { fg = c.red, bg = c.bg_light2, gui = "bold" } },
+  insert = { a = { fg = c.green, bg = c.bg_light2, gui = "bold" } },
+  command = { a = { fg = c.orange, bg = c.bg_light2, gui = "bold" } },
+  terminal = { a = { fg = c.yellow, bg = c.bg_light2, gui = "bold" } },
 }
-return tairiki
+return theme
