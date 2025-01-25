@@ -2,6 +2,14 @@
 tairiki.nvim
 </h1>
 
+> [!IMPORTANT]
+> This is the old version of the plugin, the new version is on the `v2`
+> branch. Expect breaking changes. `v2` will be merged into main soon!
+---
+---
+---
+---
+
 Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chriskempson/tomorrow-theme) and forked from [Onedark.nvim](https://github.com/navarasu/onedark.nvim). Theme written in lua with [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlighting.
 
 *For latest [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlight, upgraded to Neovim 0.8.0 or later built with tree-sitter 0.20.3+*
