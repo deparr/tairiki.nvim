@@ -1,5 +1,4 @@
 local util  = require("tairiki.util")
----@type tairiki.Palette
 local M     = {
 	bg      = "#1d1f21",
 	fg      = "#afb2b0",
@@ -15,7 +14,6 @@ local M     = {
 		operator = "#c5c8c6",
 	},
 	group_x = nil,
-	-- todo part of larger palette registration but do this better
 	none    = "none",
 }
 

@@ -1,5 +1,4 @@
 local util  = require("tairiki.util")
----@class tairiki.Palette
 local M     = {
 	bg = "#e8e8e8",
 	fg = "#4d4d4d",

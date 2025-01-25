@@ -6,7 +6,7 @@
 - [x] diff line color, blue doesn't look great
 - [ ] readme updates
 	- [ ] vim docs ?
-- [ ] light theme fg_darks
+- [x] light theme fg_darks
   	- they're *decent* now
 - [x] manual plugin disables and auto dont seem to work correctly
 - [x] :color tairiki should respect current background, not just the users specified palette

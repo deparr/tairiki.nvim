@@ -62,8 +62,8 @@ function M.gen_fg_bg_colors(c)
 	if not c.bg_light3 then c.bg_light3 = util.lighten(c.bg_light2, 0.9, c.fg) end
 
 	if not c.fg_dark then c.fg_dark = util.darken(c.fg, 0.9, c.bg) end
-	if not c.fg_dark2 then c.fg_dark2 = util.darken(c.fg_dark1, 0.9, c.bg) end
-	if not c.fg_dark2 then c.fg_dark3 = util.darken(c.fg_dark2, 0.9, c.bg) end
+	if not c.fg_dark2 then c.fg_dark2 = util.darken(c.fg_dark, 0.9, c.bg) end
+	if not c.fg_dark3 then c.fg_dark3 = util.darken(c.fg_dark2, 0.9, c.bg) end
 end
 
 function M.gen_diag_colors(c)

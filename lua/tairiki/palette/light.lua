@@ -1,5 +1,4 @@
 local util  = require("tairiki.util")
----@class tairiki.Palette
 local M     = {
 	bg = "#ffffff",
 	fg = "#001070",
@@ -17,12 +16,13 @@ local M     = {
 	light_purple = "#693988",
 }
 
+-- #001070
 M.bg_light  = "#f0f0f8"
 M.bg_light2 = "#e8e8e0"
 M.bg_light3 = "#d8d8d0"
-M.fg_dark   = "#202020"
-M.fg_dark2  = "#151515"
-M.fg_dark3  = "#000000"
+M.fg_dark   = "#698989"
+M.fg_dark2  = "#797979"
+M.fg_dark3  = "#595959"
 
 function M.regen_sub_groups(self)
 	self.diag       = {
@@ -50,7 +50,7 @@ function M.regen_sub_groups(self)
 		special     = self.red,
 		delim       = self.fg_dark3,
 		exception   = self.red,
-		operator    = self.fg_dark,
+		operator    = self.fg,
 	}
 
 	self.terminal   = {
@@ -105,8 +105,6 @@ function M.regen_sub_groups(self)
 		["@namespace.vim"]           = { fg = self.orange },
 		["@punctuation.bracket.css"] = { fg = self.fg_dark2 },
 
-		-- todo diag darkening in real groups
-		-- shouldnt be here
 		FloatBorder                  = { fg = self.fg_dark3, bg = self.bg_light },
 		FloatTitle                   = "Title",
 		FoldColumn                   = { fg = self.fg_dark, bg = self.bg_light },
@@ -114,6 +112,8 @@ function M.regen_sub_groups(self)
 		Ignore                       = "Normal",
 		Include                      = { fg = self.purple },
 		Label                        = { fg = self.light_orange },
+		PmenuSel                     = { fg = self.blue, bg = self.bg_light2, bold = true },
+		PmenuThumb                   = { bg = self.fg_dark2 },
 		SpecialKey                   = { fg = self.fg_dark3 },
 		Statement                    = { fg = self.green },
 		StatusLine                   = { fg = self.fg_dark2, bg = self.bg_light },
