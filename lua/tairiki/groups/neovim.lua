@@ -8,7 +8,7 @@ function M.get(c, opts)
 	--stylua: ignore
 	return {
 		TairikiTODO                 = { fg = "#ff8000" },
-		ColorColumn                 = { bg = c.bg_light2 },
+		ColorColumn                 = { bg = c.bg_light },
 		Conceal                     = { fg = c.comment },
 		CurSearch                   = { fg = c.bg, bg = c.orange },
 		Cursor                      = { fg = c.bg, bg = c.fg },
@@ -171,7 +171,7 @@ function M.get(c, opts)
 		diffRemoved                 = "Removed",
 		diffChanged                 = "Changed",
 		diffFile                    = { fg = c.blue },
-		diffLine                    = { fg = c.blue },
+		diffLine                    = { fg = c.cyan },
 
 		-- double define @variable so the theme is always cohesive, even when
 		-- opts.plugins.none is given.

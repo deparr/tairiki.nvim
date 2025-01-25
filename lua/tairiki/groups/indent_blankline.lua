@@ -5,7 +5,7 @@ local M = {}
 ---@param opts tairiki.Config
 ---@return tairiki.Highlights
 function M.get(c, opts)
-	local darker_grey = util.darken(c.fg_dark3, 0.1)
+	local darker_grey = util.darken(c.fg_dark3, 0.1, c.bg)
 	return {
 		-- todo these probably shouldn't be defined here
 		RainbowRed                      = { fg = c.red },
