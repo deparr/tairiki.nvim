@@ -59,12 +59,6 @@ function M.setup(opts)
 	end
 
 	M.options = vim.tbl_deep_extend("force", {}, M.defaults, opts or {})
-	if M.options.default_dark == nil then
-		M.options.default_dark = "dark"
-	end
-	if M.options.default_light == nil then
-		M.options.default_light = "light"
-	end
 end
 
 ---@param opts? tairiki.Config

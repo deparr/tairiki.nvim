@@ -15,7 +15,6 @@ function M.load(opts)
 		if vim.g.colors_name == "tairiki-" .. opts.palette then
 			-- use user defined default palettes
 			opts.palette = vim.o.background == "light" and (M.palette.light or opts.default_light) or (M.palette.dark or opts.default_dark)
-			-- opts.palette = vim.o.background == "light" and "light" or "dark"
 		else
 			-- otherwise we should swap background to our palette's style
 			vim.o.background = palette_bg_style
