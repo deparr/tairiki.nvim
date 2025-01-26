@@ -1,1 +1,1 @@
-require("tairiki").load({ palette = "dimmed"})
+require("tairiki").load({ palette = "dimmed" })
