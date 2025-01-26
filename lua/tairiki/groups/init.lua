@@ -9,6 +9,7 @@ M.plugins = {
 	["gitsigns.nvim"]           = "gitsigns",
 	["hop.nvim"]                = "hop",
 	["indent-blankline.nvim"]   = "indent_blankline",
+	["mini.nvim"]               = "mini",
 	["neo-tree.nvim"]           = "neotree",
 	["neotest"]                 = "neotest",
 	["neovim"]                  = "neovim",
