@@ -55,7 +55,7 @@ function M.load(opts, colors)
 					end
 				end
 			else
-				vim.notify("tairiki.nvim: lazy.nvim not loaded, can't auto discover plugins", vim.log.levels.ERROR)
+				vim.notify("tairiki.nvim: lazy.nvim not loaded, can't auto discover plugins", vim.log.levels.WARN)
 			end
 		end
 
@@ -76,10 +76,13 @@ function M.load(opts, colors)
 	local ret = {}
 	for group, enabled in pairs(groups) do
 		if enabled then
-			-- local ok, groupmod = pcall(require, "tairiki.groups." .. group)
-			local groupmod = util.load_mod("tairiki.groups." .. group)
-			for g, hl in pairs(groupmod.get(colors, opts)) do
-				ret[g] = hl
+			local ok, groupmod = pcall(require, "tairiki.groups." .. group)
+			if ok then
+				for g, hl in pairs(groupmod.get(colors, opts)) do
+					ret[g] = hl
+				end
+			else
+				vim.notify("tairiki.nvim: failed to load group module tairiki.groups." .. group, vim.log.levels.WARN)
 			end
 		end
 	end

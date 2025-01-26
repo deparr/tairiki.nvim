@@ -6,18 +6,6 @@ M.fg = "#ffffff"
 local path = debug.getinfo(1, "S").source:sub(2)
 path = vim.fn.fnamemodify(path, ":h:h")
 
----@param modpath string
-function M.load_mod(modpath)
-	if package.loaded[modpath] then
-		return package.loaded[modpath]
-	end
-
-	modpath = ("%s/%s.lua"):format(path, modpath:gsub("%.", "/"))
-	local mod = loadfile(modpath)()
-	package.loaded[modpath] = mod
-	return mod
-end
-
 ---@param c string|table<number> hex string to convert
 ---@return table<number> { r, g, b } of c
 function M.rgb(c)
