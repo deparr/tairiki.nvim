@@ -7,7 +7,6 @@ local M = {}
 function M.get(c, opts)
 	--stylua: ignore
 	return {
-		TairikiTODO                 = { fg = "#ff8000" },
 		ColorColumn                 = { bg = c.bg_light },
 		Conceal                     = { fg = c.comment },
 		CurSearch                   = { fg = c.bg, bg = c.orange },

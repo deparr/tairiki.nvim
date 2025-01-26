@@ -89,7 +89,7 @@ function M.regen_sub_groups(self)
 		["@markup.math"]             = { fg = self.blue },
 		["@markup.quote"]            = { fg = self.fg_dark2 },
 		["@markup.raw.block"]        = { fg = self.fg_dark2 },
-		["@module"]                  = { fg = "#b1bdc4" }, -- TODO util
+		["@module"]                  = { fg = util.lighten(self.fg, 0.7, self.blue) },
 		["@string.escape"]           = { fg = self.red },
 		["@string.regexp"]           = { fg = self.orange },
 		["@string.special.url"]      = { fg = self.blue, underline = true },

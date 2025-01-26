@@ -4,8 +4,10 @@
   - [ ] Mini
   - [ ] blink
 - [x] diff line color, blue doesn't look great
-- [ ] readme updates
-	- [ ] vim docs ?
+- [x] readme updates
+    - [x] deprecation/breaking change notice on main
+	- [ ] vim doc.txt
+        - kinda overkill
 - [x] light theme fg_darks
   	- they're *decent* now
 - [x] manual plugin disables and auto dont seem to work correctly

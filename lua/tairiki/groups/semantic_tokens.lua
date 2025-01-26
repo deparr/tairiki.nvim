@@ -19,7 +19,7 @@ function M.get(c, opts)
 		["@lsp.type.macro"]         = { fg = c.syn.constant },
 		["@lsp.type.method"]        = { fg = c.syn.func },
 		["@lsp.type.modifier"]      = { fg = c.syn.keyword_mod },
-		["@lsp.type.namespace"]     = { fg = c.syn.ident }, -- todo
+		["@lsp.type.namespace"]     = { fg = c.syn.ident },
 		["@lsp.type.number"]        = { fg = c.syn.literal },
 		["@lsp.type.operator"]      = { fg = c.syn.operator },
 		["@lsp.type.parameter"]     = { fg = c.syn.ident, style = opts.code_style.parameters },
@@ -30,9 +30,8 @@ function M.get(c, opts)
 		["@lsp.type"]               = { fg = c.syn.type },
 		["@lsp.type.type"]          = { fg = c.syn.type },
 		["@lsp.type.typeParameter"] = { fg = util.darken(c.syn.type, 0.1), style = opts.code_style.parameters },
-		["@lsp.type.variable"]      = { fg = c.syn.ident }, -- todo this seems weird
+		["@lsp.type.variable"]      = { fg = c.syn.ident },
 
-		-- TODO big
 		["@lsp.mod.abstract"]       = {},
 		["@lsp.mod.async"]          = {},
 		["@lsp.mod.declaration"]    = {},

@@ -104,8 +104,6 @@ function M.regen_sub_groups(self)
 		["@namespace.vim"]           = { fg = self.orange },
 		["@punctuation.bracket.css"] = { fg = self.fg_dark2 },
 
-		-- todo diag darkening in real groups
-		-- shouldnt be here
 		FloatBorder                  = { fg = self.fg_dark3, bg = self.bg_light },
 		FloatTitle                   = "Title",
 		FoldColumn                   = { fg = self.fg_dark, bg = self.bg_light },
