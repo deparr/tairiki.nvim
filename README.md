@@ -2,21 +2,16 @@
 tairiki.nvim
 </h1>
 
-Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chriskempson/tomorrow-theme) and forked from [Onedark.nvim](https://github.com/navarasu/onedark.nvim). Theme written in lua with [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlighting.
-
-*For latest [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter) syntax highlight, upgraded to Neovim 0.8.0 or later built with tree-sitter 0.20.3+*
-
-Experimental: Use the `minimal` branch for a simplified version that sets fewer highlight groups; primarily the base nvim groups and a few tree-sitter ones.
-
-> Disclaimer: I compiled this colorscheme for myself and don't really expect others to use it. There's probably broken / bad highlights everywhere, especially in langs I don't use. Create an issue if something is off, or set a custom highlight/color (see [Customization](#customization))
+Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chriskempson/tomorrow-theme).
 
 ### Features
-  * Supporting multiple plugins with hand picked proper colors
-  * Customize `Colors`, `Highlights` and `Code style` of the theme as you like (Refer [Customization](#customization))
-  * Toggle the theme style without exiting Neovim using `toggle_style_key` (Refer [Config](#default-configuration))
+  * Auto detection of installed plugins *(only set what you use!)*
+  * Granular toggling of individual plugins *(or what you want!)*
+  * Palette color, highlight group, syntax token style [customization](#customization)
 
 ### Showcase
 <details open>
+<!-- TODO update showcase images, or have them at all?? -->
 <summary>Toggle preview</summary>
 
 ![dark_theme](https://github.com/deparr/tairiki.nvim/assets/37233002/ad842387-ad87-4f69-a2c9-8531c5b592b9)
@@ -42,151 +37,102 @@ use 'deparr/tairiki.nvim'
 {
   'deparr/tairiki.nvim',
   lazy = false,
-  priority = 1000, -- only necessary if you use tairiki as default theme
-  config = function()
-    require('tairiki').setup {
-      -- optional configuration here
-    }
-    require('tairiki').load() -- only necessary to use as default theme, has same behavior as ':colorscheme tairiki'
-  end,
+  priority = 1000, -- recommended if you use tairiki as your default theme
+  branch = "v2",
+  opts = {},
 }
 ```
 
 ## Configuration
 
-### Enable theme
-
+### Default Configuration
 ```lua
--- Lua
-require('tairiki').load()
-```
-
-```vim
-" Vim
-colorscheme tairiki
-```
-
-### Change style
-
-```lua
--- Lua
 require('tairiki').setup {
-    style = 'dark'
-}
-require('tairiki').load()
-```
+	palette              = "dark", -- main palette
+	default_dark         = "dark",
+	default_light        = "light",
+	transparent          = false, -- don't set background colors
+	terminal             = false, -- override nvim terminal colors
+	end_of_buffer        = false, -- show end of buffer filler lines (tildes)
+	visual_bold          = false, -- bolden visual selections
+	cmp_itemkind_reverse = false, -- reverse fg/bg on nvim-cmp item kinds
 
-```vim
-" Vim
-let g:tairiki_config = {
-    \ 'style': 'dark',
-\}
-colorscheme tairiki
-```
+	diagnostics          = {
+		darker     = false, -- darken diagnostic virtual text
+		background = true,  -- add background to diagnostic virtual text
+		undercurl  = false, -- use undercurls for inline diagnostics
+	},
 
-### Full Configuration
+	-- style for different syntactic tokens
+	-- table can consist of any boolean option listed in :help nvim_set_hl()
+	code_style           = {
+		comments = { italic = true },
+		conditionals = {},
+		keywords = {},
+		functions = {},
+		strings = {},
+		variables = {},
+		parameters = {},
+		types = {},
+	},
 
-```lua
--- Lua
-require('tairiki').setup  {
-    -- Main options --
-    style = 'dark', -- Default theme style. Choose between 'dark', 'light' and 'dimmed'
-    transparent = false,  -- Show/hide background
-    term_colors = true, -- Change terminal color as per the selected theme style
-    ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-    cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-    visual_bold = false, -- bolden visual selections
+	-- lualine theme config
+	lualine = {
+		transparent = true, -- remove background from center section
+	},
 
-    -- toggle theme style ---
-    toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-    toggle_style_list = { 'dark' }, -- which styles `toggle_style_key` will cycle through
+	-- which plugins to enable
+	plugins              = {
+		all = false,  -- enable all supported plugins
+		none = false, -- ONLY set groups listed in :help highlight-groups (see lua/tairiki/groups/neovim.lua). Manually enabled plugins will also be ignored
+		auto = false, -- auto detect installed plugins, currently lazy.nvim only
 
-    -- Change code style ---
-    -- Options are italic, bold, underline, none
-    -- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
-    code_style = {
-        comments = 'italic',
-        keywords = 'none',
-        functions = 'none',
-        strings = 'none',
-        variables = 'none'
-    },
+		-- or enable/disable plugins manually
+		-- see lua/tairiki/groups/init.lua for the full list of available plugins
+		--	either the key or value from the M.plugins table can be used here
+		--
+		-- setting a specific plugin manually overrides `all` and `auto`
+		treesitter = true,
+		semantic_tokens = true,
+	},
 
-    -- Lualine options --
-    lualine = {
-        transparent = false, -- lualine center bar transparency
-    },
+	-- optional function to modify or add colors to the palette
+	-- palette definitions are in lua/tairiki/palette
+	colors     = function(colors, opts) end,
 
-    -- Custom Highlights --
-    colors = {}, -- Override default colors
-    highlights = {}, -- Override highlight groups
-
-    -- Plugins Config --
-    diagnostics = {
-        darker = true, -- darker colors for diagnostic
-        undercurl = true,   -- use undercurl instead of underline for diagnostics
-        background = true,    -- use background color for virtual text
-    },
+	-- optional function to override highlight groups
+	highlights = function(groups, colors, opts) end,
 }
 ```
-
-### Vimscript configuration
-
-Tairiki can be configured also with Vimscript, using the global dictionary `g:tairiki_config`.
-**NOTE**: when setting boolean values use `v:true` and `v:false` instead of 0 and 1
-
-Example:
-```vim
-let g:tairiki_config = {
-  \ 'style': 'deep',
-  \ 'toggle_style_key': '<leader>ts',
-  \ 'ending_tildes': v:true,
-  \ 'diagnostics': {
-    \ 'darker': v:false,
-    \ 'background': v:false,
-  \ },
-\ }
-colorscheme tairiki
-```
-
 ## Customization
 
-Example custom colors and Highlights config
+Example custom colors and Highlights configuration:
 
 ```lua
 require('tairiki').setup {
-  colors = {
-    bright_orange = "#ff8800",    -- define a new color
-    green = '#00ffaa',            -- redefine an existing color
-  },
-  highlights = {
-    ["@keyword"] = { fg = '$green' },
-    ["@string"] = { fg = '$bright_orange', bg = '#00ff00', fmt = 'bold' },
-    ["@function"] = { fg = '#0000ff', sp = '$cyan', fmt = 'underline,italic' },
-    ["@function.builtin"] = { fg = '#0059ff' }
-  }
-}
-```
-Note that TreeSitter keywords were changed in neovim version `0.8.0`.
-This theme uses the new highlight keywords. All TreeSitter highlights this theme sets can be viewed [here](https://github.com/deparr/tairiki.nvim/blob/master/lua/tairiki/highlights.lua#L141-L230)
+  -- palette definitions are in lua/tairiki/palette
+  colors = function(c, opts)
+    c.bright_orange = "#ff8800" -- define a new color
+    c.green = '#00ffaa'         -- redefine an existing color
 
-## Plugins Configuration
+	if opts.palette == "light" then
+		-- slightly adjust an existing color
+		c.blue = require("tairiki.util").darken(c.blue, 0.1)
+	end
+  end,
 
-### Enable lualine
-To Enable the `tairiki` theme for `Lualine`, specify theme as `tairiki`:
-
-```lua
-require('lualine').setup {
-  options = {
-    theme = 'tairiki'
-    -- ... your lualine config
-  }
+  highlights = function(hl, c, opts)
+  	hl.Number = { fg = c.red }
+    hl["@keyword"] = { fg = c.green }
+    hl["@string"] = { fg = c.bright_orange, bg = c.blue, bold = true }
+    hl["@function"] = { fg = c.red, sp = c.cyan, underline = true, italic = true }
+    hl["@function.builtin"] = { fg = '#0059ff' }
+  end,
 }
 ```
 
 ## Plugins Supported
   + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
-  + [LSPDiagnostics](https://neovim.io/doc/user/lsp.html)
   + [NvimTree](https://github.com/kyazdani42/nvim-tree.lua)
   + [Telescope](https://github.com/nvim-telescope/telescope.nvim)
   + [WhichKey](https://github.com/folke/which-key.nvim)
@@ -197,19 +143,18 @@ require('lualine').setup {
   + [VimFugitive](https://github.com/tpope/vim-fugitive)
   + [DiffView](https://github.com/sindrets/diffview.nvim)
   + [Hop](https://github.com/phaazon/hop.nvim)
-  + [Mini](https://github.com/echasnovski/mini.nvim)
+  <!-- TODO + [Mini](https://github.com/echasnovski/mini.nvim) -->
   + [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
   + [Neotest](https://github.com/nvim-neotest/neotest)
   + [Barbecue](https://github.com/utilyre/barbecue.nvim)
-  + ...and more!
+  + ...and more! (see [the group list](lua/tairiki/groups/init.lua))
 
-_NOTE:_ I don't use most of these, so if colors are off feel free to submit an issue/pr. Or use [overrides](#customization)
+_NOTE:_ I don't use most of these, so if colors are trash, feel free to submit an issue/pr. Or use [overrides](#customization)
 
-## Reference
-  * [onedark.nvim](https://github.com/navarasu/onedark.nvim) - used as a
-	template
+## Reference and Inspiration
   * [tomorrow theme](https://github.com/chriskempson/tomorrow-theme) -
 	base colors
+  * [onedark.nvim](https://github.com/navarasu/onedark.nvim)
   * [gruvbox](https://github.com/morhetz/gruvbox)
   * [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
   * [bamboo.nvim](https://github.com/ribru17/bamboo.nvim)
@@ -221,7 +166,3 @@ Pull requests are welcome 🎉👍.
 ## Tairiki?
 Tairiki means 'evening' or 'dusk' in the [Kiribati](https://en.wikipedia.org/wiki/Kiribati) language.
 
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
