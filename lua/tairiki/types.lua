@@ -3,7 +3,3 @@
 
 ---@alias tairiki.Highlights table<string,tairiki.Highlight|string>
 
----@class tairiki.Cache
----@field groups tairiki.Highlights
----@field inputs table
-
