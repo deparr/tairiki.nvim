@@ -20,7 +20,7 @@ M.defaults = {
   diagnostics = {
     darker = false,
     background = true,
-    undercurl = false,
+    undercurl = true,
   },
   ---@type table<string, table<string, boolean>>
   code_style = {
