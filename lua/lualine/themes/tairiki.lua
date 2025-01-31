@@ -1,11 +1,12 @@
 local opts = require("tairiki.config").options
-local c = require("tairiki.palette").load(opts.palette)
+local p = require("tairiki").palette[vim.o.background] or opts.palette
+local c = require("tairiki.palette").load(p)
 
-local theme = {
+return {
   inactive = {
-    a = { fg = c.grey, bg = c.bg, gui = "bold" },
-    b = { fg = c.grey, bg = c.bg },
-    c = { fg = c.grey, bg = opts.lualine.transparent and c.none or c.bg_light },
+    a = { fg = c.fg_dark, bg = c.bg, gui = "bold" },
+    b = { fg = c.fg_dark, bg = c.bg },
+    c = { fg = c.fg_dark, bg = opts.lualine.transparent and c.none or c.bg_light },
   },
   normal = {
     a = { fg = c.fg_dark, bg = c.bg_light2, gui = "bold" },
@@ -18,4 +19,3 @@ local theme = {
   command = { a = { fg = c.orange, bg = c.bg_light2, gui = "bold" } },
   terminal = { a = { fg = c.yellow, bg = c.bg_light2, gui = "bold" } },
 }
-return theme

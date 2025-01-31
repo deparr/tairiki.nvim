@@ -1,5 +1,6 @@
 local opts = require("tairiki.config").options
-local c = require("tairiki.palette").load(opts.palette)
+local p = require("tairiki").palette[vim.o.background] or opts.palette
+local c = require("tairiki.palette").load(p)
 
 return {
   normal = {

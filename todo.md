@@ -6,6 +6,7 @@
 - [x] diff line color, blue doesn't look great
 - [x] readme updates
     - [x] deprecation/breaking change notice on main
+	- [ ] updated screenshots
 	- [ ] vim doc.txt
         - kinda overkill
 - [x] light theme fg_darks
