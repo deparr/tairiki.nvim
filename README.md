@@ -59,60 +59,60 @@ use 'deparr/tairiki.nvim'
 ### Default Configuration
 ```lua
 require('tairiki').setup {
-	palette              = "dark", -- main palette
-	default_dark         = "dark",
-	default_light        = "light",
-	transparent          = false, -- don't set background colors
-	terminal             = false, -- override nvim terminal colors
-	end_of_buffer        = false, -- show end of buffer filler lines (tildes)
-	visual_bold          = false, -- bolden visual selections
-	cmp_itemkind_reverse = false, -- reverse fg/bg on nvim-cmp item kinds
+  palette              = "dark", -- main palette
+  default_dark         = "dark",
+  default_light        = "light",
+  transparent          = false, -- don't set background colors
+  terminal             = false, -- override nvim terminal colors
+  end_of_buffer        = false, -- show end of buffer filler lines (tildes)
+  visual_bold          = false, -- bolden visual selections
+  cmp_itemkind_reverse = false, -- reverse fg/bg on nvim-cmp item kinds
 
-	diagnostics          = {
-		darker     = false, -- darken diagnostic virtual text
-		background = true,  -- add background to diagnostic virtual text
-		undercurl  = false, -- use undercurls for inline diagnostics
-	},
+  diagnostics          = {
+    darker     = false, -- darken diagnostic virtual text
+    background = true,  -- add background to diagnostic virtual text
+    undercurl  = false, -- use undercurls for inline diagnostics
+  },
 
-	-- style for different syntactic tokens
-	-- table can consist of any boolean option listed in :help nvim_set_hl()
-	code_style           = {
-		comments = { italic = true },
-		conditionals = {},
-		keywords = {},
-		functions = {},
-		strings = {},
-		variables = {},
-		parameters = {},
-		types = {},
-	},
+  -- style for different syntactic tokens
+  -- table can consist of any boolean option listed in :help nvim_set_hl()
+  code_style           = {
+    comments = { italic = true },
+    conditionals = {},
+    keywords = {},
+    functions = {},
+    strings = {},
+    variables = {},
+    parameters = {},
+    types = {},
+  },
 
-	-- lualine theme config
-	lualine = {
-		transparent = true, -- remove background from center section
-	},
+  -- lualine theme config
+  lualine = {
+    transparent = true, -- remove background from center section
+  },
 
-	-- which plugins to enable
-	plugins              = {
-		all = false,  -- enable all supported plugins
-		none = false, -- ONLY set groups listed in :help highlight-groups (see lua/tairiki/groups/neovim.lua). Manually enabled plugins will also be ignored
-		auto = false, -- auto detect installed plugins, currently lazy.nvim only
+  -- which plugins to enable
+  plugins              = {
+    all = false,  -- enable all supported plugins
+    none = false, -- ONLY set groups listed in :help highlight-groups (see lua/tairiki/groups/neovim.lua). Manually enabled plugins will also be ignored
+    auto = false, -- auto detect installed plugins, currently lazy.nvim only
 
-		-- or enable/disable plugins manually
-		-- see lua/tairiki/groups/init.lua for the full list of available plugins
-		--	either the key or value from the M.plugins table can be used here
-		--
-		-- setting a specific plugin manually overrides `all` and `auto`
-		treesitter = true,
-		semantic_tokens = true,
-	},
+    -- or enable/disable plugins manually
+    -- see lua/tairiki/groups/init.lua for the full list of available plugins
+    -- either the key or value from the M.plugins table can be used here
+    --
+    -- setting a specific plugin manually overrides `all` and `auto`
+    treesitter = true,
+    semantic_tokens = true,
+  },
 
-	-- optional function to modify or add colors to the palette
-	-- palette definitions are in lua/tairiki/palette
-	colors     = function(colors, opts) end,
+  -- optional function to modify or add colors to the palette
+  -- palette definitions are in lua/tairiki/palette
+  colors     = function(colors, opts) end,
 
-	-- optional function to override highlight groups
-	highlights = function(groups, colors, opts) end,
+  -- optional function to override highlight groups
+  highlights = function(groups, colors, opts) end,
 }
 ```
 ## Customization
@@ -126,14 +126,14 @@ require('tairiki').setup {
     c.bright_orange = "#ff8800" -- define a new color
     c.green = '#00ffaa'         -- redefine an existing color
 
-	if opts.palette == "light" then
-		-- slightly adjust an existing color
-		c.blue = require("tairiki.util").darken(c.blue, 0.1)
-	end
+    if opts.palette == "light" then
+      -- slightly adjust an existing color
+      c.blue = require("tairiki.util").darken(c.blue, 0.1)
+    end
   end,
 
   highlights = function(hl, c, opts)
-  	hl.Number = { fg = c.red }
+    hl.Number = { fg = c.red }
     hl["@keyword"] = { fg = c.green }
     hl["@string"] = { fg = c.bright_orange, bg = c.blue, bold = true }
     hl["@function"] = { fg = c.red, sp = c.cyan, underline = true, italic = true }
