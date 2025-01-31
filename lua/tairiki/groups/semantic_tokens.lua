@@ -31,7 +31,7 @@ function M.get(c, opts)
     ["@lsp.type"]               = {},
     ["@lsp.type.builtinType"]   = "@type.builtin",
     ["@lsp.type.type"]          = { fg = c.syn.type },
-    ["@lsp.type.typeParameter"] = { fg = util.darken(c.syn.type, 0.1), style = opts.code_style.parameters },
+    ["@lsp.type.typeParameter"] = { fg = util.darken(c.syn.type, 0.9), style = opts.code_style.parameters },
     ["@lsp.type.variable"]      = { fg = c.syn.ident },
 
     ["@lsp.mod.abstract"]       = {},
