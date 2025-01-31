@@ -10,13 +10,24 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
   * Palette color, highlight group, syntax token style [customization](#customization)
 
 ### Showcase
+> [!NOTE]
+> All screenshots were taken with `plugins = { auto = true }` (ie `treesitter` and `semantic_tokens` groups are used).
 <details open>
-<!-- TODO update showcase images, or have them at all?? -->
-<summary>Toggle preview</summary>
+<summary>Toggle dark theme preview</summary>
+	
+![tairiki-dark](https://github.com/user-attachments/assets/a0ab1738-6afe-41d8-900b-c7fdfb880b55)
+ 
+</details>
+<details closed>
+<summary>Toggle light theme preview</summary>
 
-![dark_theme](https://github.com/deparr/tairiki.nvim/assets/37233002/ad842387-ad87-4f69-a2c9-8531c5b592b9)
+![tairiki-light](https://github.com/user-attachments/assets/c0a14657-fa3a-47a5-9942-3aa028169224)
 
-_NOTE:_ The above image uses the rust treesitter parser for highlights
+</details>
+<details closed>
+<summary>Toggle dimmed theme preview</summary>
+
+![tairiki-dimmed](https://github.com/user-attachments/assets/61fe5d55-d019-463d-999c-6ed4584381f0)
 
 </details>
 
