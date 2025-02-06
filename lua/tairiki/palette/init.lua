@@ -166,5 +166,6 @@ M.palettes.dark = require("tairiki.palette.dark")
 M.palettes.light = require("tairiki.palette.light")
 M.palettes.dimmed = require("tairiki.palette.dimmed")
 M.palettes.light_legacy = require("tairiki.palette.light_legacy")
+M.palettes.tomorrow = require("tairiki.palette.tomorrow")
 
 return M

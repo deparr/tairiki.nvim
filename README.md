@@ -14,9 +14,9 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
 > All screenshots were taken with `plugins = { auto = true }` (ie `treesitter` and `semantic_tokens` groups are used).
 <details open>
 <summary>Toggle dark theme preview</summary>
-	
+
 ![tairiki-dark](https://github.com/user-attachments/assets/a0ab1738-6afe-41d8-900b-c7fdfb880b55)
- 
+
 </details>
 <details closed>
 <summary>Toggle light theme preview</summary>
@@ -59,7 +59,7 @@ use 'deparr/tairiki.nvim'
 ### Default Configuration
 ```lua
 require('tairiki').setup {
-  palette              = "dark", -- main palette
+  palette              = "dark", -- main palette, available options: dark, light, dimmed, tomorrow, light_legacy
   default_dark         = "dark",
   default_light        = "light",
   transparent          = false, -- don't set background colors
