@@ -44,7 +44,7 @@ function M.regen_sub_groups(self)
     literal     = self.orange,
     func        = self.blue,
     string      = self.green,
-    type        = self.blue,
+    type        = self.yellow,
     keyword     = self.purple,
     keyword_mod = self.purple,
     special     = self.fg,
@@ -92,19 +92,76 @@ M.highlights = {
 	DiffChange = { fg = M.yellow, bg = M.bg_light4},
 	DiffText   = { fg = M.bg_light4, bg = M.orange},
 
-	Comment          = { fg = M.comment },
-	Todo             = { fg = M.comment, bg = M.bg },
-	Title            = { fg = M.comment },
-	Statement        = { fg = M.fg, bold = false },
-	Structure        = { fg = M.purple },
-	Special          = { fg = M.fg }, -- wack!?
-	Operator         = { fg = M.cyan },
-	Include          = { fg = M.blue },
-	Tag              = { fg = M.red },
-	["@tag.builtin"] = { fg = M.red },
+	Comment   = { fg = M.comment },
+	Todo      = { fg = M.comment, bg = M.bg },
+	Title     = { fg = M.comment },
+	Statement = { fg = M.fg, bold = false },
+	Structure = { fg = M.purple },
+	Special   = { fg = M.fg }, -- wack!?
+	Operator  = { fg = M.cyan },
+	Include   = { fg = M.blue },
+	Type      = { fg = M.blue }, -- also wack
+	Tag       = { fg = M.red },
+
+	["@tag.builtin"]      = { fg = M.red },
 	["@function.builtin"] = { fg = M.orange },
 
 	TelescopeMatching = { fg = M.orange },
+
+	vimCommand = { fg = M.red },
+
+	cType         = { fg = M.yellow },
+	cStorageClass = { fg = M.purple },
+	cConditional  = { fg = M.purple },
+	cRepeat       = { fg = M.purple },
+
+	phpVarSelector    = { fg = M.red },
+	phpKeyword        = { fg = M.purple },
+	phpRepeat         = { fg = M.purple },
+	phpConditional    = { fg = M.purple },
+	phpStatement      = { fg = M.purple },
+	phpMemberSelector = { fg = M.fg },
+
+	rubySymbol                 = { fg = M.green },
+	rubyConstant               = { fg = M.yellow },
+	rubyAttribute              = { fg = M.blue },
+	rubyInclude                = { fg = M.blue },
+	rubyLocalVariableOrMethod  = { fg = M.orange },
+	rubyCurlyBlock             = { fg = M.orange },
+	rubyStringDelimiter        = { fg = M.green },
+	rubyInterpolationDelimiter = { fg = M.orange },
+	rubyConditional            = { fg = M.purple },
+	rubyRepeat                 = { fg = M.purple },
+
+	pythonInclude     = { fg = M.purple },
+	pythonStatement   = { fg = M.purple },
+	pythonConditional = { fg = M.purple },
+	pythonRepeat      = { fg = M.purple },
+	pythonException   = { fg = M.purple },
+	pythonFunction    = { fg = M.blue },
+
+	goStatement   = { fg = M.purple },
+	goConditional = { fg = M.purple },
+	goRepeat      = { fg = M.purple },
+	goException   = { fg = M.purple },
+	goDeclaration = { fg = M.blue },
+	goConstants   = { fg = M.yellow },
+	goBuiltins    = { fg = M.orange },
+
+	coffeeKeyword     = { fg = M.purple },
+	coffeeConditional = { fg = M.purple },
+
+	javaScriptBraces      = { fg = M.fg },
+	javaScriptFunction    = { fg = M.purple },
+	javaScriptConditional = { fg = M.purple },
+	javaScriptRepeat      = { fg = M.purple },
+	javaScriptNumber      = { fg = M.orange },
+	javaScriptMember      = { fg = M.orange },
+
+	htmlTag       = { fg = M.red },
+	htmlTagName   = { fg = M.red },
+	htmlArg       = { fg = M.red },
+	htmlScriptTag = { fg = M.red },
 }
 -- stylua: ignore end
 
