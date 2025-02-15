@@ -81,7 +81,7 @@ function M.load(opts, colors)
   for group, enabled in pairs(groups) do
     if enabled then
       local ok, groupmod = pcall(require, "tairiki.groups." .. group)
-      if ok then
+      if ok and type(groupmod) == "table" then
         for g, hl in pairs(groupmod.get(colors, opts)) do
           ret[g] = hl
         end
