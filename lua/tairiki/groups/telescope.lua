@@ -7,7 +7,7 @@ local M = {}
 function M.get(c, opts)
   -- stylua: ignore
   local ret = {
-    -- TelescopeBorder = { fg = c.fg_dark3 },
+    TelescopeBorder = { fg = c.fg_dark3 },
     -- TelescopeMatching = { fg = c.orange },
     -- TelescopePromptPrefix = { fg = c.fg_dark3 },
     -- TelescopeSelection = { fg = c.fg, bg = c.bg_light2, bold = true },

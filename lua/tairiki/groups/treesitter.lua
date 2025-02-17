@@ -27,10 +27,11 @@ function M.get(c, opts)
     ["@number.float"]               = "Float",
     ["@type"]                       = { fg = c.syn.type, style = opts.code_style.types },
     ["@type.builtin"]               = { fg = c.syn.literal, style = opts.code_style.types },
-    ["@attribute"]                  = { fg = c.cyan },
+    ["@attribute"]                  = "PreProc", -- todo find a good color for this
     ["@property"]                   = { fg = c.syn.ident },
     ["@function"]                   = "Function",
     ["@function.builtin"]           = { fg = c.syn.special, style = opts.code_style.functions },
+    ["@function.macro"]             = "Macro",
     ["@constructor"]                = { fg = c.syn.special },
     ["@operator"]                   = "Operator",
     ["@keyword"]                    = { fg = c.syn.keyword, style = opts.code_style.keywords },
