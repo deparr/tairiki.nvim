@@ -165,7 +165,6 @@ M.highlights = {
 }
 -- stylua: ignore end
 
-
 M:regen_sub_groups()
 
 return M

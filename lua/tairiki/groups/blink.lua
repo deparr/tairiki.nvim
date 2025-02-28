@@ -29,10 +29,9 @@ function M.get(c, opts)
 		-- BlinkCmpSignatureHelpActiveParameter = {}, -- -> LspSignatureActiveParameter
   }
 
-	local kinds = require("tairiki.groups.kinds")
-	kinds.set_kinds(ret, "BlinkCmpKind", opts.cmp_itemkind_reverse)
-	return ret
+  local kinds = require("tairiki.groups.kinds")
+  kinds.set_kinds(ret, "BlinkCmpKind", opts.cmp_itemkind_reverse)
+  return ret
 end
-
 
 return M
