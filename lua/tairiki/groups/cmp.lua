@@ -5,17 +5,18 @@ local M = {}
 ---@return tairiki.Highlights
 function M.get(c, opts)
   -- stylua: ignore
-  return {
+  local ret = {
     CmpItemAbbr = { fg = c.fg },
-    CmpItemAbbrDeprecated = { fg = c.fg_dark, strikethrough = true },
+    CmpItemAbbrDeprecated = { fg = c.red, strikethrough = true },
     CmpItemAbbrMatch = { fg = c.cyan },
-    CmpItemAbbrMatchFuzzy = { fg = c.cyan, underline = true},
-    CmpItemMenu = { fg = c.fg_dark2 },
-    CmpItemKind = {
-      fg = c.purple,
-      reverse = opts.cmp_itemkind_reverse,
-    },
+    -- CmpItemKind = {
+    --   fg = c.purple,
+    --   reverse = opts.cmp_itemkind_reverse,
+    -- },
   }
+	local kinds = require("tairiki.groups.kinds")
+	kinds.set_kinds(ret, "CmpItemKind", opts.cmp_itemkind_reverse)
+	return ret
 end
 
 return M
