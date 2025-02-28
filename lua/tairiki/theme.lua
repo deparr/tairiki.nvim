@@ -12,8 +12,25 @@ function M.load(opts)
   vim.o.termguicolors = true
   vim.g.colors_name = "tairiki-" .. opts.palette
 
+  local inherits = {}
   for group, hl in pairs(groups) do
     hl = type(hl) == "string" and { link = hl } or hl
+    if hl.inherit ~= nil then
+      inherits[group] = hl
+    else
+      vim.api.nvim_set_hl(0, group, hl)
+    end
+  end
+
+  for group, hl in pairs(inherits) do
+    local source_def = vim.api.nvim_get_hl(0, { name = hl.inherit, link = false })
+    hl.inherit = nil
+    if hl.fg then
+      hl.fg = source_def.fg
+    end
+    if hl.bg then
+      hl.bg = source_def.bg
+    end
     vim.api.nvim_set_hl(0, group, hl)
   end
 
