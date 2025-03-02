@@ -17,7 +17,7 @@ function M.get(c, opts)
     ["@lsp.type.function"]      = { fg = c.syn.func, style = opts.code_style.functions },
     ["@lsp.type.interface"]     = { fg = c.syn.type },
     ["@lsp.type.keyword"]       = { fg = c.syn.keyword },
-    ["@lsp.type.macro"]         = { fg = c.syn.constant },
+    ["@lsp.type.macro"]         = "Macro",
     ["@lsp.type.method"]        = { fg = c.syn.func },
     ["@lsp.type.modifier"]      = { fg = c.syn.keyword_mod },
     ["@lsp.type.namespace"]     = { fg = c.syn.ident },
