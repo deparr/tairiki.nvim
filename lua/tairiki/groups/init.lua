@@ -38,6 +38,26 @@ function M.flatten_styles(groups)
   end
 end
 
+-- todo having to double iterate (^^) like this sucks
+function M.resolve_inherits(groups)
+  for name, hl in pairs(groups) do
+    if hl.inherit ~= nil then
+      local source = groups[hl.inherit]
+      if source then
+        hl.inherit = nil
+        if hl.fg then
+          hl.fg = source.fg
+        end
+        if hl.bg then
+          hl.bg = source.bg
+        end
+      else
+        vim.notify("tairiki.nvim: bad inherit " .. name .. " " .. hl.inherit)
+      end
+    end
+  end
+end
+
 function M.load(opts, colors)
   local groups = {
     neovim = true,
@@ -100,10 +120,14 @@ function M.load(opts, colors)
   end
 
   if opts.highlights then
-    opts.highlights(ret, colors, opts)
+    local user_groups = opts.highlights(colors, opts)
+    if user_groups then
+      ret = vim.tbl_extend("force", ret, user_groups)
+    end
   end
 
   M.flatten_styles(ret)
+  M.resolve_inherits(ret)
 
   return ret
 end

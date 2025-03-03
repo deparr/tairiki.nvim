@@ -147,6 +147,7 @@ function M.load(which, opts)
     vim.notify(("tairiki.nvim: invalid palette '%s', defaulting to dark"):format(which))
     p = M.palettes.dark
   end
+  p = vim.tbl_deep_extend("force", {}, p)
   if opts and opts.colors then
     opts.colors(p, opts)
     if p.regen_sub_groups then

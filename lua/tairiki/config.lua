@@ -1,10 +1,10 @@
 local M = {}
 
 ---@alias tairiki.Config.ColorExtFunc
----| fun(colors: tairiki.Palette, opts: tairiki.Config)
+---| fun(colors: tairiki.Palette, opts: tairiki.Config): tairiki.Palette
 
 ---@alias tairiki.Config.HighlightExtFunc
----| fun(highlights: table<string, tairiki.Highlight>, colors: tairiki.Palette, opts: tairiki.Config)
+---| fun(colors: tairiki.Palette, opts: tairiki.Config): tairiki.Highlights
 
 ---@class tairiki.Config
 M.defaults = {
@@ -16,7 +16,6 @@ M.defaults = {
   end_of_buffer = false,
   visual_bold = false,
   cmp_itemkind_reverse = false,
-  -- palette change key ??
   diagnostics = {
     darker = false,
     background = true,
@@ -42,6 +41,12 @@ M.defaults = {
     semantic_tokens = true,
   },
 
+  compile = {
+    enable = true,
+    path = vim.fn.stdpath("cache"),
+  },
+
+	---@type {transparent: boolean}?
   lualine = {
     transparent = false,
   },
@@ -56,17 +61,7 @@ M.defaults = {
 ---@type tairiki.Config
 M.options = nil
 
----@param opts? tairiki.Config
-function M.setup(opts)
-  ---@diagnostic disable-next-line:undefined-field
-  if opts and opts.ending_tildes then
-    opts.end_of_buffer = opts.ending_tildes ---@diagnostic disable-line:undefined-field
-  end
-
-  M.options = vim.tbl_deep_extend("force", {}, M.defaults, opts or {})
-end
-
----@param opts? tairiki.Config
+---@param opts? tairiki.Config|{}
 function M.extend(opts)
   return opts and vim.tbl_deep_extend("force", {}, M.options, opts) or M.options
 end

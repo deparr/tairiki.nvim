@@ -134,4 +134,20 @@ function M.saturate(color, amount)
   return string.format("#%02x%02x%02x", rgb[1], rgb[2], rgb[3])
 end
 
+---@param opts tairiki.Config
+function M.get_compile_dir(opts)
+  local outpath = opts.compile.path
+  if not outpath or outpath == "" then
+    outpath = vim.fn.stdpath("cache")
+  end
+
+  outpath = vim.fs.joinpath(outpath, "tairiki")
+
+  if vim.fn.isdirectory(outpath) == 0 then
+    vim.fn.mkdir(outpath, "p")
+  end
+
+  return outpath
+end
+
 return M

@@ -8,6 +8,7 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
   * Auto detection of installed plugins *(only set what you use!)*
   * Granular toggling of individual plugins *(or what you want!)*
   * Palette color, highlight group, syntax token style [customization](#customization)
+  * [Config compilation](#compilation) for faster startup time
 
 ### Showcase
 > [!NOTE]
@@ -75,7 +76,7 @@ require('tairiki').setup {
   },
 
   -- style for different syntactic tokens
-  -- table can consist of any boolean option listed in :help nvim_set_hl()
+  -- see :help nvim_set_hl() for available keys
   code_style           = {
     comments = { italic = true },
     conditionals = {},
@@ -86,6 +87,11 @@ require('tairiki').setup {
     parameters = {},
     types = {},
   },
+
+  compile = {
+      enable = true, -- use compilation feature, see #Compilation below
+      path = vim.fn.stdpath("cache"), -- store compiled theme files here
+  }
 
   -- lualine theme config
   lualine = {
@@ -108,17 +114,18 @@ require('tairiki').setup {
   },
 
   -- optional function to modify or add colors to the palette
-  -- palette definitions are in lua/tairiki/palette
+  -- palette definitions are in lua/tairiki/palette.
+  ---@type fun(tairiki.Palette, tairiki.Config): tairiki.Palette?
   colors     = function(colors, opts) end,
 
   -- optional function to override highlight groups
-  highlights = function(groups, colors, opts) end,
+  ---@type fun(tairiki.Palette, tairiki.Config): table<string, highlight>?
+  highlights = function(colors, opts) end,
 }
 ```
+
 ## Customization
-
 Example custom colors and Highlights configuration:
-
 ```lua
 require('tairiki').setup {
   -- palette definitions are in lua/tairiki/palette
@@ -130,15 +137,41 @@ require('tairiki').setup {
       -- slightly adjust an existing color
       c.blue = require("tairiki.util").darken(c.blue, 0.1)
     end
+
+    return c
   end,
 
-  highlights = function(hl, c, opts)
-    hl.Number = { fg = c.red }
-    hl["@keyword"] = { fg = c.green }
-    hl["@string"] = { fg = c.bright_orange, bg = c.blue, bold = true }
-    hl["@function"] = { fg = c.red, sp = c.cyan, underline = true, italic = true }
-    hl["@function.builtin"] = { fg = '#0059ff' }
+  highlights = function(c, opts)
+    return {
+      Number = { fg = c.red },
+      ["@keyword"] = { fg = c.green },
+      ["@string"] = { fg = c.bright_orange, bg = c.blue, bold = true },
+      ["@function"] = { fg = c.red, sp = c.cyan, underline = true, italic = true },
+      ["@function.builtin"] = { fg = '#0059ff' },
+    }
   end,
+}
+```
+
+## Compilation
+Tairiki can store the lua bytecode of your customized theme and regenerate
+this bytecode when your config is changed.
+
+> [!TIP]
+> There is not a substantial performance difference between compilation
+> and rebuilding the groups each time unless you have a lot of plugin
+> group sets enabled. 
+
+By default, these files are stored in `vim.fn.stdpath("cache") .. "/tairiki"`,
+but this path can be specified with the `config.compile.path` option.
+Note that tairiki will create a `/tairiki` subdirectory in the given path.
+
+To disable compilation entirely set:
+```lua
+opts = {
+  compile = {
+     enabled = false,
+  }
 }
 ```
 
