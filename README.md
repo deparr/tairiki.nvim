@@ -3,7 +3,6 @@ tairiki.nvim
 </h1>
 
 Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chriskempson/tomorrow-theme).
-
 ### Features
   * Auto detection of installed plugins *(only set what you use!)*
   * Granular toggling of individual plugins *(or what you want!)*
