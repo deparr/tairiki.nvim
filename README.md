@@ -7,7 +7,7 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
 ### Features
   * Auto detection of installed plugins *(only set what you use!)*
   * Granular toggling of individual plugins *(or what you want!)*
-  * Palette color, highlight group, syntax token style [customization](#customization)
+  * Palette color, highlight group, and syntax token style [customization](#customization)
 
 ### Showcase
 > [!NOTE]
@@ -49,8 +49,6 @@ use 'deparr/tairiki.nvim'
   'deparr/tairiki.nvim',
   lazy = false,
   priority = 1000, -- recommended if you use tairiki as your default theme
-  branch = "v2",
-  opts = {},
 }
 ```
 
@@ -68,7 +66,7 @@ require('tairiki').setup {
   visual_bold          = false, -- bolden visual selections
   cmp_itemkind_reverse = false, -- reverse fg/bg on nvim-cmp item kinds
 
-  diagnostics          = {
+  diagnostics = {
     darker     = false, -- darken diagnostic virtual text
     background = true,  -- add background to diagnostic virtual text
     undercurl  = false, -- use undercurls for inline diagnostics
@@ -76,7 +74,7 @@ require('tairiki').setup {
 
   -- style for different syntactic tokens
   -- see :help nvim_set_hl() for available keys
-  code_style           = {
+  code_style = {
     comments = { italic = true },
     conditionals = {},
     keywords = {},
@@ -93,14 +91,14 @@ require('tairiki').setup {
   },
 
   -- which plugins to enable
-  plugins              = {
+  plugins = {
     all = false,  -- enable all supported plugins
     none = false, -- ONLY set groups listed in :help highlight-groups (see lua/tairiki/groups/neovim.lua). Manually enabled plugins will also be ignored
     auto = false, -- auto detect installed plugins, currently lazy.nvim only
 
     -- or enable/disable plugins manually
     -- see lua/tairiki/groups/init.lua for the full list of available plugins
-    -- either the key or value from the M.plugins table can be used here
+    -- either the key or value from the M.plugins table can be used as the key here
     --
     -- setting a specific plugin manually overrides `all` and `auto`
     treesitter = true,
@@ -109,7 +107,7 @@ require('tairiki').setup {
 
   -- optional function to modify or add colors to the palette
   -- palette definitions are in lua/tairiki/palette
-  colors     = function(colors, opts) end,
+  colors = function(colors, opts) end,
 
   -- optional function to override highlight groups
   highlights = function(groups, colors, opts) end,
@@ -128,12 +126,13 @@ require('tairiki').setup {
 
     if opts.palette == "light" then
       -- slightly adjust an existing color
-      c.blue = require("tairiki.util").darken(c.blue, 0.1)
+      c.blue = require("tairiki.util").darken(c.blue, 0.9)
     end
   end,
 
   highlights = function(hl, c, opts)
     hl.Number = { fg = c.red }
+    hl.Float = "Number" -- strings are treated as highlight links
     hl["@keyword"] = { fg = c.green }
     hl["@string"] = { fg = c.bright_orange, bg = c.blue, bold = true }
     hl["@function"] = { fg = c.red, sp = c.cyan, underline = true, italic = true }
@@ -154,11 +153,11 @@ require('tairiki').setup {
   + [VimFugitive](https://github.com/tpope/vim-fugitive)
   + [DiffView](https://github.com/sindrets/diffview.nvim)
   + [Hop](https://github.com/phaazon/hop.nvim)
-  <!-- TODO + [Mini](https://github.com/echasnovski/mini.nvim) -->
   + [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
   + [Neotest](https://github.com/nvim-neotest/neotest)
   + [Barbecue](https://github.com/utilyre/barbecue.nvim)
   + ...and more! (see [the group list](lua/tairiki/groups/init.lua))
+  <!-- TODO + [Mini](https://github.com/echasnovski/mini.nvim) -->
 
 _NOTE:_ I don't use most of these, so if colors are trash, feel free to submit an issue/pr. Or use [overrides](#customization)
 
