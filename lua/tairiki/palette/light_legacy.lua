@@ -119,6 +119,13 @@ function M.regen_sub_groups(self)
     StatusLineTerm               = { fg = self.fg_dark2, bg = self.bg_light2 },
     StatusLineTermNC             = { fg = self.fg_dark3, bg = self.bg_light2 },
     StorageClass                 = { fg = self.red },
+
+    TelescopeMatching = { fg = self.orange },
+    TelescopePromptPrefix = { fg = self.fg_dark2 },
+    TelescopeSelection = { fg = self.fg, bg = self.bg_light2, bold = true },
+    TelescopeSelectionCaret = { fg = self.light_orange, bg = self.bg_light2 },
+    TelescopeMultiIcon = { fg = self.red },
+    TelescopeTitle = { fg = self.orange },
   }
 end
 -- stylua: ignore end
