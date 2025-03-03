@@ -1,7 +1,6 @@
 local M = {}
 
 -- TODO a lot of these end up the same, which is _probably_ fine
--- TODO work out a way to inherit these rather than link
 M.kinds = {
   Text = "Pmenu",
   Method = "Function",

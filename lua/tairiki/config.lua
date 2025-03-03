@@ -16,7 +16,6 @@ M.defaults = {
   end_of_buffer = false,
   visual_bold = false,
   cmp_itemkind_reverse = false,
-  -- palette change key ??
   diagnostics = {
     darker = false,
     background = true,
@@ -42,6 +41,7 @@ M.defaults = {
     semantic_tokens = true,
   },
 
+  ---@type {transparent: boolean}?
   lualine = {
     transparent = false,
   },

@@ -75,7 +75,7 @@ require('tairiki').setup {
   },
 
   -- style for different syntactic tokens
-  -- table can consist of any boolean option listed in :help nvim_set_hl()
+  -- see :help nvim_set_hl() for available keys
   code_style           = {
     comments = { italic = true },
     conditionals = {},
