@@ -1,0 +1,15 @@
+- [ ] more plugins
+  - [ ]  lsp item kinds
+  - [ ] language syntax highlight?
+  - [ ] Mini
+  - [ ] blink
+- [x] diff line color, blue doesn't look great
+- [x] readme updates
+    - [x] deprecation/breaking change notice on main
+	- [ ] updated screenshots
+	- [ ] vim doc.txt
+        - kinda overkill
+- [x] light theme fg_darks
+  	- they're *decent* now
+- [x] manual plugin disables and auto dont seem to work correctly
+- [x] :color tairiki should respect current background, not just the users specified palette
