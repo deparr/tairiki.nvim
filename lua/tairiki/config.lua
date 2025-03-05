@@ -8,20 +8,29 @@ local M = {}
 
 ---@class tairiki.Config
 M.defaults = {
+  ---@type string?
   palette = "dark",
+  ---@type string?
   default_dark = "dark",
+  ---@type string?
   default_light = "light",
+  ---@type boolean?
   transparent = false,
+  ---@type boolean?
   terminal = false,
+  ---@type boolean?
   end_of_buffer = false,
+  ---@type boolean?
   visual_bold = false,
+  ---@type boolean?
   cmp_itemkind_reverse = false,
+  ---@type {darker: boolean, background: boolean, undercurl: boolean}?
   diagnostics = {
     darker = false,
     background = true,
     undercurl = true,
   },
-  ---@type table<string, table<string, boolean>>
+  ---@type table<string, table<string, boolean>>?
   code_style = {
     comments = { italic = true },
     conditionals = {},
@@ -32,7 +41,7 @@ M.defaults = {
     parameters = {},
     types = {},
   },
-  ---@type table<string, boolean|{enabled: boolean}>
+  ---@type table<string, boolean|{enabled: boolean}>?
   plugins = {
     all = false,
     none = false, -- when true, will ONLY set groups listed in :help highlight-groups (lua/groups/neovim.lua)
@@ -56,13 +65,9 @@ M.defaults = {
 ---@type tairiki.Config
 M.options = nil
 
----@param old_config? table
+---@param old_config table
 --- migrates an old config to a tairiki.Config
 function M.migrate_config(old_config)
-  if not old_config then
-    return
-  end
-
   if type(old_config.style) == "string" then
     old_config.palette = old_config.style
     old_config.style = nil
@@ -107,7 +112,7 @@ function M.migrate_config(old_config)
   if found then
     vim.schedule(function()
       vim.notify(
-        "tairiki: found old-style color or highlight overrides, see default config on how to migrate",
+        "tairiki: found old-style color or highlight overrides, see default config / README.md for how to migrate",
         vim.log.levels.WARN
       )
     end)
@@ -116,7 +121,18 @@ end
 
 ---@param opts? tairiki.Config
 function M.setup(opts)
-  M.migrate_config(opts)
+  if opts then
+    M.migrate_config(opts)
+    if opts.palette == "light" or opts.palette == "light_legacy" then
+      if not opts.default_light then
+        opts.default_light = opts.palette
+      end
+    else
+      if not opts.default_dark then
+        opts.default_dark = opts.palette
+      end
+    end
+  end
   M.options = vim.tbl_deep_extend("force", {}, M.defaults, opts or {})
 end
 
