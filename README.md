@@ -7,6 +7,7 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
   * Auto detection of installed plugins *(only set what you use!)*
   * Granular toggling of individual plugins *(or what you want!)*
   * Palette color, highlight group, and syntax token style [customization](#customization)
+  * Export customized theme as a standalone [color scheme script](#exporting)
 
 ### Showcase
 > [!NOTE]
@@ -139,6 +140,23 @@ require('tairiki').setup {
   end,
 }
 ```
+
+## Exporting
+
+Tairiki can generate a color scheme script that you can add to your config instead of
+relying on the plugin to regenerate the theme on startup.
+
+This is useful to improve startup times (if you have a heavily customized theme or use a lot of plugin integrations),
+or even to stop using tairiki.nvim as a plugin entirely.
+
+Running the following to export:
+```lua
+require("tairiki.dump").colors_file()
+```
+This will generate a color script using your current config and open it in a split window.
+From there you can edit it before saving it to your nvim config directory.
+
+See [here for dump options.](https://github.com/deparr/tairiki.nvim/blob/master/lua/tairiki/dump.lua#L5)
 
 ## Plugins Supported
   + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
