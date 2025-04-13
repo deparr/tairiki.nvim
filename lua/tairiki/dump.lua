@@ -2,8 +2,7 @@ local config = require("tairiki.config")
 
 local M = {}
 
---- Generates a standalone vim colors file in a split window, or writes it
---- to your user runtime path if `force` is given.
+--- Generates a standalone vim colors file and opens it in a split window
 --- 
 --- Can be used to improve startup time, or to not have to depend on
 --- tairiki.nvim as a plugin to provide your colorscheme.
@@ -17,18 +16,15 @@ local M = {}
 ---
 --- ```lua
 --- --- dump a specific palette with a custom name
---- dump.colors_file("tomorrow-night", false, { palette = "tomorrow" })
+--- dump.colors_file("tomorrow-night", { palette = "tomorrow" })
 --- ```
 ---@param colors_name? string what to name the theme
 --- Defaults to `"tairiki-" .. opts.palette` if not provided
----@param force? boolean whether to automatically save the generated file
---- When `true`, writes to `"{vim.fn.stdpath("config")}/colors/{colors_name}.lua"`
 ---@param opts? tairiki.Config tairiki config, see `tairiki.config.setup()`
 --- Partial configs will be merged with the global config
-function M.colors_file(colors_name, force, opts)
+function M.colors_file(colors_name, opts)
   opts = config.extend(opts)
   colors_name = colors_name or ("tairiki-" .. opts.palette)
-  force = force or false
 
   local colors = require("tairiki.palette").load(opts.palette, opts)
   local groups = require("tairiki.groups").load(opts, colors)
@@ -66,24 +62,10 @@ function M.colors_file(colors_name, force, opts)
     )
   end
 
-  if force then
-    local outpath = vim.fs.joinpath(vim.fn.stdpath("config"), "colors/")
-    local outfile = vim.fs.joinpath(outpath, ("%s.lua"):format(colors_name))
-    vim.fn.mkdir(outpath, "p")
-    local f, err = io.open(outfile, "w")
-    if not f then
-      vim.notify("tairiki: " .. err, vim.log.levels.ERROR)
-    else
-      f:write(table.concat(lines, "\n"))
-      f:close()
-      vim.notify("tairiki: wrote colors file to " .. outfile)
-    end
-  else
-    local buf = vim.api.nvim_create_buf(true, false)
-    vim.api.nvim_open_win(buf, true, { split = "right" })
-    vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
-    vim.bo.ft = "lua"
-  end
+  local buf = vim.api.nvim_create_buf(true, false)
+  vim.api.nvim_open_win(buf, true, { split = "right" })
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+  vim.bo.ft = "lua"
 end
 
 return M
