@@ -49,7 +49,7 @@ function M.load(opts)
     vim.g.terminal_color_4 = colors.terminal.blue
     vim.g.terminal_color_12 = colors.terminal.bright_blue
     vim.g.terminal_color_5 = colors.terminal.purple
-    vim.g.terminal_color_13 = colors.terminal.bright_purpke
+    vim.g.terminal_color_13 = colors.terminal.bright_purple
     vim.g.terminal_color_6 = colors.terminal.cyan
     vim.g.terminal_color_14 = colors.terminal.bright_cyan
     vim.g.terminal_color_7 = colors.terminal.white
