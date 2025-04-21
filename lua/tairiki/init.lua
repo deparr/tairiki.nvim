@@ -33,7 +33,7 @@ function M.load(opts)
   local groups = require("tairiki.groups").load(opts, colors)
   local h = vim.api.nvim_set_hl
   for name, hl in pairs(groups) do
-    hl = type(hl) == "string" and { link = hl }  or hl
+    hl = type(hl) == "string" and { link = hl } or hl
     h(0, name, hl)
   end
 

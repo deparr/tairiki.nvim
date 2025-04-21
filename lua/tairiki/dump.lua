@@ -3,26 +3,26 @@ local config = require("tairiki.config")
 local M = {}
 
 local term_colors = {
-    "black",
-    "red",
-    "green",
-    "yellow",
-    "blue",
-    "purple",
-    "cyan",
-    "white",
-    "bright_black",
-    "bright_red",
-    "bright_green",
-    "bright_yellow",
-    "bright_blue",
-    "bright_purple",
-    "bright_cyan",
-    "bright_white",
+  "black",
+  "red",
+  "green",
+  "yellow",
+  "blue",
+  "purple",
+  "cyan",
+  "white",
+  "bright_black",
+  "bright_red",
+  "bright_green",
+  "bright_yellow",
+  "bright_blue",
+  "bright_purple",
+  "bright_cyan",
+  "bright_white",
 }
 
 --- Generates a standalone vim colors file and opens it in a split window
---- 
+---
 --- Can be used to improve startup time, or to not have to depend on
 --- tairiki.nvim as a plugin to provide your colorscheme.
 ---
@@ -83,10 +83,7 @@ function M.colors_file(colors_name, opts)
 
   if opts.terminal then
     for i, name in ipairs(term_colors) do
-      table.insert(
-        lines,
-        ('vim.g.terminal_color_%d = "%s"'):format(i-1, colors.terminal[name])
-      )
+      table.insert(lines, ('vim.g.terminal_color_%d = "%s"'):format(i - 1, colors.terminal[name]))
     end
   end
 
