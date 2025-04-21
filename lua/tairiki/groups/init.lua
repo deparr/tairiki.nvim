@@ -5,6 +5,7 @@ local M = {}
 M.plugins = {
 	["barbar.nvim"]             = "barbar",
 	["blink.cmp"]               = "blink",
+	["compile-mode.nvim"]       = "compile_mode",
 	["dashboard-nvim"]          = "dashboard",
 	["diffview.nvim"]           = "diffview",
 	["gitsigns.nvim"]           = "gitsigns",
