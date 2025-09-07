@@ -1,7 +1,22 @@
-local util = require("tairiki.util")
+local builtin_palettes = { "dark", "light", "dimmed", "light_legacy", "tomorrow" }
 local M = {
   ---@type table<string, tairiki.Palette>
-  palettes = {},
+  palettes = setmetatable({}, {
+    __index = function(t, k)
+      if not vim.tbl_contains(builtin_palettes, k) then
+        return nil
+      end
+      local ok, palette = pcall(require, "tairiki.palette." .. k)
+      if not ok then
+        vim.schedule(function()
+          vim.notify("failed to load tairiki palette: " .. k)
+        end)
+        return nil
+      end
+      rawset(t, k, palette)
+      return palette
+    end,
+  }),
 }
 
 ---@class tairiki.Palette
@@ -57,6 +72,7 @@ local M = {
 ---@field operator? string
 
 function M.gen_fg_bg_colors(c)
+  local util = require("tairiki.util")
   if not c.bg_light then
     c.bg_light = util.lighten(c.bg, 0.9, c.fg)
   end
@@ -89,6 +105,7 @@ function M.gen_diag_colors(c)
 end
 
 function M.gen_diff_colors(c)
+  local util = require("tairiki.util")
   c.diff = {
     add = util.blend(M.green, M.bg, 0.3),
     remove = util.blend(M.red, M.bg, 0.1),
@@ -98,6 +115,7 @@ function M.gen_diff_colors(c)
 end
 
 function M.gen_term_colors(p)
+  local util = require("tairiki.util")
   -- stylua: ignore
   p.terminal = {
     black         = util.lighten(p.bg_light3, 0.95),
@@ -158,14 +176,8 @@ end
 
 function M.get_palette_bg_style(which)
   local p = M.palettes[which]
-  local avg = util.rgb(p.bg)
+  local avg = require("tairiki.util").rgb(p.bg)
   return ((avg[1] + avg[2] + avg[3]) / 3) > 0xe0 and "light" or "dark"
 end
-
-M.palettes.dark = require("tairiki.palette.dark")
-M.palettes.light = require("tairiki.palette.light")
-M.palettes.dimmed = require("tairiki.palette.dimmed")
-M.palettes.light_legacy = require("tairiki.palette.light_legacy")
-M.palettes.tomorrow = require("tairiki.palette.tomorrow")
 
 return M

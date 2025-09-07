@@ -1,4 +1,3 @@
-local util = require("tairiki.util")
 -- stylua: ignore start
 local M     = {
   bg      = "#e8e8e8",
@@ -25,6 +24,7 @@ M.fg_dark2  = "#505050"
 M.fg_dark3  = "#696969"
 
 function M.regen_sub_groups(self)
+  local util = require("tairiki.util")
   self.diag       = {
     error = self.red,
     info  = self.cyan,
