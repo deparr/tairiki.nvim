@@ -58,7 +58,7 @@ function M.colors_file(colors_name, opts)
   }
 
   -- todo dump with colors, making the generated file editable
-  --    though that might be possible, easily
+  --    though that might not be possible, at least both easily and correctly
   -- table.insert(lines, "local c = {")
   -- for k, v in pairs(colors) do
   --   local _type = type(v)

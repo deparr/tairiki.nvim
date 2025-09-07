@@ -11,7 +11,7 @@ Dark Theme for neovim >= 0.8 based on [Tomorrow Night](https://github.com/chrisk
 
 ### Showcase
 > [!NOTE]
-> All screenshots were taken with `plugins = { auto = true }` (ie `treesitter` and `semantic_tokens` groups are used).
+> All screenshots were taken with treesitter highlighting enabled.
 <details open>
 <summary>Toggle dark theme preview</summary>
 
@@ -55,6 +55,13 @@ use 'deparr/tairiki.nvim'
 ## Configuration
 
 ### Default Configuration
+
+> [!IMPORTANT]
+> You do **not** need to call setup to use the default configuration.
+>
+> `vim.cmd.colorscheme` or `require("tairiki").load()` will load on
+> demand
+
 ```lua
 require('tairiki').setup {
   palette              = "dark", -- main palette, available options: dark, light, dimmed, tomorrow, light_legacy
@@ -143,20 +150,28 @@ require('tairiki').setup {
 
 ## Exporting
 
-Tairiki can generate a color scheme script that you can add to your config instead of
+Tairiki can generate a standalone color scheme script that you use instead of
 relying on the plugin to regenerate the theme on startup.
 
-This is useful to improve startup times (if you have a heavily customized theme or use a lot of plugin integrations),
-or even to stop using tairiki.nvim as a plugin entirely.
+This can be used to improve startup times if you have a _heavily_ customized theme or use a lot of plugin integrations.
+Or, more likely, to generate a custom theme and stop depending on tairiki.nvim entirely.
 
-Running the following to export:
+Examples:
 ```lua
+-- export current or default configuration
 require("tairiki.dump").colors_file()
-```
-This will generate a color script using your current config and open it in a split window.
-From there you can edit it before saving it to your nvim config directory.
 
-See [here for dump options.](https://github.com/deparr/tairiki.nvim/blob/master/lua/tairiki/dump.lua#L5)
+-- export current or default configuration with a custom name
+require("tairiki.dump").colors_file("tairiki-custom")
+
+-- export a specific palette with a custom name
+require("tairiki.dump").colors_file("tairiki-custom", { palette = "dimmed" })
+```
+
+These will generate a color script and open it in a split window.
+This new script should be placed in `vim.fn.stdpath("config") .. /colors`.
+
+See [here for dump options.](https://github.com/deparr/tairiki.nvim/blob/master/lua/tairiki/dump.lua#L40)
 
 ## Plugins Supported
   + [TreeSitter](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -176,7 +191,10 @@ See [here for dump options.](https://github.com/deparr/tairiki.nvim/blob/master/
   + ...and more! (see [the group list](lua/tairiki/groups/init.lua))
   <!-- TODO + [Mini](https://github.com/echasnovski/mini.nvim) -->
 
-_NOTE:_ I don't use most of these, so if colors are trash, feel free to submit an issue/pr. Or use [overrides](#customization)
+> [!NOTE]
+> I don't use most of these, so if colors are trash, feel free to submit an issue/pr.
+>
+> Or use [overrides](#customization)
 
 ## Reference and Inspiration
   * [tomorrow theme](https://github.com/chriskempson/tomorrow-theme) -
