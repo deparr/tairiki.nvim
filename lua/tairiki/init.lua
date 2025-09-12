@@ -7,19 +7,19 @@ M.palette = {}
 M.setup = config.setup
 
 function M.load(opts)
+  -- if opts is nil, we're here from `:set bg` or `:color tairiki`,
+  -- so we let vim tell us what our bg style should be
+  if opts == nil then
+    opts = {
+      palette = M.palette[vim.o.background] or config.options["default_" .. vim.o.background],
+    }
+  end
+
   opts = config.extend(opts)
   local palette_bg_style = require("tairiki.palette").get_palette_bg_style(opts.palette)
 
   if vim.o.background ~= palette_bg_style then
-    -- if background doesn't match and we're already on this palette, swap background
-    if vim.g.colors_name == "tairiki-" .. opts.palette then
-      -- use user defined default palettes
-      opts.palette = vim.o.background == "light" and (M.palette.light or opts.default_light)
-        or (M.palette.dark or opts.default_dark)
-    else
-      -- otherwise we should swap background to our palette's style
-      vim.o.background = palette_bg_style
-    end
+    vim.o.background = palette_bg_style
   end
   M.palette[vim.o.background] = opts.palette
 
@@ -27,7 +27,7 @@ function M.load(opts)
     vim.cmd("hi clear")
   end
   vim.o.termguicolors = true
-  vim.g.colors_name = "tairiki-" .. opts.palette
+  vim.g.colors_name = "tairiki"
 
   local colors = require("tairiki.palette").load(opts.palette, opts)
   local groups = require("tairiki.groups").load(opts, colors)
