@@ -25,6 +25,7 @@ M.plugins = {
 	["treesitter"]              = "treesitter",
 	["vim-fugitive"]            = "fugitive",
 	["vim-gitgutter"]           = "gitgutter",
+  ["vim-syntax"]              = "vim_syntax",
 	["which-key.nvim"]          = "which_key",
 }
 

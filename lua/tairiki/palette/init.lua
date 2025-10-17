@@ -36,6 +36,7 @@ local M = {
 ---@field cyan string
 ---@field red string
 ---@field comment string
+---@field doc_comment? string
 ---@field none string
 ---@field syn tairiki.Palette.Syntax
 ---@field diag? tairiki.Palette.Diagnostic

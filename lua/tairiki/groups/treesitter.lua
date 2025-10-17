@@ -52,6 +52,7 @@ function M.get(c, opts)
     ["@punctuation.bracket"]        = { fg = c.syn.delim },
     ["@punctuation.special"]        = { fg = c.syn.special },
     ["@comment"]                    = "Comment",
+    ["@comment.documentation"]      = c.doc_comment and { fg = c.doc_comment, style = opts.code_style.comments } or "Comment",
     ["@comment.error"]              = { fg = c.diag.error },
     ["@comment.warning"]            = { fg = c.diag.warn },
     ["@comment.todo"]               = { fg = c.yellow },
