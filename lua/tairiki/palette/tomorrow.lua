@@ -39,7 +39,7 @@ function M.regen_sub_groups(self)
     text   = util.blend(self.blue, self.bg, 0.35),
   }
   self.syn      = {
-    ident       = self.fg,
+    ident       = self.fg, -- red in original
     constant    = self.orange,
     literal     = self.orange,
     func        = self.blue,
@@ -75,9 +75,9 @@ end
 
 -- todo this should probably be a function
 M.highlights = {
-	LineNr     = { fg = M.bg_light3 },
-	NonText    = { fg = M.bg_light3 },
-	SpecialKey = { fg = M.bg_light3 },
+	LineNr     = { fg = M.fg_dark3 },
+	NonText    = { fg = M.fg_dark3 },
+	SpecialKey = { fg = M.fg_dark3 },
 	ModeMsg    = { fg = M.green },
 	MoreMsg    = { fg = M.green },
 	Question   = { fg = M.green },
@@ -92,19 +92,20 @@ M.highlights = {
 	DiffChange = { fg = M.yellow, bg = M.bg_light4},
 	DiffText   = { fg = M.bg_light4, bg = M.orange},
 
-	Comment   = { fg = M.comment },
-	Todo      = { fg = M.comment, bg = M.bg },
-	Title     = { fg = M.comment },
-	Statement = { fg = M.fg, bold = false },
-	Structure = { fg = M.purple },
-	Special   = { fg = M.fg }, -- wack!?
-	Operator  = { fg = M.cyan },
-	Include   = { fg = M.blue },
-	Type      = { fg = M.blue }, -- also wack
-	Tag       = { fg = M.red },
+	Comment    = { fg = M.comment },
+	Todo       = { fg = M.comment, bg = M.bg },
+	Title      = { fg = M.comment },
+	Statement  = { fg = M.fg, bold = false },
+	Structure  = { fg = M.purple },
+	Special    = { fg = M.fg }, -- wack!?
+	Operator   = { fg = M.cyan },
+	Include    = { fg = M.blue },
+	Type       = { fg = M.blue }, -- also wack
+	Tag        = { fg = M.red },
 
 	["@tag.builtin"]      = { fg = M.red },
 	["@function.builtin"] = { fg = M.orange },
+	-- ["@variable.member"] = { fg = M.fg }, -- for when syn.ident is red
 
 	TelescopeMatching = { fg = M.orange },
 
