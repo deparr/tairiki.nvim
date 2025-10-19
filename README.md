@@ -76,7 +76,7 @@ require('tairiki').setup {
   diagnostics = {
     darker     = false, -- darken diagnostic virtual text
     background = true,  -- add background to diagnostic virtual text
-    undercurl  = false, -- use undercurls for inline diagnostics
+    undercurl  = true,  -- use undercurls for inline diagnostics
   },
 
   -- style for different syntactic tokens
@@ -94,7 +94,7 @@ require('tairiki').setup {
 
   -- lualine theme config
   lualine = {
-    transparent = true, -- remove background from center section
+    transparent = false, -- remove background from center section
   },
 
   -- which plugins to enable
