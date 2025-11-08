@@ -114,7 +114,7 @@ function M.get(c, opts)
     Special                     = { fg = c.syn.special, bold = true },
     SpecialChar                 = { fg = c.syn.special },
     SpecialComment              = "Comment",
-    Statement                   = { fg = c.red },
+    Statement                   = { fg = c.syn.keyword },
     StorageClass                = { fg = c.syn.keyword_mod },
     String                      = { fg = c.syn.string, style = opts.code_style.strings },
     Structure                   = { fg = c.syn.type, style = opts.code_style.types },

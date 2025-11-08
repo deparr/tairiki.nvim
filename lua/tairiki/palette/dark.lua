@@ -115,7 +115,6 @@ function M.regen_sub_groups(self)
     Include          = { fg = self.purple },
     Label            = { fg = self.light_orange },
     SpecialKey       = { fg = self.fg_dark3 },
-    Statement        = { fg = self.green },
     StatusLine       = { fg = self.fg_dark2, bg = self.bg_light },
     StatusLineNC     = { fg = self.fg_dark3, bg = self.bg_light2 },
     StatusLineTerm   = { fg = self.fg_dark2, bg = self.bg_light2 },
