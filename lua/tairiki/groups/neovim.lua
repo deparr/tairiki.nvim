@@ -8,6 +8,9 @@ function M.get(c, opts)
   --stylua: ignore
   return {
     ColorColumn                 = { bg = c.bg_light },
+    ComplHint                   = "Comment", -- default
+    ComplHintMore               = "MoreMsg", -- default
+    ComplMatchIns               = { bold = true },
     Conceal                     = { fg = c.comment },
     CurSearch                   = { fg = c.bg, bg = c.orange },
     Cursor                      = { fg = c.bg, bg = c.fg },
@@ -21,6 +24,7 @@ function M.get(c, opts)
     DiffChange                  = { bg = c.diff.change }, -- todo expand diff group. becomes `Diff$type= c.diff.$type` ?
     DiffDelete                  = { fg = c.red, bg = c.diff.remove },
     DiffText                    = { bg = c.diff.text },
+    DiffTextAdd                 = { bg = c.diff.add },
     Directory                   = { fg = c.blue },
     EndOfBuffer                 = { fg = opts.end_of_buffer and c.fg_dark or c.bg },
     ErrorMsg                    = { fg = c.diag.error, bold = true },
@@ -37,12 +41,14 @@ function M.get(c, opts)
     ModeMsg                     = { fg = c.fg_dark },
     MoreMsg                     = { fg = c.purple },
     MsgArea                     = { fg = c.none, bg = c.none },
-    MsgSeparator                = "StatusLine",
+    MsgSeparator                = { fg = c.none, bg = c.bg_light2 },
     NonText                     = { fg = c.fg_dark },
     Normal                      = { fg = c.fg, bg = opts.transparent and c.none or c.bg },
     NormalFloat                 = { fg = c.fg, bg = c.bg_light },
     NormalNC                    = { fg = c.none, bg = c.none },
+    OkMsg                       = { fg = c.diag.ok },
     Pmenu                       = { fg = c.fg_dark, bg = c.bg_light },
+    PmenuBorder                 = { fg = c.fg_dark, bg = c.bg_light },
     PmenuExtra                  = "Pmenu",
     PmenuExtraSel               = "PmenuSel",
     PmenuKind                   = "Pmenu",
@@ -51,17 +57,22 @@ function M.get(c, opts)
     PmenuMatchSel               = { bold = true },
     PmenuSbar                   = { fg = c.none, bg = c.bg_light2 },
     PmenuSel                    = { fg = c.blue, bg = c.bg_light2 },
+    PmenuShadow                 = "FloatShadow",
+    PmenuShadowThrough          = {},
     PmenuThumb                  = { fg = c.fg_dark3, bg = c.fg_dark3 },
     Question                    = { fg = c.yellow },
     QuickFixLine                = { bg = c.bg_light2 },
     Search                      = { fg = c.bg, bg = c.yellow },
     SignColumn                  = { fg = c.fg_dark },
-    SnippetTabstop              = "Visual",
+    SnippetTabstop              = "Visual", -- default
+    SnippetTabstopActive        = "Search", -- todo I dont use snippets, unsure if this is a good default
     SpecialKey                  = { fg = c.fg_dark },
     SpellBad                    = { sp = c.red, underline = not opts.diagnostics.undercurl, undercurl = opts.diagnostics.undercurl },
     SpellCap                    = { sp = c.fg_dark, underline = not opts.diagnostics.undercurl, undercurl = opts.diagnostics.undercurl },
     SpellLocal                  = { sp = c.fg_dark, underline = not opts.diagnostics.undercurl, undercurl = opts.diagnostics.undercurl },
     SpellRare                   = { sp = c.purple, underline = not opts.diagnostics.undercurl, undercurl = opts.diagnostics.undercurl },
+    StderrMsg                   = { fg = c.diag.warn },
+    StdoutMsg                   = { fg = c.fg },
     StatusLine                  = { fg = c.fg_dark, bg = c.bg_light },
     StatusLineNC                = { fg = c.fg_dark2, bg = c.bg_light },
     StatusLineTerm              = { fg = c.fg_dark, bg = c.bg_light },
