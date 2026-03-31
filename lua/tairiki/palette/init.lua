@@ -178,7 +178,7 @@ end
 function M.get_palette_bg_style(which)
   local p = M.palettes[which]
   local avg = require("tairiki.util").rgb(p.bg)
-  return ((avg[1] + avg[2] + avg[3]) / 3) > 0xe0 and "light" or "dark"
+  return ((avg[1] + avg[2] + avg[3]) / 3) > 0xb4 and "light" or "dark"
 end
 
 return M
